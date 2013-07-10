@@ -63,6 +63,7 @@ class MyUserAdmin(UserAdmin):
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
+        ('Picture', {'fields': ('profile_image',)}),
         ('Personal info', {'fields': ('twitter_handle',)}),
         ('Permissions', {'fields': ('is_admin',)}),
         ('Important dates', {'fields': ('last_login',)}),

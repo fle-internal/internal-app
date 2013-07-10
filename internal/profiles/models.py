@@ -1,7 +1,11 @@
+import os
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
  
+def get_image_path(instance, filename):
+    return os.path.join('photos', str(instance.id), filename)
+
 class TeamMemberManager(BaseUserManager):
     def create_user(self, email, twitter_handle, password=None):
         if not email:
@@ -34,6 +38,12 @@ class TeamMember(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
  
     objects = TeamMemberManager()
+
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    website = models.URLField(max_length=200)
+
+    profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
  
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['twitter_handle']
