@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from profiles.models import FLEUser
+from profiles.models import TeamMember
 
 
 class UserCreationForm(forms.ModelForm):
@@ -14,7 +14,7 @@ class UserCreationForm(forms.ModelForm):
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
     class Meta:
-        model = FLEUser
+        model = TeamMember
         fields = ('email', 'twitter_handle')
 
     def clean_password2(self):
@@ -42,7 +42,7 @@ class UserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField()
 
     class Meta:
-        model = FLEUser
+        model = TeamMember
 
     def clean_password(self):
         # Regardless of what the user provides, return the initial value.
@@ -78,7 +78,7 @@ class MyUserAdmin(UserAdmin):
     filter_horizontal = ()
 
 # Now register the new UserAdmin...
-admin.site.register(FLEUser, MyUserAdmin)
+admin.site.register(TeamMember, MyUserAdmin)
 # ... and, since we're not using Django's builtin permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)

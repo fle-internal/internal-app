@@ -2,13 +2,13 @@ from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
  
-class FLEUserManager(BaseUserManager):
+class TeamMemberManager(BaseUserManager):
     def create_user(self, email, twitter_handle, password=None):
         if not email:
             raise ValueError('Users must have an email address')
  
         user = self.model(
-            email=FLEUserManager.normalize_email(email),
+            email=TeamMemberManager.normalize_email(email),
             twitter_handle=twitter_handle,
         )
  
@@ -26,14 +26,14 @@ class FLEUserManager(BaseUserManager):
         return user
  
  
-class FLEUser(AbstractBaseUser):
+class TeamMember(AbstractBaseUser):
     email = models.EmailField(max_length=254, unique=True, db_index=True)
     twitter_handle = models.CharField(max_length=255)
  
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
  
-    objects = FLEUserManager()
+    objects = TeamMemberManager()
  
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['twitter_handle']
