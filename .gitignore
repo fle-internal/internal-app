@@ -1,4 +1,6 @@
 *.py[cod]
+kalite-internal-db
+photos/**/*
 
 # C extensions
 *.so
