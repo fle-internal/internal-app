@@ -37,6 +37,12 @@
       </div>
     </div>
     <div id="menu">
+      {% block menu %}
+      {% endblock %}
     </div>
+
+    {% block content %}
+    {% endblock %}
+    
   </body>
 </html>
