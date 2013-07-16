@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Team Members</title>
+<link href="profileindexstyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="container">
+  <div class="header"></div>
+  
+  <div class="sidebar1">
+    <p>Sign In</p>
+    <p>Sign Up</p>
+  </div>
+  
+  <div class="content">
+    <h1>Profiles</h1>
+    <ul>
+    {% for project in profile_list %}
+    <li>{{ profie.name }}</li>
+    {% endfor %}
+    </ul>
+    <p>List</p>
+    <h2>Project list</h2>
+  </div>
+  
+  <div class="sidebar2">
+    <h4>CREATE FEEDBACK</h4>
+    <button type="button" id="feedbackbutton">Add FeedBack</button>
+
+  </div>
+
+  <div class="footer">
+    <p>Decorate</p>
+  </div>
+</div>
+  
+</body>
+</html>
