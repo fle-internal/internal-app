@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.models import Group
@@ -83,3 +84,15 @@ admin.site.register(TeamMember, MyUserAdmin)
 # ... and, since we're not using Django's builtin permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
+=======
+from django.contrib import admin
+from profiles.models import Profile
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('first_name','last_name','email','links','skills','projects','biography')
+
+
+admin.site.register(Profile, ProfileAdmin)
+
+
+>>>>>>> e70e803b9a4f1c29271b655ac1b73925e4013f9a

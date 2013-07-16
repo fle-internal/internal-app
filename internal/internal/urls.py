@@ -5,14 +5,14 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'internal.views.home', name='home'),
-    # url(r'^internal/', include('internal.foo.urls')),
+    url(r'^admin/', include(admin.site.urls)),
+)
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
+<<<<<<< HEAD
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^profile/$', views.profile)),
 )
+=======
+>>>>>>> e70e803b9a4f1c29271b655ac1b73925e4013f9a
