@@ -7,23 +7,24 @@ def get_image_path(instance, filename):
     return os.path.join('photos', str(instance.id), filename)
 
 class TeamMemberManager(BaseUserManager):
-    def create_user(self, email, twitter_handle, password=None):
+    def create_user(self, username, first_name, last_name, email, password=None):
         if not email:
             raise ValueError('Users must have an email address')
  
         user = self.model(
+            username = username,
+            first_name = first_name,
+            last_name = last_name,
             email=TeamMemberManager.normalize_email(email),
-            twitter_handle=twitter_handle,
         )
  
         user.set_password(password)
         user.save(using=self._db)
         return user
  
-    def create_superuser(self, email, twitter_handle, password):
-        user = self.create_user(email,
+    def create_superuser(self, username, first_name, last_name, email, password):
+        user = self.create_user(username, first_name, last_name, email,
             password=password,
-            twitter_handle=twitter_handle,
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -31,33 +32,34 @@ class TeamMemberManager(BaseUserManager):
  
  
 class TeamMember(AbstractBaseUser):
-    email = models.EmailField(max_length=254, unique=True, db_index=True)
-    twitter_handle = models.CharField(max_length=255)
- 
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
+
+
+    username = models.CharField(max_length=8, unique=True, db_index=True)
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    email = models.EmailField(max_length=254)
+    website = models.URLField(max_length=200)
+    profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
  
     objects = TeamMemberManager()
 
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
-    website = models.URLField(max_length=200)
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
 
-    profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
- 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['twitter_handle']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'email']
  
     def get_full_name(self):
-        # For this case we return email. Could also be User.first_name User.last_name if you have these fields
-        return self.email
+        return self.first_name + ' ' + self.last_name
  
     def get_short_name(self):
-        # For this case we return email. Could also be User.first_name if you have this field
+        return self.first_name
+
+    def get_email(self):
         return self.email
  
     def __unicode__(self):
-        return self.email
+        return self.username
  
     def has_perm(self, perm, obj=None):
         # Handle whether the user has a specific permission?"
@@ -69,7 +71,8 @@ class TeamMember(AbstractBaseUser):
  
     @property
     def is_staff(self):
-        # Handle whether the user is a member of staff?"
+        # Handle whether the user is an admin?"
+        # Turns out this function MUST be named is_staff or things break.
         return self.is_admin
  
  
