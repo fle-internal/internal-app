@@ -6,7 +6,6 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from profiles.models import TeamMember
 
-
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
@@ -15,7 +14,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = TeamMember
-        fields = ('email', 'twitter_handle')
+        fields = ('username', 'first_name', 'last_name', 'email')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -59,23 +58,24 @@ class MyUserAdmin(UserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('email', 'twitter_handle', 'is_admin')
+    list_display = ('username', 'email', 'is_admin')
     list_filter = ('is_admin',)
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        ('Account Info', {'fields': ('username', 'email', 'password')}),
         ('Picture', {'fields': ('profile_image',)}),
-        ('Personal info', {'fields': ('twitter_handle',)}),
+        ('Personal info', {'fields': ('first_name', 'last_name', 'website',)}),
         ('Permissions', {'fields': ('is_admin',)}),
         ('Important dates', {'fields': ('last_login',)}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'date_of_birth', 'password1', 'password2')}
+            'fields': ('username', 'first_name', 'last_name',
+                'email', 'password1', 'password2')}
         ),
     )
-    search_fields = ('email',)
-    ordering = ('email',)
+    search_fields = ('username',)
+    ordering = ('username',)
     filter_horizontal = ()
 
 # Now register the new UserAdmin...
