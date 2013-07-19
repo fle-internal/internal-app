@@ -43,7 +43,7 @@ class TeamMember(AbstractBaseUser):
     last_name = models.CharField(max_length=20)
     website = models.URLField(max_length=200)
 
-    #profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+    profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
  
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['twitter_handle']
