@@ -12,11 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-<<<<<<< HEAD
         'NAME': 'kalite-internal-db',                      # Or path to database file if using sqlite3.
-=======
-        'NAME': 'C:/Users/Kevin/Desktop/FLEINTERNSHIP/internal/mydata.db',                      # Or path to database file if using sqlite3.
->>>>>>> e70e803b9a4f1c29271b655ac1b73925e4013f9a
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',

@@ -9,10 +9,7 @@ urlpatterns = patterns('',
 )
 
 
-<<<<<<< HEAD
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^profile/$', views.profile)),
+    url(r'^profile_index/$', views.profile)),
 )
-=======
->>>>>>> e70e803b9a4f1c29271b655ac1b73925e4013f9a

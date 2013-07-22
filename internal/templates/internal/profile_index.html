@@ -1,42 +1,139 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>Team Members</title>
-<link href="profileindexstyle.css" rel="stylesheet" type="text/css">
-</head>
+    <head>
+        <title>Foundation for Learning Equality</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="author" content="Group14" />
+        <link rel="stylesheet" type="text/css" href="profile.css" />
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+        <script src="js/jquery-2.0.3.js"></script>
+		
+    </head>
+    <body id="all">
+        <div id="top_bar">
+            <div id="logo">
+                <img src="img/kalitebanner.png" alt="none" />
+              </div>
+              
+          <div id="menu_bar">
+            <div class="menu">
 
-<body>
+            <ul>
+				    <li id="home"><a href="#home_page">Home</a></li>
+				    <li><a href="#team_content">The Team</a></li>
+				    <li><a href="#login">Log In</a></li>
+					<li><a href="#contact">Communication</a></li>
+            
+			      </ul>
 
-<div class="container">
-  <div class="header"></div>
-  
-  <div class="sidebar1">
-    <p>Sign In</p>
-    <p>Sign Up</p>
-  </div>
-  
-  <div class="content">
-    <h1>Profiles</h1>
-    <ul>
-    {% for project in profile_list %}
-    <li>{{ profie.name }}</li>
-    {% endfor %}
-    </ul>
-    <p>List</p>
-    <h2>Project list</h2>
-  </div>
-  
-  <div class="sidebar2">
-    <h4>CREATE FEEDBACK</h4>
-    <button type="button" id="feedbackbutton">Add FeedBack</button>
+        </div>
+      </div>
+    </div>
 
-  </div>
+		<div id="home_page">
+			<div id = "group_picture">
+			<img src = "img/group.jpg" alt="group"/>
+			</div>
 
-  <div class="footer">
-    <p>Decorate</p>
-  </div>
-</div>
+			<div id = "about_us">
+					<h2>about us - KA Lite</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a lacus lacus. Duis porta rutrum elementum. Cras tristique velit molestie dui condimentum, sit amet placerat nibh accumsan. Aliquam pretium adipiscing metus quis ullamcorper. Nam tempor nunc et facilisis tincidunt. Praesent gravida eget felis sed luctus. Mauris placerat, purus in pellentesque tincidunt, leo quam fringilla felis, nec pretium sem mauris et turpis. Aenean pretium a quam vel interdum. Vivamus accumsan convallis velit, eu euismod metus auctor ut. Sed porttitor vehicula erat, vestibulum commodo sem convallis in. Sed sed tristique risus. Donec elementum accumsan felis id blandit. Nullam eu suscipit augue.
+
+Donec a placerat nunc. Nullam fringilla enim eu orci pharetra, sed porttitor tellus volutpat. Nam in sodales nisl, ut molestie orci. Praesent ut egestas risus, nec congue metus. Ut malesuada gravida pellentesque. Sed augue tortor, lacinia at aliquam a, accumsan nec nibh. Sed non elit ut turpis tempor tincidunt non ac purus.
+
+Morbi feugiat gravida augue, at euismod risus scelerisque eget. Proin interdum venenatis nisl, non tincidunt neque aliquet nec. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras facilisis tortor est, ut blandit sem convallis at. Aliquam non orci enim. Nullam nec orci quis magna molestie adipiscing. In sit amet ultrices velit. Nam sit amet libero ut ligula auctor adipiscing eget in elit.
+
+Aliquam sagittis lorem sed risus eleifend, eget rutrum est ultrices. Fusce volutpat mauris sed nulla porta, nec consequat libero volutpat. Nulla molestie malesuada quam, et varius elit porttitor id. Aenean urna est, eleifend quis consequat in, dictum eu quam. Praesent consequat, lorem ut sodales rhoncus, quam dolor lacinia eros, quis vehicula nisi metus nec lacus. Integer vitae tempor dolor. Suspendisse potenti. Morbi ante sapien, sollicitudin quis auctor sed, placerat id sem.
+					</p>
+			</div>
+		</div>
+			<div id = "separator"></div>
+
+
+        <div id="team_content">
+        	<h2>the TEAM</h2>
+            <div class="profile_container">
+				<div class="headshot_frame">
+					<img src="img/fillerprofile.jpg" alt="member" />
+					<span>Link to Profile 1</span>
+				</div>
+				<div class="profile_text">
+				Donec a placerat nunc. Nullam fringilla enim eu orci pharetra, sed porttitor tellus volutpat. Nam in sodales nisl, ut molestie orci. Praesent ut egestas risus, nec congue metus. Ut malesuada gravida pellentesque. Sed augue tortor, lacinia at aliquam a, accumsan nec nibh. Sed non elit ut turpis tempor tincidunt non ac purus.		
+				</div>
+			</div>	
+			<div class="profile_container">
+				<div class="headshot_frame">
+					<img src="img/fillerprofile.jpg" alt="member" />
+					<span>Link to Profile 2</span>
+				</div>
+				<div class="profile_text">
+				Donec a placerat nunc. Nullam fringilla enim eu orci pharetra, sed porttitor tellus volutpat. Nam in sodales nisl, ut molestie orci. Praesent ut egestas risus, nec congue metus. Ut malesuada gravida pellentesque. Sed augue tortor, lacinia at aliquam a, accumsan nec nibh. Sed non elit ut turpis tempor tincidunt non ac purus.
+				</div>
+			</div>	
+			<div class="profile_container">
+				<div class="headshot_frame">
+					<img src="img/fillerprofile.jpg" alt="member" />
+					<span>Link to Profile 3</span>
+				</div>
+				<div class="profile_text">
+				Donec a placerat nunc. Nullam fringilla enim eu orci pharetra, sed porttitor tellus volutpat. Nam in sodales nisl, ut molestie orci. Praesent ut egestas risus, nec congue metus. Ut malesuada gravida pellentesque. Sed augue tortor, lacinia at aliquam a, accumsan nec nibh. Sed non elit ut turpis tempor tincidunt non ac purus.
+				</div>
+			</div>	
+			<div class="profile_container">
+				<div class="headshot_frame">
+					<img src="img/fillerprofile.jpg" alt="member" />
+					<span>Link to Profile 3</span>
+				</div>
+				<div class="profile_text">
+				Donec a placerat nunc. Nullam fringilla enim eu orci pharetra, sed porttitor tellus volutpat. Nam in sodales nisl, ut molestie orci. Praesent ut egestas risus, nec congue metus. Ut malesuada gravida pellentesque. Sed augue tortor, lacinia at aliquam a, accumsan nec nibh. Sed non elit ut turpis tempor tincidunt non ac purus.
+				</div>
+			</div>
+			<div class="profile_container">
+				<div class="headshot_frame">
+					<img src="img/fillerprofile.jpg" alt="member" />
+					<span>Link to Profile 5</span>
+				</div>
+				<div class="profile_text">
+				Donec a placerat nunc. Nullam fringilla enim eu orci pharetra, sed porttitor tellus volutpat. Nam in sodales nisl, ut molestie orci. Praesent ut egestas risus, nec congue metus. Ut malesuada gravida pellentesque. Sed augue tortor, lacinia at aliquam a, accumsan nec nibh. Sed non elit ut turpis tempor tincidunt non ac purus.
+				</div>
+			
+        </div>
+		</div>
+
+		<div id = "login">
+        	<h2>login</h2>
+
+		</div>
+
+		<div id = "contact">
+			<h2>communication Channels</h2>
+			<p>info@learningequality.org</p>
+            <a href = "http://chat.learningequality.org:3000/">Chat with the team!</a>
+            <br/>
   
+			<a href = "http://kalite.learningequality.org/">Come to the offical site!</a>
+		</div>
+
+<a href="#top_bar" id="top-link">Top of Page</a>
+<script>
+
+$(document).ready(function(){
+    $(window).scroll(function(){
+	    if ($(this).scrollTop() > 100) {
+            $('#top-link').fadeIn();
+        } else {
+            $('#top-link').fadeOut();
+    }
+});
+// scroll-to-top animate
+$('#top-link').click(function(){
+    $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+});
+
+</script>
+
 </body>
+	
 </html>
