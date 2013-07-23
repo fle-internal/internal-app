@@ -31,11 +31,11 @@
 
 		<div id="home_page">
 			<div id = "group_picture">
-			<img src = "img/group.jpg" alt="group"/> <!--replace with {{selfphoto}} -->
+			<img src = "img/profiledefault.png" alt="group"/> <!--replace with {{selfphoto}} -->
 			</div>
 
 			<div id = "about_us">
-					<h2>your personal REMINDERS</h2>
+					<h2>current REMINDERS</h2>
 					<p>Finish this application!!!!!!!!!!!!!!!!! 
 					</p>
 			</div>
@@ -58,7 +58,7 @@
 					<a href="javascript:AlertIt();">Project ONE</a>
 				</div>
 				<div class="profile_text">
-				Donec 	
+				Small description, but then can click to see the details on left side. 
 				</div>
 			</div>	
 			<div class="profile_container">
@@ -67,7 +67,7 @@
 					<a href="javascript:AlertIt();">Project TWO</a>
 				</div>
 				<div class="profile_text">
-				Donec 
+				Small description, but then can click to see the details on left side. 
 				</div>
 			</div>	
 			<div class="profile_container">
@@ -76,7 +76,7 @@
 					<a href="javascript:AlertIt();">Project THREE</a>
 				</div>
 				<div class="profile_text">
-				Donec 
+				Small description, but then can click to see the details on left side. 
 				</div>
 			</div>	
 			<div class="profile_container">
@@ -85,7 +85,7 @@
 					<a href="javascript:AlertIt();">Project FOUR</a>
 				</div>
 				<div class="profile_text">
-				Donec 
+				Small description, but then can click to see the details on left side. 
 				</div>
 			</div>
 			<div class="profile_container">
@@ -94,7 +94,7 @@
 					<a href="javascript:AlertIt();">Project FIVE</a>
 				</div>
 				<div class="profile_text">
-				Donec 
+				Small description, but then can click to see the details on left side. 
 				</div>
 			
         </div>
@@ -108,7 +108,12 @@
     			<li>{{ feedback }}</li>
 				{% endfor %}
 			</ol>
-
+		<form action="/html/tags/html_form_tag_action.cfm" method="post">
+		Feedback:<br/>
+		<textarea name="Feedbacks" id="feedbacks_area" placeholder="Gimme Feedbacks!!">
+		</textarea><br/>
+		<input type="submit" value="Submit" />
+		</form>
 		</div>
 
 		<div id = "contact">

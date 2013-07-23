@@ -143,6 +143,20 @@ h2{
 #feedbacks{
 	margin: auto;
 }
+
+#feedbacks_area{
+	width:200%;
+	height:400%;
+	background-color:
+	#D0F18F;
+	color:#53760D;
+	font:24px/30px 
+	cursive;
+}
+
+#feedbacks_area div{
+	alignment-adjust:auto;
+}
 form {
     width: 200px;
 	float: center;
