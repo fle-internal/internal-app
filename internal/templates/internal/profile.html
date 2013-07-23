@@ -36,8 +36,13 @@
 
 			<div id = "about_us">
 					<h2>current REMINDERS</h2>
-					<p>Finish this application!!!!!!!!!!!!!!!!! 
-					</p>
+                    <h3>CHECK OUT YOUR FEEDBACKS!!!! YEAHHHH!!!!!!!!!!!!!!!!!</h3>
+            		<ol>
+						{% for feedback in feedbacklist %}
+    					<li>{{ feedback }}</li>
+                        <li>Finish this application!!!</li>
+						{% endfor %}
+					</ol>
 			</div>
 		</div>
 			<div id = "separator"></div>
