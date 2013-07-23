@@ -37,7 +37,7 @@ h2{
 }
 
 
-#projects{
+#team_content{
     margin-left: 25%;
     margin-top:25px;
     margin:auto;
@@ -46,7 +46,7 @@ h2{
     
 }
 
-#projects a{
+#team_content a{
 	font-size: 14px;
 	color: #7bac2e;
 
@@ -124,7 +124,7 @@ h2{
 	margin:auto;
 }
 
-#feedbacks{
+#login{
 	clear:both;
 	width:70%;
 	margin:auto;
@@ -140,7 +140,7 @@ h2{
 	color: white;
 }
  
-#feedbacks{
+#login{
 	margin: auto;
 }
 form {

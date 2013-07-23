@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Foundation for Learning Equality</title>
+        <title>Profile: {{ name }}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="author" content="Group14" />
         <link rel="stylesheet" type="text/css" href="profile.css" />
         <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
         <script src="js/jquery-2.0.3.js"></script>
@@ -12,16 +11,16 @@
     <body id="all">
         <div id="top_bar">
             <div id="logo">
-                <img src="img/kalitebanner.png" alt="none" />
+                <img src="img/kalitebanner.png" alt="none" /> <!--replace with {{selfbannerphoto}} -->
             </div>
               
             <div id="menu_bar">
             <div class="menu">
 
            	<ul>
-				    <li id="home"><a href="#home_page">Home</a></li>
-				    <li><a href="#team_content">The Team</a></li>
-				    <li><a href="#login">Log In</a></li>
+				    <li id="home"><a href="profile_index.html">Home</a></li>
+				    <li><a href="#feedbacks">Feedbacks</a></li>
+				    <li><a href="#projects">Projects</a></li>
 					<li><a href="#contact">Communication</a></li>
             
 			      </ul>
@@ -32,12 +31,12 @@
 
 		<div id="home_page">
 			<div id = "group_picture">
-			<img src = "img/group.jpg" alt="group"/>
+			<img src = "img/group.jpg" alt="group"/> <!--replace with {{selfphoto}} -->
 			</div>
 
 			<div id = "about_us">
-					<h2>about us - KA Lite</h2>
-					<p>Lorem 
+					<h2>your personal REMINDERS</h2>
+					<p>Finish this application!!!!!!!!!!!!!!!!! 
 					</p>
 			</div>
 		</div>
@@ -51,12 +50,12 @@
 			}
 		</script>
 
-        <div id="team_content">
-        	<h2>the TEAM</h2>
+        <div id="projects">
+        	<h2>your PROJECTS</h2> <!--replace with list of all projects, it will link to Angeliques project pages{{}} -->
             <div class="profile_container">
 				<div class="headshot_frame">
 					<img src="img/fillerprofile.jpg" alt="member" />
-					<a href="javascript:AlertIt();">Profile ONE</a>
+					<a href="javascript:AlertIt();">Project ONE</a>
 				</div>
 				<div class="profile_text">
 				Donec 	
@@ -65,7 +64,7 @@
 			<div class="profile_container">
 				<div class="headshot_frame">
 					<img src="img/fillerprofile.jpg" alt="member" />
-					<a href="javascript:AlertIt();">Profile TWO</a>
+					<a href="javascript:AlertIt();">Project TWO</a>
 				</div>
 				<div class="profile_text">
 				Donec 
@@ -74,7 +73,7 @@
 			<div class="profile_container">
 				<div class="headshot_frame">
 					<img src="img/fillerprofile.jpg" alt="member" />
-					<a href="javascript:AlertIt();">Profile THREE</a>
+					<a href="javascript:AlertIt();">Project THREE</a>
 				</div>
 				<div class="profile_text">
 				Donec 
@@ -83,7 +82,7 @@
 			<div class="profile_container">
 				<div class="headshot_frame">
 					<img src="img/fillerprofile.jpg" alt="member" />
-					<a href="javascript:AlertIt();">Profile FOUR</a>
+					<a href="javascript:AlertIt();">Project FOUR</a>
 				</div>
 				<div class="profile_text">
 				Donec 
@@ -92,7 +91,7 @@
 			<div class="profile_container">
 				<div class="headshot_frame">
 					<img src="img/fillerprofile.jpg" alt="member" />
-					<a href="javascript:AlertIt();">Profile FIVE</a>
+					<a href="javascript:AlertIt();">Project FIVE</a>
 				</div>
 				<div class="profile_text">
 				Donec 
@@ -101,13 +100,14 @@
         </div>
 		</div>
 
-		<div id = "login">
-        	<h2>login</h2>
-            <h3>Log into your account to manage your current projects and create feedback for other FLE contributors!</h3>
-            <form>
-				Email login: <input type="text" placeholder="Enter your  login" name="firstname"><br>
-				Password: <input type="text" placeholder="---------------" name="lastname">
-			</form>
+		<div id = "feedbacks">
+        	<h2>feedbacks</h2>
+            <h3>CHECK OUT YOUR FEEDBACKS!!!! YEAHHHH!!!!!!!!!!!!!!!!!</h3>
+            <ol>
+				{% for feedback in feedbacklist %}
+    			<li>{{ feedback }}</li>
+				{% endfor %}
+			</ol>
 
 		</div>
 
