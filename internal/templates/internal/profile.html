@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Foundation for Learning Equality</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="author" content="Group14" />
+        <link rel="stylesheet" type="text/css" href="profile.css" />
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+        <script src="js/jquery-2.0.3.js"></script>
+		
+    </head>
+    <body id="all">
+        <div id="top_bar">
+            <div id="logo">
+                <img src="img/kalitebanner.png" alt="none" />
+            </div>
+              
+            <div id="menu_bar">
+            <div class="menu">
+
+           	<ul>
+				    <li id="home"><a href="#home_page">Home</a></li>
+				    <li><a href="#team_content">The Team</a></li>
+				    <li><a href="#login">Log In</a></li>
+					<li><a href="#contact">Communication</a></li>
+            
+			      </ul>
+
+        </div>
+      </div>
+    </div>
+
+		<div id="home_page">
+			<div id = "group_picture">
+			<img src = "img/group.jpg" alt="group"/>
+			</div>
+
+			<div id = "about_us">
+					<h2>about us - KA Lite</h2>
+					<p>Lorem 
+					</p>
+			</div>
+		</div>
+			<div id = "separator"></div>
+
+		<script type="text/javascript">
+			function AlertIt() {
+				var answer = confirm ("User Should be logged in. This will direct them to the clicked user's profile where they can add feedback and view projects")
+				if (answer)
+				window.location="http://ct.fra.bz/ol/fz/sw/i49/5/5/2/frabz-Computer-Science-Major-What-my-friends-think-I-do-What-my-mom-th-15685d.jpg";
+			}
+		</script>
+
+        <div id="team_content">
+        	<h2>the TEAM</h2>
+            <div class="profile_container">
+				<div class="headshot_frame">
+					<img src="img/fillerprofile.jpg" alt="member" />
+					<a href="javascript:AlertIt();">Profile ONE</a>
+				</div>
+				<div class="profile_text">
+				Donec 	
+				</div>
+			</div>	
+			<div class="profile_container">
+				<div class="headshot_frame">
+					<img src="img/fillerprofile.jpg" alt="member" />
+					<a href="javascript:AlertIt();">Profile TWO</a>
+				</div>
+				<div class="profile_text">
+				Donec 
+				</div>
+			</div>	
+			<div class="profile_container">
+				<div class="headshot_frame">
+					<img src="img/fillerprofile.jpg" alt="member" />
+					<a href="javascript:AlertIt();">Profile THREE</a>
+				</div>
+				<div class="profile_text">
+				Donec 
+				</div>
+			</div>	
+			<div class="profile_container">
+				<div class="headshot_frame">
+					<img src="img/fillerprofile.jpg" alt="member" />
+					<a href="javascript:AlertIt();">Profile FOUR</a>
+				</div>
+				<div class="profile_text">
+				Donec 
+				</div>
+			</div>
+			<div class="profile_container">
+				<div class="headshot_frame">
+					<img src="img/fillerprofile.jpg" alt="member" />
+					<a href="javascript:AlertIt();">Profile FIVE</a>
+				</div>
+				<div class="profile_text">
+				Donec 
+				</div>
+			
+        </div>
+		</div>
+
+		<div id = "login">
+        	<h2>login</h2>
+            <h3>Log into your account to manage your current projects and create feedback for other FLE contributors!</h3>
+            <form>
+				Email login: <input type="text" placeholder="Enter your  login" name="firstname"><br>
+				Password: <input type="text" placeholder="---------------" name="lastname">
+			</form>
+
+		</div>
+
+		<div id = "contact">
+			<h2>communication CHANNELS</h2>
+			<p>info@learningequality.org</p>
+            <a href = "http://chat.learningequality.org:3000/">Chat with the team!</a>
+            <br/>
+  
+			<a href = "http://kalite.learningequality.org/">Come to the offical site!</a>
+		</div>
+
+<a href="#top_bar" id="top-link">Top of Page</a>
+<script>
+
+$(document).ready(function(){
+    $(window).scroll(function(){
+	    if ($(this).scrollTop() > 100) {
+            $('#top-link').fadeIn();
+        } else {
+            $('#top-link').fadeOut();
+    }
+});
+// scroll-to-top animate
+$('#top-link').click(function(){
+    $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+});
+
+</script>
+
+</body>
+	
+</html>
