@@ -1,11 +1,3 @@
-/* 
-    Document   : style
-    Created on : Jul 13, 2013, 7:03:09 PM
-    Author     : WebDSCPC2
-    Description:
-        Purpose of the stylesheet follows.
-*/
-
 root { 
     display: block;
 }
@@ -45,40 +37,6 @@ h2{
 }
 
 
-.inverted_button{
-	background-color:#000000;
-	color:#FFFFFF;
-}
-
-#sidebar{
-    margin-top:25px;
-    margin-right:15%;
-    width:15%;
-	height:50%;
-    float:right;
-    border: 1px solid #FFFFFF;
-	overflow: auto;
-}
-
-#sidebar ul{
-    width:100%;
-    float:left;
-	margin:0;
-	padding:0;
-}
-
-#sidebar ul li{
-    list-style:none;
-    border: 1px solid #FFFFFF;
-}
-
-#sidebar ul li span{
-    font-weight:bold;
-    font-size:16pt;
-	color:red;
-	
-}
-
 #team_content{
     margin-left: 25%;
     margin-top:25px;
@@ -88,9 +46,9 @@ h2{
     
 }
 
-#team_content span{
+#team_content a{
 	font-size: 14px;
-	color: #0489B1;
+	color: #7bac2e;
 
 }
 .profile_container{
@@ -156,9 +114,6 @@ h2{
   color:#D6D2C9;
 	padding:5px
 	}
-	
-.menu a:hover {
-}
 
 #group_picture{
 	text-align:center;
@@ -184,18 +139,13 @@ h2{
 	font-size:19px;
 	color: white;
 }
-
-.login {
-        display:block;
-        clear:both;
-        margin-right:auto;
-}
  
-.login span {
-        display:block;
-        clear:both;
-        margin-bottom:10px;
-        margin-top:10px;
+#login{
+	margin: auto;
+}
+form {
+    width: 200px;
+	float: center;
 }
 
 

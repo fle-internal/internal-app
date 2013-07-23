@@ -6,6 +6,5 @@ def profile(request):
 	return render(request,'profile.html', {'values': inhere}) #edit
 
 def profile_index(request):
-	return render(request,'profile_index.html') #edit
-# Create your views here.
+	return render(request,'profile_index.html') #edit if we decide to populate data.
 
