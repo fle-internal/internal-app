@@ -4,8 +4,8 @@ from projects.models import Project, Collaborator, Leader
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-import projects
-import profiles
+from projects import views as project_views
+from profiles import views as profile_views
 
 
 admin.autodiscover()
@@ -13,10 +13,10 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^profile_index/$', profiles.views.profile),
-    url(r'^profile/$', profiles.views.profile),
-    url(r'^create_project/$', projects.views.create_project),
-    url(r'^project_index/$', projects.views.project_index),
-    url(r'^project_details/$', projects.views.project_details),
+    url(r'^profile_index/$', profile_views.profile),
+    url(r'^profile/$', profile_views.profile),
+    url(r'^create_project/$', project_views.create_project),
+    url(r'^project_index/$', project_views.project_index),
+    url(r'^project_details/$', project_views.project_details),
     url(r'^home/', include(admin.site.urls)),
 )
