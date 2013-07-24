@@ -1,14 +1,16 @@
 {% extends "internal/base.html" %}
+{% load staticfiles %}
 {% block title %}Profile: {{ name }}{% endblock %}
 {% block head %}
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href="{% static 'profiles/profile.css' %}" rel='stylesheet' type='text/css'>
 <script src="js/jquery-2.0.3.js"></script>
 {% endblock %}
 
 {% block content %}
   <div id="top_bar">
     <div id="logo">
-      <img src="img/kalitebanner.png" alt="none" /> <!--replace with {{selfbannerphoto}} -->
+      <img src="{% static 'profiles/img/kalitebanner.png' %}" alt="none" /> <!--replace with {{selfbannerphoto}} -->
     </div>
 
     <div id="menu_bar">
@@ -28,7 +30,7 @@
 
   <div id="home_page">
     <div id = "group_picture">
-      <img src = "img/profiledefault.png" alt="group"/> <!--replace with {{selfphoto}} -->
+      <img src="{% static 'profiles/img/profiledefault.png' %}" alt="group"/> <!--replace with {{selfphoto}} -->
     </div>
 
     <div id = "about_us">
@@ -56,7 +58,7 @@
     <h2>your PROJECTS</h2> <!--replace with list of all projects, it will link to Angeliques project pages -->
     <div class="profile_container">
       <div class="headshot_frame">
-	<img src="img/fillerprofile.jpg" alt="member" />
+	<img src="{% static 'profiles/img/fillerprofile.jpg' %}" alt="member" />
 	<a href="javascript:AlertIt();">Internal Application</a>
       </div>
       <div class="profile_text">
@@ -65,7 +67,7 @@
     </div>
     <div class="profile_container">
       <div class="headshot_frame">
-	<img src="img/fillerprofile.jpg" alt="member" />
+	<img src="{% static 'profiles/img/fillerprofile.jpg' %}" alt="member" />
 	<a href="javascript:AlertIt();">Internal Application</a>
       </div>
       <div class="profile_text">
@@ -74,7 +76,7 @@
     </div>
     <div class="profile_container">
       <div class="headshot_frame">
-	<img src="img/fillerprofile.jpg" alt="member" />
+	<img src="{% static 'profiles/img/fillerprofile.jpg' %}" alt="member" />
 	<a href="javascript:AlertIt();">Internal Application</a>
       </div>
       <div class="profile_text">
@@ -83,7 +85,7 @@
     </div>
     <div class="profile_container">
       <div class="headshot_frame">
-	<img src="img/fillerprofile.jpg" alt="member" />
+	<img src="{% static 'profiles/img/fillerprofile.jpg' %}" alt="member" />
 	<a href="javascript:AlertIt();">PInternal Application</a>
       </div>
       <div class="profile_text">
@@ -92,7 +94,7 @@
     </div>
     <div class="profile_container">
       <div class="headshot_frame">
-	<img src="img/fillerprofile.jpg" alt="member" />
+	<img src="{% static 'profiles/img/fillerprofile.jpg' %}" alt="member" />
 	<a href="javascript:AlertIt();">Internal Application</a>
       </div>
       <div class="profile_text">
