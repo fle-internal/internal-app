@@ -4,7 +4,7 @@ from projects.models import Project
 
 #create project page which lets you assign the project name, members, and member positions
 def create_project(request):
-	return render(request, 'create_project.html', {})
+	return render(request, 'projects/create_project.html', {})
 
 def project_index(request):
 	username = 'User' #fix for later
