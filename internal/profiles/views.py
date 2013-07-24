@@ -4,7 +4,7 @@ from django.shortcuts import render
 User = get_user_model()
 
 def profile(request):
-	return render(request,'profile.html') #edit
+	return render(request,'profiles/profile.html') #edit
 
 def profile_index(request):
-        return render(request,'profile_index.html') #edit if we decide to populate data.
+        return render(request,'profiles/profile_index.html') #edit if we decide to populate data.
