@@ -36,11 +36,11 @@
 
 			<div id = "about_us">
 					<h2>current REMINDERS</h2>
-                    <h3>CHECK OUT YOUR FEEDBACKS!!!! YEAHHHH!!!!!!!!!!!!!!!!!</h3>
+                    <h3>{{ name }}, don't forget to...</h3>
             		<ol>
-						{% for feedback in feedbacklist %}
-    					<li>{{ feedback }}</li>
-                        <li>Finish this application!!!</li>
+						{% for reminder in reminderlist %}
+    					<li>Finish this internal application!!</li>
+                        <li>{{ reminder }}</li>
 						{% endfor %}
 					</ol>
 			</div>
@@ -49,9 +49,9 @@
 
 		<script type="text/javascript">
 			function AlertIt() {
-				var answer = confirm ("User Should be logged in. This will direct them to the clicked user's profile where they can add feedback and view projects")
+				var answer = confirm ("Need to implement, but this will direct the FLE contributor to view the current project. This view will have a more in debt description of the project with more functionalities.")
 				if (answer)
-				window.location="http://ct.fra.bz/ol/fz/sw/i49/5/5/2/frabz-Computer-Science-Major-What-my-friends-think-I-do-What-my-mom-th-15685d.jpg";
+				window.location="https://github.com/aronasorman/kalite-internal";
 			}
 		</script>
 
@@ -60,47 +60,48 @@
             <div class="profile_container">
 				<div class="headshot_frame">
 					<img src="img/fillerprofile.jpg" alt="member" />
-					<a href="javascript:AlertIt();">Project ONE</a>
+					<a href="javascript:AlertIt();">Internal Application</a>
 				</div>
 				<div class="profile_text">
-				Small description, but then can click to see the details on left side. 
+				This is an internal application for the interns of the FLE.
 				</div>
 			</div>	
 			<div class="profile_container">
 				<div class="headshot_frame">
 					<img src="img/fillerprofile.jpg" alt="member" />
-					<a href="javascript:AlertIt();">Project TWO</a>
+					<a href="javascript:AlertIt();">Internal Application</a>
 				</div>
 				<div class="profile_text">
-				Small description, but then can click to see the details on left side. 
+				This is an internal application for the interns of the FLE.
 				</div>
 			</div>	
 			<div class="profile_container">
 				<div class="headshot_frame">
 					<img src="img/fillerprofile.jpg" alt="member" />
-					<a href="javascript:AlertIt();">Project THREE</a>
+					<a href="javascript:AlertIt();">Internal Application</a>
 				</div>
 				<div class="profile_text">
-				Small description, but then can click to see the details on left side. 
+				This is an internal application for the interns of the FLE.
 				</div>
 			</div>	
 			<div class="profile_container">
 				<div class="headshot_frame">
 					<img src="img/fillerprofile.jpg" alt="member" />
-					<a href="javascript:AlertIt();">Project FOUR</a>
+					<a href="javascript:AlertIt();">PInternal Application</a>
 				</div>
 				<div class="profile_text">
-				Small description, but then can click to see the details on left side. 
+				This is an internal application for the interns of the FLE.
 				</div>
 			</div>
 			<div class="profile_container">
 				<div class="headshot_frame">
 					<img src="img/fillerprofile.jpg" alt="member" />
-					<a href="javascript:AlertIt();">Project FIVE</a>
+					<a href="javascript:AlertIt();">Internal Application</a>
 				</div>
 				<div class="profile_text">
-				Small description, but then can click to see the details on left side. 
+				This is an internal application for the interns of the FLE.
 				</div>
+
 			
         </div>
 		</div>
@@ -128,7 +129,11 @@
             <br/>
   
 			<a href = "http://kalite.learningequality.org/">Come to the offical site!</a>
+			<br/>
+			<a href = "https://drive.google.com/?tab=mo&amp;authuser=0#folders/0B1eobeaicL7IcnMzMktXM3RzajQ">Go to the Google Drive Shared Folder!</a>
 		</div>
+
+
 
 <a href="#top_bar" id="top-link">Top of Page</a>
 <script>

@@ -10,7 +10,7 @@ from profiles.models import TeamMember
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password1 = forms.CharField(label='Pssword', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
     class Meta:
@@ -63,7 +63,7 @@ class MyUserAdmin(UserAdmin):
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Picture', {'fields': ('profile_image',)}),
+        # ('Picture', {'fields': ('profile_image',)}),
         ('Personal info', {'fields': ('twitter_handle',)}),
         ('Permissions', {'fields': ('is_admin',)}),
         ('Important dates', {'fields': ('last_login',)}),
@@ -82,6 +82,4 @@ class MyUserAdmin(UserAdmin):
 admin.site.register(TeamMember, MyUserAdmin)
 # ... and, since we're not using Django's builtin permissions,
 # unregister the Group model from admin.
-admin.site.unregister(Group)
-
-
+# admin.site.unregister(Group)

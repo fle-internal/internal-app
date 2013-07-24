@@ -8,11 +8,8 @@ from profiles import views
 admin.autodiscover()
 
 urlpatterns = patterns('',
-
     # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^profile_index/$', views.profile),
     url(r'^profile/$', views.profile),
-
 )
-
