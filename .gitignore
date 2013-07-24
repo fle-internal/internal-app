@@ -41,3 +41,6 @@ nosetests.xml
 /share/
 /usr/
 /local/
+
+# mac DS_Store
+.DS_Store
