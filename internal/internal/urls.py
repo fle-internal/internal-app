@@ -13,7 +13,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^profile_index/$', profile_views.profile),
+    url(r'^profile_index/$', profile_views.profile_index),
     url(r'^profile/$', profile_views.profile),
     url(r'^create_project/$', project_views.create_project),
     url(r'^project_index/$', project_views.project_index),

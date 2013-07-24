@@ -7,4 +7,6 @@ def profile(request):
 	return render(request,'profiles/profile.html') #edit
 
 def profile_index(request):
-        return render(request,'profiles/profile_index.html') #edit if we decide to populate data.
+        persons = ['jamie', 'ben', 'richard', 'dylan', 'rui']
+        imgs = ['profiles/img/{}.jpg'.format(person) for person in persons]
+        return render(request,'profiles/profile_index.html', {'imgs': imgs} ) #edit if we decide to populate data.
