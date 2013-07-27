@@ -41,6 +41,11 @@ nosetests.xml
 /share/
 /usr/
 /local/
+/include/
+
+# sublime metadata
+*.sublime-project
+*.sublime-workspace
 
 # mac DS_Store
 .DS_Store
