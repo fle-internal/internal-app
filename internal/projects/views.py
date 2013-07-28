@@ -17,7 +17,12 @@ def project_details(request):
 	active = True
 	deadline = "September 1, 2013"
 	leader = "Khan Academy"
-	todo = ['project models', 'project details', 'profiles', 'profile details']
+	todo = ['project models', 'project details', 'profiles', 
+		'profile details']
 	team_members= {'Angelique':'Project details', 'Andres':'Project Models'}
-	return render(request, 'projects/project_detail.html', {'project_title':title,
- 'project_descrip':description, 'active':active, 'deadline':deadline, 'leader':leader, 'team_members':team_members, 'todo':todo})
+	return render(request, 'projects/project_detail.html', {
+			'project_title':title,
+			'project_descrip':description,
+			'active':active, 'deadline':deadline,
+			'leader':leader, 'team_members':team_members,
+			'todo':todo})
