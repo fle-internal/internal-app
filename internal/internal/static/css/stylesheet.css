@@ -9,5 +9,10 @@
   font-family:Verdana;
   background-color:#a1b92a;
   padding:30px
+}
 
+.row.login-form {
+    position: fixed;
+    top: 50%;
+    bottom: 50%;
 }

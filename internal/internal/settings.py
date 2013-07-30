@@ -163,3 +163,4 @@ LOGGING = {
     }
 }
 
+LOGIN_URL = 'django.contrib.auth.views.login'

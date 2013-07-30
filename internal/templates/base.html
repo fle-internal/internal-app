@@ -9,7 +9,7 @@
   </head>
   <body>
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
 	<div class="container">
@@ -29,7 +29,7 @@
 		</a>
 	      </li>
 	      <li class="login">
-		<a href="{ url 'login' }">
+		<a href="{% url 'django.contrib.auth.views.login' %}">
 		  Login
 		</a>
 	      </li>
@@ -48,8 +48,14 @@
       {% endblock %}
     </div>
 
-    {% block content %}
-    {% endblock %}
+    <div class="container">
+      <div class="content">
+
+	{% block content %}
+	{% endblock %}
+
+      </div>
+    </div>
 
   </body>
 </html>
