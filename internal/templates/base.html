@@ -9,7 +9,7 @@
   </head>
   <body>
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
 	<div class="container">
@@ -28,11 +28,20 @@
 		  Home
 		</a>
 	      </li>
+	      {% if user.is_authenticated %}
+	      <li class="item">
+		<a href="{% url 'profiles.views.logout' %}">
+		  {{ user.email }}
+		  (logout)
+		</a>
+	      </li>
+	      {% else %}
 	      <li class="login">
-		<a href="{ url 'login' }">
+		<a href="{% url 'django.contrib.auth.views.login' %}">
 		  Login
 		</a>
 	      </li>
+	      {% endif %}
 	      <li class="item">
 		<a href="#contact">
 		  Contact us
@@ -48,8 +57,14 @@
       {% endblock %}
     </div>
 
-    {% block content %}
-    {% endblock %}
+    <div class="container">
+      <div class="content">
+
+	{% block content %}
+	{% endblock %}
+
+      </div>
+    </div>
 
   </body>
 </html>
