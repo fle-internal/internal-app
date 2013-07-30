@@ -30,7 +30,7 @@
 	      </li>
 	      {% if user.is_authenticated %}
 	      <li class="item">
-		<a href="{% url 'django.contrib.auth.views.logout' %}">
+		<a href="{% url 'profiles.views.logout' %}">
 		  {{ user.email }}
 		  (logout)
 		</a>
