@@ -11,8 +11,8 @@
   padding:30px
 }
 
-.row.login-form {
+.login-form {
     position: fixed;
-    top: 50%;
-    bottom: 50%;
+    top: 30%;
+    left: 20%;
 }
