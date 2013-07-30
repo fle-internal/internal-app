@@ -165,3 +165,4 @@ LOGGING = {
 }
 
 LOGIN_URL = 'django.contrib.auth.views.login'
+LOGIN_REDIRECT_URL = 'profile_index'
