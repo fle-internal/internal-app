@@ -7,6 +7,7 @@
             "first_name": "Kevin",
             "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
             "email": "ngovkevin@fakeaccount.com",
+	    "bio": "I am Kevin Ngo",
             "last_name": "Ngo"
           }
     },
@@ -18,7 +19,8 @@
             "first_name": "Angelique",
             "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
             "email": "fearthecompilermwahahaha@haha.com",
-            "last_name": "De Castro"
+            "last_name": "De Castro",
+	    "bio": "I am Angelique De Castro"
           }
     },
   {
@@ -29,7 +31,8 @@
             "first_name": "Andres",
             "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
             "email": "el.ultimo.languis@fakeaccount.com",
-            "last_name": "Silva"
+            "last_name": "Silva",
+	    "bio": "I am Andres Silva"
           }
     },
   {
@@ -40,7 +43,8 @@
             "first_name": "Pranav",
             "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
             "email": "pnpranavrao@fakeaccount.com",
-            "last_name": "Rao"
+            "last_name": "Rao",
+	    "bio": "I am Pranav Rao"
           }
     }
 ]

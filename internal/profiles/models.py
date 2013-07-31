@@ -39,6 +39,7 @@ class TeamMember(AbstractBaseUser):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     website = models.URLField(max_length=200)
+    bio = models.TextField(blank=True)
 
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 

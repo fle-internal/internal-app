@@ -51,7 +51,7 @@
 	<a href="{% url 'profile_detail' person.id %}">{{ person.full_name }}</a>
       </div>
       <div class="profile_text">
-	He loves candy!
+	{{ person.bio }}
       </div>
     </div>
     {% endfor %}
