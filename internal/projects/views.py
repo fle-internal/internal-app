@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from projects.models import Project
+from projects import models
+from django.views.generic import *
 
 #create project page which lets you assign the project name, members, and member positions
 def create_project(request):
