@@ -135,6 +135,21 @@ h2{
 	margin:auto;
 }
 
+#contact ul{
+	display: inline;
+	list-style: None;
+	list-style-type: None;
+	-webkit-margin-after: 0em;
+	-webkit-margin-before: 0em;
+}
+#contact li{
+	display: inline;
+	list-style: None;
+	list-style-type: None;
+	-webkit-margin-after: 0em;
+	-webkit-margin-before: 0em;
+}
+
 #contact a{
 	font-size:19px;
 	color: white;
@@ -148,7 +163,6 @@ form {
 	float: center;
 }
 
-
 #top-link{ 
 	display:none;
 	position:fixed;
@@ -161,4 +175,3 @@ form {
 	background:white; 
 	padding:10px; 
 }
-
