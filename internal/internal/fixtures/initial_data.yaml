@@ -1,0 +1,35 @@
+- model: profiles.TeamMember
+  pk: 1
+  fields:
+    email: ngovkevin@fakeaccount.com
+    first_name: Kevin
+    last_name: Ngo
+    website: kevin.interns.com
+    password: 'pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=' # password is fle
+
+- model: profiles.TeamMember
+  pk: 2
+  fields:
+    email: fearthecompilermwahahaha@haha.com
+    first_name: Angelique
+    last_name: De Castro
+    website: ifearcompilers.interns.com
+    password: 'pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=' # password is fle
+
+- model: profiles.TeamMember
+  pk: 3
+  fields:
+    email: el.ultimo.languis@fakeaccount.com
+    first_name: Andres
+    last_name: Silva
+    website: andressilva.interns.com
+    password: 'pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=' # password is fle
+
+- model: profiles.TeamMember
+  pk: 4
+  fields:
+    email: pnpranavrao@fakeaccount.com
+    first_name: Pranav
+    last_name: Rao
+    website: pranavrao.interns.com
+    password: 'pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=' # password is fle
