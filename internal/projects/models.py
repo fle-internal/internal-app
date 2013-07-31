@@ -1,4 +1,5 @@
 from django.db import models
+<<<<<<< HEAD
 from profiles.models import TeamMember
 # Create your models here.
 
@@ -18,4 +19,9 @@ class Project(models.Model):
     website = models.URLField()
     def __unicode__(self):
         return self.name
+=======
+import datetime
+# Create your models here.	
+
+>>>>>>> cef70061d51d0313eca8d584cf9c2ec5bb413a91
 
