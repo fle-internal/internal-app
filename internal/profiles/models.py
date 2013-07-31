@@ -44,9 +44,12 @@ class TeamMember(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
 
-    def get_full_name(self):
+    def full_name(self):
         # For this case we return email. Could also be User.first_name User.last_name if you have these fields
-        return self.email
+        if self.first_name == '' and self.last_name == '':
+            return self.email
+        else:
+            return ' '.join([self.first_name, self.last_name])
 
     def get_short_name(self):
         # For this case we return email. Could also be User.first_name if you have this field
