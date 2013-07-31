@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'bootstrap',
     'profiles',
     'projects',
+    'internal',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -163,3 +164,5 @@ LOGGING = {
     }
 }
 
+LOGIN_URL = 'django.contrib.auth.views.login'
+LOGIN_REDIRECT_URL = 'profile_index'

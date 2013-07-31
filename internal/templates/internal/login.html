@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type="text/css" media="screen" />
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="login-form">
+    <form class="form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}" >
+      {% csrf_token %}
+      {% if form.errors %}
+      <div class="alert">
+	<a class="close" data-dismiss="alert">x</a>
+	<p> Username and password did not match. </p>
+      </div>
+      {% endif %}
+      <fieldset>
+	  {{ form.username.label_tag }}
+	  {{ form.username }}
+	<div class="control-group">
+	  {{ form.password.label_tag }}
+	  {{ form.password }}
+	</div>
+	<div class="control-group">
+	  <div class="controls">
+	    <button class="btn btn-success">Login</button>
+	  </div>
+	</div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+{% endblock %}
