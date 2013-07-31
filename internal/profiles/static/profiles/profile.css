@@ -37,7 +37,7 @@ h2{
 }
 
 
-#projects{
+#team_content{
     margin-left: 25%;
     margin-top:25px;
     margin:auto;
@@ -46,7 +46,7 @@ h2{
     
 }
 
-#projects a{
+#team_content a{
 	font-size: 14px;
 	color: #7bac2e;
 
@@ -124,7 +124,7 @@ h2{
 	margin:auto;
 }
 
-#feedbacks{
+#login{
 	clear:both;
 	width:70%;
 	margin:auto;
@@ -135,33 +135,33 @@ h2{
 	margin:auto;
 }
 
+#contact ul{
+	display: inline;
+	list-style: None;
+	list-style-type: None;
+	-webkit-margin-after: 0em;
+	-webkit-margin-before: 0em;
+}
+#contact li{
+	display: inline;
+	list-style: None;
+	list-style-type: None;
+	-webkit-margin-after: 0em;
+	-webkit-margin-before: 0em;
+}
+
 #contact a{
 	font-size:19px;
 	color: white;
 }
  
-#feedbacks{
+#login{
 	margin: auto;
-}
-
-#feedbacks_area{
-	width:200%;
-	height:400%;
-	background-color:
-	#D0F18F;
-	color:#53760D;
-	font:24px/30px 
-	cursive;
-}
-
-#feedbacks_area div{
-	alignment-adjust:auto;
 }
 form {
     width: 200px;
 	float: center;
 }
-
 
 #top-link{ 
 	display:none;
@@ -175,4 +175,3 @@ form {
 	background:white; 
 	padding:10px; 
 }
-

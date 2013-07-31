@@ -50,7 +50,7 @@ class TeamMember(AbstractBaseUser):
 
     def get_short_name(self):
         # For this case we return email. Could also be User.first_name if you have this field
-        return self.email
+        return self.first_name
 
     def __unicode__(self):
         return self.email
