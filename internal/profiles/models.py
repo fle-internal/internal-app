@@ -7,23 +7,21 @@ def get_image_path(instance, filename):
     return os.path.join('photos', str(instance.id), filename)
 
 class TeamMemberManager(BaseUserManager):
-    def create_user(self, email, twitter_handle, password=None):
+    def create_user(self, email, password=None):
         if not email:
             raise ValueError('Users must have an email address')
 
         user = self.model(
             email=TeamMemberManager.normalize_email(email),
-            twitter_handle=twitter_handle,
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, twitter_handle, password):
+    def create_superuser(self, email, password):
         user = self.create_user(email,
             password=password,
-            twitter_handle=twitter_handle,
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -32,7 +30,6 @@ class TeamMemberManager(BaseUserManager):
 
 class TeamMember(AbstractBaseUser):
     email = models.EmailField(max_length=254, unique=True, db_index=True)
-    twitter_handle = models.CharField(max_length=255)
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
@@ -46,7 +43,6 @@ class TeamMember(AbstractBaseUser):
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['twitter_handle']
 
     def get_full_name(self):
         # For this case we return email. Could also be User.first_name User.last_name if you have these fields
