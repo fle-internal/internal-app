@@ -9,7 +9,7 @@
 <h2>Projects:</h2>
 {% for role in person.roles.all %}
 <div class="span4 well">
-  <h3>{{ role.project.name }}</h3> as <b>{{ role.role_name }}</b>
+  <h3><a href="{% url 'project_detail' role.project.id %}">{{ role.project.name }}</a></h3> as <b>{{ role.role_name }}</b>
   {% if role.project.owner.id == person.id %}
   and <b>project owner</b>
   {% endif %}
