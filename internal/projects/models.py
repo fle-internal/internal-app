@@ -3,8 +3,9 @@ from profiles.models import TeamMember
 # Create your models here.
 
 class Task(models.Model):
-    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
     project = models.ForeignKey('Project', related_name='tasks')
+    assigned = models.ForeignKey(TeamMember, related_name='tasks_assigned')
 
 class Project(models.Model):
     name = models.CharField(max_length=30)

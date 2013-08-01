@@ -76,5 +76,14 @@
             "project": 1,
 	    "role_name": "developer"
           }
+    },
+    {
+	"model": "projects.Task",
+	"pk": 1,
+	"fields": {
+	    "project": 1,
+	    "assigned": 1,
+	    "description": "destroy all humans"
+	}
     }
 ]
