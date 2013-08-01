@@ -31,7 +31,7 @@
 	      </li>
 	      {% if user.is_authenticated %}
 	      <li class="item">
-		<a href="{% url 'profiles.views.logout' %}">
+		<a href="{% url 'profile_detail' user.id %}">
 		  {{ user.email }}
 		  (logout)
 		</a>
