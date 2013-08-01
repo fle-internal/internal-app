@@ -1,142 +1,18 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Profile: {{ name }}{% endblock %}
-{% block head %}
-<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-<link href="{% static 'profiles/profile.css' %}" rel='stylesheet' type='text/css'>
-<script src="js/jquery-2.0.3.js"></script>
-{% endblock %}
+{% block title %}Profile: {{ person.full_name }}{% endblock %}
 
 {% block content %}
-  <div id="top_bar">
-    <div id="logo">
-      <img src="{% static 'profiles/img/kalitebanner.png' %}" alt="none" /> <!--replace with {{selfbannerphoto}} -->
-    </div>
-  </div>
-
-  <div id="home_page">
-    <div id = "group_picture">
-      <img src="{% static 'profiles/img/profiledefault.png' %}" alt="group"/> <!--replace with {{selfphoto}} -->
-    </div>
-
-    <div id = "about_us">
-      <h2>current REMINDERS</h2>
-      <h3>{{ name }}, don't forget to...</h3>
-      <ol>
-	{% for reminder in reminderlist %}
-    	<li>Finish this internal application!!</li>
-        <li>{{ reminder }}</li>
-	{% endfor %}
-      </ol>
-    </div>
-  </div>
-  <div id = "separator"></div>
-
-  <script type="text/javascript">
-    function AlertIt() {
-    var answer = confirm ("Need to implement, but this will direct the FLE contributor to view the current project. This view will have a more in debt description of the project with more functionalities.")
-    if (answer)
-    window.location="https://github.com/aronasorman/kalite-internal";
-    }
-  </script>
-
-  <div id="projects">
-    <h2>your PROJECTS</h2> <!--replace with list of all projects, it will link to Angeliques project pages -->
-    <div class="profile_container">
-      <div class="headshot_frame">
-	<img src="{% static 'profiles/img/fillerprofile.jpg' %}" alt="member" />
-	<a href="javascript:AlertIt();">Internal Application</a>
-      </div>
-      <div class="profile_text">
-	This is an internal application for the interns of the FLE.
-      </div>
-    </div>
-    <div class="profile_container">
-      <div class="headshot_frame">
-	<img src="{% static 'profiles/img/fillerprofile.jpg' %}" alt="member" />
-	<a href="javascript:AlertIt();">Internal Application</a>
-      </div>
-      <div class="profile_text">
-	This is an internal application for the interns of the FLE.
-      </div>
-    </div>
-    <div class="profile_container">
-      <div class="headshot_frame">
-	<img src="{% static 'profiles/img/fillerprofile.jpg' %}" alt="member" />
-	<a href="javascript:AlertIt();">Internal Application</a>
-      </div>
-      <div class="profile_text">
-	This is an internal application for the interns of the FLE.
-      </div>
-    </div>
-    <div class="profile_container">
-      <div class="headshot_frame">
-	<img src="{% static 'profiles/img/fillerprofile.jpg' %}" alt="member" />
-	<a href="javascript:AlertIt();">PInternal Application</a>
-      </div>
-      <div class="profile_text">
-	This is an internal application for the interns of the FLE.
-      </div>
-    </div>
-    <div class="profile_container">
-      <div class="headshot_frame">
-	<img src="{% static 'profiles/img/fillerprofile.jpg' %}" alt="member" />
-	<a href="javascript:AlertIt();">Internal Application</a>
-      </div>
-      <div class="profile_text">
-	This is an internal application for the interns of the FLE.
-      </div>
-
-
-    </div>
-  </div>
-
-  <div id = "feedbacks">
-    <h2>feedbacks</h2>
-    <h3>CHECK OUT YOUR FEEDBACKS!!!! YEAHHHH!!!!!!!!!!!!!!!!!</h3>
-    <ol>
-      {% for feedback in feedbacklist %}
-      <li>{{ feedback }}</li>
-      {% endfor %}
-    </ol>
-    <form action="/html/tags/html_form_tag_action.cfm" method="post">
-      Feedback:<br/>
-      <textarea name="Feedbacks" id="feedbacks_area" placeholder="Gimme Feedbacks!!">
-      </textarea><br/>
-      <input type="submit" value="Submit" />
-    </form>
-  </div>
-
-  <div id = "contact">
-    <h2>communication CHANNELS</h2>
-    <p>info@learningequality.org</p>
-    <a href = "http://chat.learningequality.org:3000/">Chat with the team!</a>
-    <br/>
-
-    <a href = "http://kalite.learningequality.org/">Come to the offical site!</a>
-    <br/>
-    <a href = "https://drive.google.com/?tab=mo&amp;authuser=0#folders/0B1eobeaicL7IcnMzMktXM3RzajQ">Go to the Google Drive Shared Folder!</a>
-  </div>
-
-
-
-  <a href="#top_bar" id="top-link">Top of Page</a>
-  <script>
-
-    $(document).ready(function(){
-    $(window).scroll(function(){
-    if ($(this).scrollTop() > 100) {
-    $('#top-link').fadeIn();
-    } else {
-    $('#top-link').fadeOut();
-    }
-    });
-    // scroll-to-top animate
-    $('#top-link').click(function(){
-    $("html, body").animate({ scrollTop: 0 }, 600);
-    return false;
-    });
-    });
-
-  </script>
+<h1>{{ person.full_name }}</h1>
+<h2>Bio:</h2>
+<p>{{ person.bio }}</p>
+<h2>Projects:</h2>
+{% for role in person.roles.all %}
+<div class="span4 well">
+  <h3>{{ role.project.name }}</h3> as <b>{{ role.role_name }}</b>
+  {% if role.project.owner.id == person.id %}
+  and <b>project owner</b>
+  {% endif %}
+</div>
+{% endfor %}
 {% endblock %}

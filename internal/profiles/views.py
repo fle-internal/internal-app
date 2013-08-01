@@ -4,8 +4,9 @@ from django.shortcuts import render
 
 from profiles.models import TeamMember
 
-def profile(request):
-	return render(request,'profiles/profile.html') #edit
+def profile(request, id):
+        person = TeamMember.objects.get(pk=id)
+	return render(request,'profiles/profile.html', {'person': person})
 
 def profile_index(request):
         persons = TeamMember.objects.all()

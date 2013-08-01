@@ -16,6 +16,6 @@ class Project(models.Model):
     website = models.URLField()
 
 class Role(models.Model):
-    profile = models.ForeignKey(TeamMember)
+    profile = models.ForeignKey(TeamMember, related_name='roles')
     project = models.ForeignKey(Project)
     role_name = models.CharField(max_length=100)
