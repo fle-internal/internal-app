@@ -4,6 +4,12 @@
 
 {% block content %}
 <h1>{{ person.full_name }}</h1>
+{% if user.is_authenticated and user.id == person.id %}
+    <h2>Tasks</h2>
+    {% for task in person.tasks_assigned.all %}
+	<p>{{ task.description }}</p>
+    {% endfor %}
+{% endif %}
 <h2>Bio:</h2>
 <p>{{ person.bio }}</p>
 <h2>Projects:</h2>
