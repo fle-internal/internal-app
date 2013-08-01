@@ -49,7 +49,7 @@
     },
   {
       "pk": 1,
-      "model": ".Project",
+      "model": "projects.Project",
       "fields": {
             "website": "fle-internal-app.herokuapp.com",
             "deadline": "2014-08-01",
@@ -64,7 +64,17 @@
       "model": "projects.Role",
       "fields": {
             "profile": 1,
-            "project": 1
+            "project": 1,
+	    "role_name": "designer"
+          }
+    },
+  {
+      "pk": 2,
+      "model": "projects.Role",
+      "fields": {
+            "profile": 2,
+            "project": 1,
+	    "role_name": "developer"
           }
     }
 ]
