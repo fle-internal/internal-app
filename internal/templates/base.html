@@ -33,6 +33,10 @@
 	      <li class="item">
 		<a href="{% url 'profile_detail' user.id %}">
 		  {{ user.email }}
+		</a>
+	      </li>
+	      <li class="item">
+		<a href="{% url 'logout' %}">
 		  (logout)
 		</a>
 	      </li>
