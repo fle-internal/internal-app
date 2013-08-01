@@ -4,11 +4,11 @@
       "model": "profiles.TeamMember",
       "fields": {
             "website": "kevin.interns.com",
+            "bio": "I am Kevin Ngo",
             "first_name": "Kevin",
+            "last_name": "Ngo",
             "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
-            "email": "ngovkevin@fakeaccount.com",
-	    "bio": "I am Kevin Ngo",
-            "last_name": "Ngo"
+            "email": "ngovkevin@fakeaccount.com"
           }
     },
   {
@@ -16,11 +16,11 @@
       "model": "profiles.TeamMember",
       "fields": {
             "website": "ifearcompilers.interns.com",
+            "bio": "I am Angelique De Castro",
             "first_name": "Angelique",
-            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
-            "email": "fearthecompilermwahahaha@haha.com",
             "last_name": "De Castro",
-	    "bio": "I am Angelique De Castro"
+            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
+            "email": "fearthecompilermwahahaha@haha.com"
           }
     },
   {
@@ -28,11 +28,11 @@
       "model": "profiles.TeamMember",
       "fields": {
             "website": "andressilva.interns.com",
+            "bio": "I am Andres Silva",
             "first_name": "Andres",
-            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
-            "email": "el.ultimo.languis@fakeaccount.com",
             "last_name": "Silva",
-	    "bio": "I am Andres Silva"
+            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
+            "email": "el.ultimo.languis@fakeaccount.com"
           }
     },
   {
@@ -40,11 +40,31 @@
       "model": "profiles.TeamMember",
       "fields": {
             "website": "pranavrao.interns.com",
+            "bio": "I am Pranav Rao",
             "first_name": "Pranav",
-            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
-            "email": "pnpranavrao@fakeaccount.com",
             "last_name": "Rao",
-	    "bio": "I am Pranav Rao"
+            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
+            "email": "pnpranavrao@fakeaccount.com"
+          }
+    },
+  {
+      "pk": 1,
+      "model": ".Project",
+      "fields": {
+            "website": "fle-internal-app.herokuapp.com",
+            "deadline": "2014-08-01",
+            "name": "FLE Internal app",
+            "owner": 1,
+            "start_date": "2013-08-01",
+            "description": "The FLE internal app, is the cooolllest"
+          }
+    },
+  {
+      "pk": 1,
+      "model": "projects.Role",
+      "fields": {
+            "profile": 1,
+            "project": 1
           }
     }
 ]
