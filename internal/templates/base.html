@@ -3,6 +3,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}"/>
     <title> KALite Internal {% block title %} Home page {% endblock %}</title>
     {% block head %}
     {% endblock %}
@@ -30,8 +31,12 @@
 	      </li>
 	      {% if user.is_authenticated %}
 	      <li class="item">
-		<a href="{% url 'profiles.views.logout' %}">
+		<a href="{% url 'profile_detail' user.id %}">
 		  {{ user.email }}
+		</a>
+	      </li>
+	      <li class="item">
+		<a href="{% url 'logout' %}">
 		  (logout)
 		</a>
 	      </li>

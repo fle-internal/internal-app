@@ -39,14 +39,18 @@ class TeamMember(AbstractBaseUser):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     website = models.URLField(max_length=200)
+    bio = models.TextField(blank=True)
 
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
 
-    def get_full_name(self):
+    def full_name(self):
         # For this case we return email. Could also be User.first_name User.last_name if you have these fields
-        return self.email
+        if self.first_name == '' and self.last_name == '':
+            return self.email
+        else:
+            return ' '.join([self.first_name, self.last_name])
 
     def get_short_name(self):
         # For this case we return email. Could also be User.first_name if you have this field

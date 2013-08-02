@@ -1,0 +1,89 @@
+[
+  {
+      "pk": 1,
+      "model": "profiles.TeamMember",
+      "fields": {
+            "website": "kevin.interns.com",
+            "bio": "I am Kevin Ngo",
+            "first_name": "Kevin",
+            "last_name": "Ngo",
+            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
+            "email": "ngovkevin@fakeaccount.com"
+          }
+    },
+  {
+      "pk": 2,
+      "model": "profiles.TeamMember",
+      "fields": {
+            "website": "ifearcompilers.interns.com",
+            "bio": "I am Angelique De Castro",
+            "first_name": "Angelique",
+            "last_name": "De Castro",
+            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
+            "email": "fearthecompilermwahahaha@haha.com"
+          }
+    },
+  {
+      "pk": 3,
+      "model": "profiles.TeamMember",
+      "fields": {
+            "website": "andressilva.interns.com",
+            "bio": "I am Andres Silva",
+            "first_name": "Andres",
+            "last_name": "Silva",
+            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
+            "email": "el.ultimo.languis@fakeaccount.com"
+          }
+    },
+  {
+      "pk": 4,
+      "model": "profiles.TeamMember",
+      "fields": {
+            "website": "pranavrao.interns.com",
+            "bio": "I am Pranav Rao",
+            "first_name": "Pranav",
+            "last_name": "Rao",
+            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
+            "email": "pnpranavrao@fakeaccount.com"
+          }
+    },
+  {
+      "pk": 1,
+      "model": "projects.Project",
+      "fields": {
+            "website": "fle-internal-app.herokuapp.com",
+            "deadline": "2014-08-01",
+            "name": "FLE Internal app",
+            "owner": 1,
+            "start_date": "2013-08-01",
+            "description": "The FLE internal app, is the cooolllest"
+          }
+    },
+  {
+      "pk": 1,
+      "model": "projects.Role",
+      "fields": {
+            "profile": 1,
+            "project": 1,
+	    "role_name": "designer"
+          }
+    },
+  {
+      "pk": 2,
+      "model": "projects.Role",
+      "fields": {
+            "profile": 2,
+            "project": 1,
+	    "role_name": "developer"
+          }
+    },
+    {
+	"model": "projects.Task",
+	"pk": 1,
+	"fields": {
+	    "project": 1,
+	    "assigned": 1,
+	    "description": "destroy all humans"
+	}
+    }
+]
