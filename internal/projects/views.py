@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from projects.models import Project
+from projects import models
+from django.views.generic import *
 
 #create project page which lets you assign the project name, members, and member positions
 def create_project(request):
@@ -8,7 +9,12 @@ def create_project(request):
 
 def project_index(request):
 	username = 'User' #fix for later
-	return render(request, 'projects/project_index.html', {'user_name': username})
+	projects = ['Internal Web App', 'KA Enhancements']
+	past_projects = ['Tic tac toe game', 'Connect 4 board', 'Abstract Syntax Tree']
+	return render(request, 'projects/project_index.html', {
+			'user_name': username,
+			'projects': projects,
+			'past_projects': past_projects})
 
 def project_details(request):
 	#variable values are placeholders for now

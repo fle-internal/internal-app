@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
+{%load staticfiles %}
 
 {% block title %}| Create Project{% endblock %}
 
+{% block head %}
+<link style='text/css' rel='stylesheet' href='{% static 'projects/project.css' %}'/>
+{% endblock %}
+
+<style='text/css'>
+</style>
 
 {% block content %}
 
-<style type="text/css">
-    #div{
-	  font-size: 1.5em;
-	  padding:30px
-	}
-</style>
-
-<body>
-  <br/><br/>
-  <div id="div">
-    <b>Project title</b>: <br/><br/>
-    <b>Description</b>: <br/><br/>
-    <b>Deadline</b>: <br/><br/>
-    <b>GitHub</b>: <br/><br/>
-    <b>Leader(s): <br/><br/>
-    <b>Collaborators</b>: <br/><br/>
+<body id='pad-top'>
+  <div id='section'>
+    Project title: <br/><br/>
+    Description: <br/><br/>
+    Deadline: <br/><br/>
+    GitHub: <br/><br/>
+    Leader(s): <br/><br/>
+    Collaborators: <br/><br/>
+    Start todo list: <br/><br/>
   </div>
 </body>
 
