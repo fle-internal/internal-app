@@ -1,0 +1,46 @@
+[
+  {
+      "pk": 1,
+      "model": "profiles.TeamMember",
+      "fields": {
+            "website": "kevin.interns.com",
+            "first_name": "Kevin",
+            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
+            "email": "ngovkevin@fakeaccount.com",
+            "last_name": "Ngo"
+          }
+    },
+  {
+      "pk": 2,
+      "model": "profiles.TeamMember",
+      "fields": {
+            "website": "ifearcompilers.interns.com",
+            "first_name": "Angelique",
+            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
+            "email": "fearthecompilermwahahaha@haha.com",
+            "last_name": "De Castro"
+          }
+    },
+  {
+      "pk": 3,
+      "model": "profiles.TeamMember",
+      "fields": {
+            "website": "andressilva.interns.com",
+            "first_name": "Andres",
+            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
+            "email": "el.ultimo.languis@fakeaccount.com",
+            "last_name": "Silva"
+          }
+    },
+  {
+      "pk": 4,
+      "model": "profiles.TeamMember",
+      "fields": {
+            "website": "pranavrao.interns.com",
+            "first_name": "Pranav",
+            "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
+            "email": "pnpranavrao@fakeaccount.com",
+            "last_name": "Rao"
+          }
+    }
+]

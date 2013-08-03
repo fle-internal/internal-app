@@ -44,14 +44,14 @@
 
   <div id="team_content">
     <h2>the TEAM</h2>
-    {% for img in imgs %}
+    {% for person in persons %}
     <div class="profile_container">
       <div class="headshot_frame">
-	<img src="{% static img %}" alt="member" />
-	<a href="javascript:AlertIt();">Jamie</a>
+	<img src="{% static img %}" alt="member" /> <!-- TODO: fix when profile images are working now -->
+	<a href="{% url 'profile_detail' person.id %}">{{ person.full_name }}</a>
       </div>
       <div class="profile_text">
-	He loves candy!
+	{{ person.bio }}
       </div>
     </div>
     {% endfor %}
