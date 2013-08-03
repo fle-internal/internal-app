@@ -1,0 +1,22 @@
+/* index_stylesheet for project details*/
+
+<p>{
+  size=em;
+  color:#0a4a69;
+}
+#main{
+  font-size: 1.5em;
+  font-family:Verdana;
+  background-color:#a1b92a;
+  padding:30px
+}
+
+.login-form {
+    position: fixed;
+    top: 30%;
+    left: 20%;
+}
+
+body {
+    padding-top: 65px;
+}
