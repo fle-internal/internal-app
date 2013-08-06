@@ -16,14 +16,14 @@ def project_index(request):
 			'projects': projects,
 			'past_projects': past_projects})
 
-def project_details(request):
+def project_details(request, id):
 	#variable values are placeholders for now
 	title = "KA Lite"
 	description = "Internal application for members within the org"
 	active = True
 	deadline = "September 1, 2013"
 	leader = "Khan Academy"
-	todo = ['project models', 'project details', 'profiles', 
+	todo = ['project models', 'project details', 'profiles',
 		'profile details']
 	team_members= {'Angelique':'Project details', 'Andres':'Project Models'}
 	return render(request, 'projects/project_detail.html', {
