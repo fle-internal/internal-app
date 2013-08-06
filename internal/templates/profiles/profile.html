@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block title %}Profile: {{ person.full_name }}{% endblock %}
-{% block head %}
-  <link rel="stylesheet" type="text/css" href="{% static 'profiles/profile_index.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type="text/css" media="screen" />
-  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-{% endblock %}
+
 
 {% block content %}
 <h1>{{ person.full_name }}</h1>
