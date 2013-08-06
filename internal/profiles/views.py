@@ -12,5 +12,8 @@ def profile_index(request):
         persons = TeamMember.objects.all()
         return render(request, 'profiles/profile_index.html', { 'persons': persons})
 
+def test(request):
+        return render(request, 'base.html')
+
 def logout(request):
         return logout_then_login(request)
