@@ -17,5 +17,5 @@ def create(request, project_id):
         # do something with the data
     elif request.method == 'GET':
         form = FeedbackCreationForm()
-        form.fields['target'].queryset = project.collaborators
+        form.fields['target'].queryset = project.collaborators.exclude(pk=request.user.id)
         return render(request, 'feedbacks/create.html', { 'form': form })
