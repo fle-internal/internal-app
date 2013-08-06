@@ -20,3 +20,14 @@
 body {
     padding-top: 65px;
 }
+
+form ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+form li {
+    display: inline-block;
+    padding: 5px;
+}
