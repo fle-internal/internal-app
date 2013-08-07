@@ -1,0 +1,17 @@
+{% extends 'profile.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel='stylesheet' style='text/css' href='{% static 'feedbacks/feedback_summary.css' %}
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated and user.id == person.id %}
+
+  {{ person.full_name }}'s Feedback Summary:<br/><br/>
+<div>
+  
+</div>
+
+{% endif %}
+{% endblock %}
