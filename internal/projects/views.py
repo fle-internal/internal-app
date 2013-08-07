@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from projects import models
+from projects.models import *
 from django.views.generic import *
 
 #create project page which lets you assign the project name, members, and member positions
@@ -14,14 +14,14 @@ def project_index(request):
 	return render(request, 'projects/project_index.html', {})
 
 """class DetailsList(ListView):
-	model = models.Project
+	model = Project
 	template_name = 'projects/project_detail.html'
 	context_object_name = 'details'"""
 
-def details(request):
-	detail = models.Project.objects.all()
-	task = models.Task.objects.all()
-	role = models.Role.objects.all()
+def details(request, id):
+	detail = Project.objects.all()
+	task = Task.objects.all()
+	role = Role.objects.all()
 	return render(request, 'projects/project_detail.html',
 			{'detail':detail,
 			'task':task,
