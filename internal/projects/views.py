@@ -22,7 +22,7 @@ def details(request):
 	detail = models.Project.objects.all()
 	task = models.Task.objects.all()
 	role = models.Role.objects.all()
-	return render(request, 'projects/project_detail.html', 
+	return render(request, 'projects/project_detail.html',
 			{'detail':detail,
 			'task':task,
 			'role':role})
