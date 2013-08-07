@@ -3,9 +3,10 @@
 <html>
   <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}"/>
+
     <title> KALite Internal {% block title %} Home page {% endblock %}</title>
     {% block head %}
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type="text/css" media="screen" />
     {% endblock %}
   </head>
   <body>
@@ -47,11 +48,6 @@
 		</a>
 	      </li>
 	      {% endif %}
-	      <li class="item">
-		<a href="#contact">
-		  Contact us
-		</a>
-	      </li>
 	    </ul>
 	  </div>
 	</div>
@@ -69,7 +65,35 @@
 	{% endblock %}
 
       </div>
+    </div>  
+    <div id = "contact_footer"> 
+    <h3>communication CHANNELS:</h3>
+    <p>Email: info@learningequality.org</p>
+    <a href = "http://chat.learningequality.org:3000/">Chat with the team!</a>
+    <a href = "http://kalite.learningequality.org/">Come to the offical site!</a>
+    <a href = "https://drive.google.com/?tab=mo&amp;authuser=0#folders/0B1eobeaicL7IcnMzMktXM3RzajQ">Our Google Drive Shared Folder!</a> 
+
+  </div>
     </div>
+  <a href="#top_bar" id="top-link">Top of Page</a>	
+  <script>
+
+    $(document).ready(function(){
+    $(window).scroll(function(){
+    if ($(this).scrollTop() > 100) {
+    $('#top-link').fadeIn();
+    } else {
+    $('#top-link').fadeOut();
+    }
+    });
+    // scroll-to-top animate
+    $('#top-link').click(function(){
+    $("html, body").animate({ scrollTop: 0 }, 600);
+    return false;
+    });
+    });
+
+  </script>
 
   </body>
 </html>

@@ -14,3 +14,4 @@ def profile_index(request):
 
 def logout(request):
         return logout_then_login(request)
+        
