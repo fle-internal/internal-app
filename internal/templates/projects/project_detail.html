@@ -13,20 +13,21 @@
   <h1>{{ project_title }}</h1>
   <DL>
     <DT>Description:</p>
-    <dd style="font-size:0.8em">{{ project_descrip }}</dd>
+    <dd style="font-size:0.8em"> {{ details.description }}</dd>
   </dl>
-  <a href="http://github.com">Github</a> <br/><br/>
-  {% if active %}Deadline: {{ deadline }}
-  {% else %}Project completed: {{ completed }} {% endif %}
+  <a href='{{ details.website }}'>Github</a> <br/><br/>
+  {% if not is_active %}Deadline: {{ details.deadline }}<br/><br/>
+  {% else %}<em><b>Project completed</b></em><br/>
+  {% endif %}
 </div>
 
 <div id="section">
   <!--include click through links on names to their profile-->
-  <b>Leader(s):</b> {{ leader }} <br/>
+  <b>Leader(s):</b> {{ details.owner }} <br/>
   <DL>
     <DT>Team members:</dt>
-	{% for member in team_members %}
-	  <dl id="list">{{ member}} <i id="description">position</i></dl>
+	{% for member in details.collaborators %}
+	  <dl id="list">{{ member}} <i id="description">{{ role.role_name }}</i></dl>
 	{% endfor %}
   </DL>
 </div>
@@ -35,7 +36,7 @@
   Tasks:
   <ul id="list">
   {% for task in todo %}
-	<li style="margin-left:1em">{{ task }}</li>
+	<li style="margin-left:1em">{{ task.description }}</li>
   {% endfor %}
   </ul>
 

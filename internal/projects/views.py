@@ -1,34 +1,28 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from projects import models
+from projects.models import *
 from django.views.generic import *
 
 #create project page which lets you assign the project name, members, and member positions
 def create_project(request):
 	return render(request, 'projects/create_project.html', {})
 
-def project_index(request):
-	username = 'User' #fix for later
-	projects = ['Internal Web App', 'KA Enhancements']
-	past_projects = ['Tic tac toe game', 'Connect 4 board', 'Abstract Syntax Tree']
-	return render(request, 'projects/project_index.html', {
-			'user_name': username,
-			'projects': projects,
-			'past_projects': past_projects})
+class IndexList(ListView):
+	pass
 
-def project_details(request):
-	#variable values are placeholders for now
-	title = "KA Lite"
-	description = "Internal application for members within the org"
-	active = True
-	deadline = "September 1, 2013"
-	leader = "Khan Academy"
-	todo = ['project models', 'project details', 'profiles', 
-		'profile details']
-	team_members= {'Angelique':'Project details', 'Andres':'Project Models'}
-	return render(request, 'projects/project_detail.html', {
-			'project_title':title,
-			'project_descrip':description,
-			'active':active, 'deadline':deadline,
-			'leader':leader, 'team_members':team_members,
-			'todo':todo})
+def project_index(request):
+	return render(request, 'projects/project_index.html', {})
+
+"""class DetailsList(ListView):
+	model = Project
+	template_name = 'projects/project_detail.html'
+	context_object_name = 'details'"""
+
+def details(request, id):
+	detail = Project.objects.all()
+	task = Task.objects.all()
+	role = Role.objects.all()
+	return render(request, 'projects/project_detail.html',
+			{'detail':detail,
+			'task':task,
+			'role':role})
