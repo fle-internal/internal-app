@@ -7,7 +7,7 @@ class Task(models.Model):
     description = models.CharField(max_length=100)
     project = models.ForeignKey('Project', related_name='tasks')
     assigned = models.ForeignKey(TeamMember, related_name='tasks_assigned')
-    deadline = models.DateField(blank=True)
+    deadline = models.DateField(blank=True, null=True)
 
     def __unicode__(self):
 	return self.title
