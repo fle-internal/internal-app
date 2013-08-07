@@ -4,7 +4,7 @@ from django.conf.urls import *
 from django.contrib import admin
 import profiles.urls
 import projects.urls
-
+import feedbacks.urls
 
 admin.autodiscover()
 
@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^profiles/', include(profiles.urls)),
     url(r'^projects/', include(projects.urls)),
+    url(r'^feedback/', include(feedbacks.urls)),
 )
