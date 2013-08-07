@@ -1,5 +1,7 @@
 from django.db import models
 from profiles.models import TeamMember
+import datetime
+from django.utils import timezone
 # Create your models here.
 
     
@@ -7,7 +9,7 @@ class Task(models.Model):
     description = models.CharField(max_length=100)
     project = models.ForeignKey('Project', related_name='tasks')
     assigned = models.ForeignKey(TeamMember, related_name='tasks_assigned')
-    deadline = models.DateField(blank=True)
+    deadline = models.DateField(blank=True, null=True)
 
     def __unicode__(self):
 	return self.title
@@ -24,9 +26,14 @@ class Project(models.Model):
     def __unicode__(self):
         return self.name
 
+    def project_complete(self, deadline):
+	return self.deadline >= timezone.now()
 
 class Role(models.Model):
     profile = models.ForeignKey(TeamMember, related_name='roles')
     project = models.ForeignKey(Project)
     role_name = models.CharField(max_length=100)
+
+    def __unicode__(self):
+	return self.role_name
 
