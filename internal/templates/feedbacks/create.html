@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Feedback{% endblock %}
+
+{% block content %}
+<div class="row">
+  <form method="post" id="create_feedback" action="">
+    {% csrf_token %}
+    {% if form.errors %}
+    <div class="alert">
+      <a class="close" data-dismiss="alert">x</a>
+      <p>There are some errors in the data you submitted.</p>
+    </div>
+    {% endif %}
+
+    <fieldset>
+      <div class="control-group">
+	{{ form.target.errors }}
+	{{ form.target.label }}
+	{{ form.target }}
+      </div>
+      <div class="control-group">
+	{{ form.participation_rating.errors }}
+	{{ form.participation_rating.label }}
+	{{ form.participation_rating }}
+      </div>
+      <div class="control-group">
+	{{ form.participation_rationale.errors }}
+	{{ form.participation_rationale.label }}
+	<br/> <!-- find a remove this br -->
+	{{ form.participation_rationale }}
+      </div>
+      <div class="control-group">
+	{{ form.communication_rating.errors }}
+	{{ form.communication_rating.label }}
+	{{ form.communication_rating }}
+      </div>
+      <div class="control-group">
+	{{ form.communication_rationale.errors }}
+	{{ form.communication_rationale.label }}
+	<br/>
+	{{ form.communication_rationale }}
+      </div>
+      <div class="control-group">
+	{{ form.contribution_rating.errors }}
+	{{ form.contribution_rating.label }}
+	{{ form.contribution_rating }}
+      </div>
+      <div class="control-group">
+	{{ form.contribution_rationale.errors }}
+	{{ form.contribution_rationale.label }}
+	<br/>
+	{{ form.contribution_rationale }}
+      </div>
+      <div class="control-group">
+	{{ form.ease_of_working_together_rating.errors }}
+	{{ form.ease_of_working_together_rating.label }}
+	{{ form.ease_of_working_together_rating }}
+      </div>
+      <div class="control-group">
+	{{ form.ease_of_working_together_rationale.errors }}
+	{{ form.ease_of_working_together_rationale.label }}
+	<br/>
+	{{ form.ease_of_working_together_rationale }}
+      </div>
+      <div class="control-group">
+	<div class="controls">
+	  <button class="btn btn-success">Submit</button
+	</div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+{% endblock %}
