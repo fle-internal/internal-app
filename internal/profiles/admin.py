@@ -67,6 +67,8 @@ class MyUserAdmin(UserAdmin):
         ('Personal info', {'fields': ('first_name', 'last_name')}),
         ('Permissions', {'fields': ('is_admin',)}),
         ('Important dates', {'fields': ('last_login',)}),
+        ##############################BADGES ADDED HERE ###############################################
+        ('Badges', {'fields':('badges',)}), 
     )
     add_fieldsets = (
         (None, {

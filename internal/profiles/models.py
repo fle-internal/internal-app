@@ -41,9 +41,16 @@ class TeamMember(AbstractBaseUser):
     website = models.URLField(max_length=200)
     bio = models.TextField(blank=True)
 
+    ###############################BADGES ADDED HERE ###############################################
+    badges = models.ForeignKey(Badges)
+
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
+
+##############################BADGES ADDED HERE ###############################################
+    def get_badges(self):
+        return self.badges
 
     def full_name(self):
         # For this case we return email. Could also be User.first_name User.last_name if you have these fields
@@ -72,6 +79,11 @@ class TeamMember(AbstractBaseUser):
         # Handle whether the user is a member of staff?"
         return self.is_admin
 
-
+############### END OF TEAM MEMBER ##################################
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
+
+############### BADGES TABLE ##################################
+class Badges(models.Model):
+    description = models.CharField(max_length=100)
+    team_members = models.ManyToManyField(TeamMember)

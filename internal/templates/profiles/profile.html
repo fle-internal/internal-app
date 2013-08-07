@@ -32,4 +32,14 @@
 {% block feedback_summary %}
 {% endblock %}
 
+<!--ADDED BADGES HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE -->
+<div class="span2 well">
+<h3>Badges:</h3>
+ <ul>
+{% for badge in person.badges.all %}
+    <li>{{ badge }}</li>
+{% endfor %}
+</ul>
+</div>
+
 {% endblock %}
