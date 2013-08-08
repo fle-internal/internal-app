@@ -1,4 +1,9 @@
 import os
+
+import urllib
+import hashlib
+from django.utils.safestring import mark_safe
+
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
@@ -27,30 +32,33 @@ class TeamMemberManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+############################### BADGES TABLE ##################################
+class Badges(models.Model):
+    badge_name = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
+
+    def __unicode__(self):
+        return u'%s' % (self.badge_name)
+
+
+
 
 class TeamMember(AbstractBaseUser):
     email = models.EmailField(max_length=254, unique=True, db_index=True)
-
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
     objects = TeamMemberManager()
-
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     website = models.URLField(max_length=200)
     bio = models.TextField(blank=True)
 
     ###############################BADGES ADDED HERE ###############################################
-    badges = models.ForeignKey(Badges)
-
+    badges = models.ManyToManyField(Badges)
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
 
-##############################BADGES ADDED HERE ###############################################
-    def get_badges(self):
-        return self.badges
 
     def full_name(self):
         # For this case we return email. Could also be User.first_name User.last_name if you have these fields
@@ -82,8 +90,3 @@ class TeamMember(AbstractBaseUser):
 ############### END OF TEAM MEMBER ##################################
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
-
-############### BADGES TABLE ##################################
-class Badges(models.Model):
-    description = models.CharField(max_length=100)
-    team_members = models.ManyToManyField(TeamMember)
