@@ -4,7 +4,7 @@ from projects.models import *
 from projects.views import *
 
 urlpatterns = patterns('',
-	
+
     url(r'^$', IndexList.as_view(), name='project_index'),
     url(r'^(?P<id>\d+)/$', details, name='project_detail'),
     url(r'^create/$', create_project, name='project_create'),
