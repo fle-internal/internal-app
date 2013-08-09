@@ -19,7 +19,7 @@ class Feedback(models.Model):
     ease_of_working_together_rating = models.IntegerField(choices=RATING_CHOICES)
     ease_of_working_together_rationale = models.TextField()
 
-class Avg(Feedback):
+"""class Avg(Feedback):
     avg_participation = Feedback.objects.aggregate(Avg('participation_rating'))
     avg_contribution = Feedback.objects.aggregate(Avg('contribution_rating'))
     avg_communication = Feedback.objects.aggregate(Avg('communication_rating'))
@@ -33,5 +33,5 @@ class Avg(Feedback):
     avg_stars = ( participation
                 + contribution
                 + communication
-                + ease)/4
+                + ease)/4"""
 

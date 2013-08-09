@@ -4,7 +4,7 @@ import datetime
 from django.utils import timezone
 # Create your models here.
 
-    
+
 class Task(models.Model):
     description = models.CharField(max_length=100)
     project = models.ForeignKey('Project', related_name='tasks')
@@ -33,4 +33,3 @@ class Role(models.Model):
 
     def __unicode__(self):
 	   return self.role_name
-
