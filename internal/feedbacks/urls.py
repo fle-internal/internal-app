@@ -1,10 +1,10 @@
 from django.conf.urls import *
 from django.views.generic import *
-from feedbacks import models
-from feedbacks import views
+from feedbacks.models import *
+from feedbacks.views import *
 
 urlpatterns = patterns('',
 
-    url(r'^$', views.FeedbackList.as_view()),
+    url(r'^(?P<id>\d+)/$', FeedbackList.as_view(), name='view_feedback'),
 
 )
