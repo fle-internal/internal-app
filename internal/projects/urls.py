@@ -1,11 +1,11 @@
 from django.conf.urls import *
 from django.views.generic import *
-from projects import models
-from projects import views
+from projects.models import *
+from projects.views import *
 
 urlpatterns = patterns('',
 	
-    url(r'^$', views.project_index, name='project_index'),
-    url(r'^(?P<id>\d+)/$', views.detail, name='project_detail'),
-    url(r'^create/$', views.create_project, name='project_create'),
+    url(r'^$', IndexList.as_view(), name='project_index'),
+    url(r'^(?P<id>\d+)/$', details, name='project_detail'),
+    url(r'^create/$', create_project, name='project_create'),
 )
