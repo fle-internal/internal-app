@@ -1,6 +1,7 @@
 import os
 from django.conf import settings
 from django.db import models
+from django.db.models import Avg
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 def get_image_path(instance, filename):
@@ -55,6 +56,13 @@ class TeamMember(AbstractBaseUser):
     def get_short_name(self):
         # For this case we return email. Could also be User.first_name if you have this field
         return self.email
+
+    def feedback_averages(self):
+        from feedbacks.models import Feedback
+        return Feedback.objects.filter(target_id=self.id).aggregate(Avg('participation_rating'),
+                                                                    Avg('contribution_rating'),
+                                                                    Avg('communication_rating'),
+                                                                    Avg('ease_of_working_together_rating'))
 
     def __unicode__(self):
         return self.email
