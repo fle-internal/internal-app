@@ -14,14 +14,20 @@
 
 <body id='pad-top'>
   <div id='section'>
-    Project title: <br/><br/>
-    Description: <br/><br/>
-    Deadline: <br/><br/>
-    GitHub: <br/><br/>
-    Leader(s): <br/><br/>
-    Collaborators: <br/><br/>
-    Start todo list: <br/><br/>
+
+    <form action='/projects/create/' method='post'>{% csrf_token %}
+    
+	<h5>{{form.as_p}}</h5>
+    
   </div>
+
+<p Align=Center>
+	<a href='/projects/'>Cancel</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='submit' name='submit' value='Create Article'></p>
+<br/>
+</form>
+
 </body>
 
 {% endblock%}
