@@ -2,21 +2,19 @@
 {% load staticfiles %}
 
 {% block head %}
-<link rel='stylesheet' style='text/css' href='{% static 'feedbacks/feedback_summary.css' %}
+<link rel='stylesheet' style='text/css' href='{% static 'feedbacks/feedback_summary.css' %}'/>
 {% endblock %}
 
 {% block content %}
-{% if user.is_authenticated and user.id == person.id %}
 
-  {{ person.full_name }}'s Feedback Summary:<br/><br/><br/>
+  Feedback Summary:<br/><br/><br/>
 <div>
   <em>Average stars</em><br/>
-  Overall: {{ person.avg.avg_stars }} <br/>
-  Participation: {{ person.avg.avg_participation }}<br/>
-  Contribution: {{ person.avg.avg_contribution }}<br/>
-  Communication: {{ person.avg.avg_communication }} <br/>
-  Ease of working together: {{ person.avg.avg_ease }} <br/>
+  Overall: {{ avg.avg_stars }} <br/>
+  Participation: {{ avg.participation }}<br/>
+  Contribution: {{ avg.contribution }}<br/>
+  Communication: {{ avg.communication }} <br/>
+  Ease of working together: {{ avg.avg_ease }} <br/>
 </div>
 
-{% endif %}
 {% endblock %}
