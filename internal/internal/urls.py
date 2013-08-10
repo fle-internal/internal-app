@@ -6,6 +6,7 @@ from django.contrib import admin
 import feedbacks.urls
 import profiles.urls
 import projects.urls
+import views
 
 admin.autodiscover()
 
@@ -16,4 +17,5 @@ urlpatterns = patterns('',
     url(r'^profiles/', include(profiles.urls)),
     url(r'^projects/', include(projects.urls)),
     url(r'^feedbacks/', include(feedbacks.urls)),
+    url(r'^contact/', views.contact),
 )
