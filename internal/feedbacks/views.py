@@ -16,8 +16,9 @@ class FeedbackList(ListView):
 
 def summary(request, id):
 	person = TeamMember.objects.get(pk=id)
-	avg = Feedback.objects.all()
-	return render(request, 'profiles/profile.html', {'avg':avg, 'person':person})
+	avgs = feedback_averages()
+    overall_avg = overall_feedback_avgs()
+	return render(request, 'profiles/profile.html', {'avg':avg, 'overall': overall_avg, 'person':person})
 
 @login_required
 def create(request, project_id):

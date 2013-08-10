@@ -64,6 +64,22 @@ class TeamMember(AbstractBaseUser):
                                                                     Avg('communication_rating'),
                                                                     Avg('ease_of_working_together_rating'))
 
+    def overall_feedback_avgs(self):
+        from feedbacks.models import Feedback
+
+        avgs = feedback_averages()
+
+        participation = avgs['participation_rating__avg']
+        contribution = avgs['contribution_rating__avg'] 
+        communication = avgs['communication_rating__avg'] 
+        ease = avgs['ease_of_working_together_rating__avg']
+
+        avg_stars = ( participation
+                + contribution
+                + communication
+                + ease)/4
+        return Feedback.objects.filter(target_id=self.id).aggregate(avg_stars)
+
     def __unicode__(self):
         return self.email
 
