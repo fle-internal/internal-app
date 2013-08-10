@@ -14,11 +14,13 @@ class FeedbackList(ListView):
 	context_object_name = 'feedback'
 	template_name = 'feedback/view_feedback.html'
 
+
 def summary(request, id):
-	person = TeamMember.objects.get(pk=id)
-	avgs = feedback_averages()
-    overall_avg = overall_feedback_avgs()
-	return render(request, 'profiles/profile.html', {'avg':avg, 'overall': overall_avg, 'person':person})
+    person = TeamMember.objects.get(pk=id)
+    return render(request, 'profiles/profile.html', {'avg':person.feedback_averages(),
+                                                    'overall':overall_feedback_avgs(),
+                                                    'person':person}  )
+
 
 @login_required
 def create(request, project_id):
