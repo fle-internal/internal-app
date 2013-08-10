@@ -59,20 +59,24 @@ class TeamMember(AbstractBaseUser):
 
     def feedback_averages(self):
         from feedbacks.models import Feedback
-        return Feedback.objects.filter(target_id=self.id).aggregate(Avg('participation_rating'),
+        if Feedback.objects.filter(target_id=self.id).count() > 0: 
+            return Feedback.objects.filter(target_id=self.id).aggregate(Avg('participation_rating'),
                                                                     Avg('contribution_rating'),
                                                                     Avg('communication_rating'),
                                                                     Avg('ease_of_working_together_rating'))
+        else:
+            return 0
 
     def overall_feedback_avgs(self):
         from feedbacks.models import Feedback
-
-        avgs = feedback_averages()
-
-        return (avgs['participation_rating__avg']
+        if Feedback.objects.filter(target_id=self.id).count() > 0:
+            avgs = self.feedback_averages()
+            return (avgs['participation_rating__avg']
                 + avgs['contribution_rating__avg'] 
                 + avgs['communication_rating__avg'] 
                 + avgs['ease_of_working_together_rating__avg'])/4
+        else:
+            return 0
 
     def __unicode__(self):
         return self.email
