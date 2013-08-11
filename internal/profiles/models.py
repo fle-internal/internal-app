@@ -59,24 +59,18 @@ class TeamMember(AbstractBaseUser):
 
     def feedback_averages(self):
         from feedbacks.models import Feedback
-        if Feedback.objects.filter(target_id=self.id).count() > 0: 
-            return Feedback.objects.filter(target_id=self.id).aggregate(Avg('participation_rating'),
-                                                                    Avg('contribution_rating'),
-                                                                    Avg('communication_rating'),
-                                                                    Avg('ease_of_working_together_rating'))
+        if Feedback.objects.filter(target_id=self.id).count():
+            result = Feedback.objects.filter(target_id=self.id).aggregate(Avg('participation_rating'),
+                                                                          Avg('contribution_rating'),
+                                                                          Avg('communication_rating'),
+                                                                          Avg('ease_of_working_together_rating'))
+            result['overall_rating__avg'] = (result['participation_rating__avg']
+                                             + result['contribution_rating__avg']
+                                             + result['communication_rating__avg']
+                                             + result['ease_of_working_together_rating__avg'])/4
+            return result
         else:
-            return 0
-
-    def overall_feedback_avgs(self):
-        from feedbacks.models import Feedback
-        if Feedback.objects.filter(target_id=self.id).count() > 0:
-            avgs = self.feedback_averages()
-            return (avgs['participation_rating__avg']
-                + avgs['contribution_rating__avg'] 
-                + avgs['communication_rating__avg'] 
-                + avgs['ease_of_working_together_rating__avg'])/4
-        else:
-            return 0
+            return None
 
     def __unicode__(self):
         return self.email
