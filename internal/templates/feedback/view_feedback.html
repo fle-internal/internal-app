@@ -8,19 +8,22 @@
 {% block content %}
 
 <body>
-<h2>{{ feedback.target }}'s feedbacks for {{ feedback.project }}</h2>
-<div>
-  <p>{{ feedback.participation_rating }}</p><br/>
+  <h2> Feedbacks </h2>
+<div class="span4 well">
+  <h4>For {{ feedbacks.0.project }}</h4>
+  {% for feedback in feedbacks %}
+  <p>Participation: {{ feedback.participation_rating }}</p>
   <p>{{ feedback.participation_rationale }}</p>
   <br/>
-  <p>{{ feedback.contribution_rating }}</p><br/>
+  <p>Contribution: {{ feedback.contribution_rating }}</p>
   <p>{{ feedback.contribution_rationale }} </p></br>
   <br/>
-  <p>{{ feedback.communication_rating }}</p><br/>
+  <p>Communication: {{ feedback.communication_rating }}</p>
   <p>{{ feedback.communication_rationale  }}</p><br/>
   <br/>
-  <p>{{ feedback.ease_of_working_together_rating }}</p><br/>
+  <p>Ease of Working Together: {{ feedback.ease_of_working_together_rating}}</p>
   <p>{{ feedback.ease_of_working_together_rationale }}<br/>
+  {% endfor %}
 </div>
 </body>
 
