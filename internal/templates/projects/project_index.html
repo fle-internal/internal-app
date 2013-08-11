@@ -10,26 +10,25 @@
 {% block content %}
 <body id='pad-top'>
 <div id="section">
-  <h2>{{ user_name }}'s Active Projects:</h2>
+  <h2>{{ index.owner }}'s Active Projects:</h2>
   {% if not projects %}
-    <p id='list'><i id='description'>{{ user_name }} currently has no active projects.</i></p>
+    <p id='list'><i id='description'>{{ index.owner }} currently has no active projects.</i></p>
   {% endif %}
-  {% for project in projects %}
-    <p id='list'>{{ project }}</p>
+  {% for project in index.name %}
+    <p id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a></p>
   {% endfor %}
   <!--list user's projects and subtitle it with their position-->
   <!--also make clickthrough links to the github or other relevant page-->
-  {% if past_projects %}
 </div>
 
+<!--check if projects are active or not-->
 <div id='section'>
   <h2>Past projects:</h2>
   {% for done in past_projects %}
-    <p id='list'>{{ done }}</p>
+    <p id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a>{{ done }}</a></p>
   {% endfor %}
   <!--list user's past inactive/complete projects by month including position-->
   <!--make project titles click throughs to github? final result?-->
-  {% endif %}
 </div>
 </body>
 

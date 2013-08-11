@@ -1,8 +1,8 @@
 # Create your views here.
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render, redirect
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 
 from feedbacks.forms import FeedbackCreationForm
@@ -11,14 +11,16 @@ from profiles.models import TeamMember
 from projects.models import Project
 
 class FeedbackList(ListView):
-	model = Feedback
-	context_object_name = 'feedback'
-	template_name = 'feedback/view_feedback.html'
+    context_object_name = 'feedbacks'
+    template_name = 'feedback/view_feedback.html'
 
-def summary(request, id):
-	person = TeamMember.objects.get(pk=id)
-	avg = Feedback.objects.all()
-	return render(request, 'profiles/profile.html', {'avg':avg, 'person':person})
+    def get_queryset(self):
+        return self.request.user.feedbacks.all()
+
+    # boiler plate needed for login_required
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(FeedbackList, self).dispatch(*args, **kwargs)
 
 @login_required
 def create(request, project_id):

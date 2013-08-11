@@ -1,27 +1,34 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from projects.models import *
+from django.shortcuts import render, render_to_response
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.context_processors import csrf
 from django.views.generic import *
+from projects.models import *
+from projects.forms import *
 
 #create project page which lets you assign the project name, members, and member positions
 def create_project(request):
-	return render(request, 'projects/create_project.html', {})
+	if request.POST:
+		form = ProjectForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/projects/')
+	else:
+		form = ProjectForm()
+
+	args = {}
+	args.update(csrf(request))
+	args['form'] = form
+	return render_to_response('projects/create_project.html', args)
 
 class IndexList(ListView):
-	pass
-
-def project_index(request):
-	return render(request, 'projects/project_index.html', {})
-
-"""class DetailsList(ListView):
-	model = Project
-	template_name = 'projects/project_detail.html'
-	context_object_name = 'details'"""
+	context_object_name = 'index'
+	queryset = Project.objects.order_by('-deadline')
+	template_name = 'projects/project_index.html'
 
 def details(request, id):
-	detail = Project.objects.all()
-	task = Task.objects.all()
-	role = Role.objects.all()
+	detail = Project.objects.get(pk=id)
+	task = Task.objects.get(pk=id)
+	role = Role.objects.get(pk=id)
 	return render(request, 'projects/project_detail.html',
 			{'detail':detail,
 			'task':task,

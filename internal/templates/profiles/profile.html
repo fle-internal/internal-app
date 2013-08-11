@@ -29,7 +29,23 @@
 </div>
 {% endfor %}
 
-{% block feedback_summary %}
-{% endblock %}
+<div class='span4 well'><h3><a href='/projects/create/'>Create Project!</a></h3></div>
+<div class='span4 well'>
+  <h3>Feedback Summary:</h3><br/>
+  {% if avg %}
+  <em>Average stars</em><br/>
+  Overall: {{ avg.overall_rating__avg }} <br/>
+  Participation: {{ avg.participation_rating__avg }}<br/>
+  Contribution: {{ avg.contribution_rating__avg }}<br/>
+  Communication: {{ avg.communication_rating__avg }} <br/>
+  Ease of working together: {{ avg.ease_of_working_together_rating__avg }} <br/>
 
+  {% else %}
+
+  {{person.first_name}} doesn't have any feedbacks yet! <br/>
+  Help them out:<br/>
+  {% endif %}
+  <br/>
+  <a href='/feedbacks/create/'>Submit feedback</a>
+</div>
 {% endblock %}
