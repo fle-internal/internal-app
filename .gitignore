@@ -49,3 +49,7 @@ nosetests.xml
 
 # mac DS_Store
 .DS_Store
+
+# Vim garbage
+*.swp
+*.swo
