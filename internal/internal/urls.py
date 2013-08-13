@@ -2,9 +2,11 @@ from django.conf.urls import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+
+import feedbacks.urls
 import profiles.urls
 import projects.urls
-import feedbacks.urls
+import views
 
 admin.autodiscover()
 
@@ -14,5 +16,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^profiles/', include(profiles.urls)),
     url(r'^projects/', include(projects.urls)),
-    url(r'^feedback/', include(feedbacks.urls)),
+    url(r'^feedbacks/', include(feedbacks.urls)),
+    url(r'^contact/', views.contact)
 )

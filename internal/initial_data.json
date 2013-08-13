@@ -7,6 +7,7 @@
             "bio": "I am Kevin Ngo",
             "first_name": "Kevin",
             "last_name": "Ngo",
+	    "is_admin": true,
             "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
             "email": "ngovkevin@fakeaccount.com"
           }

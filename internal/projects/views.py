@@ -29,7 +29,7 @@ def details(request, id):
 	detail = Project.objects.get(pk=id)
 	task = Task.objects.get(pk=id)
 	role = Role.objects.get(pk=id)
-	return render(request, 'projects/project_detail.html', 
+	return render(request, 'projects/project_detail.html',
 			{'detail':detail,
 			'task':task,
 			'role':role})
