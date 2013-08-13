@@ -32,16 +32,12 @@ class TeamMemberManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-############################### BADGES TABLE ##################################
 class Badges(models.Model):
     badge_name = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
 
     def __unicode__(self):
         return u'%s' % (self.badge_name)
-
-
-
 
 class TeamMember(AbstractBaseUser):
     email = models.EmailField(max_length=254, unique=True, db_index=True)
@@ -52,8 +48,6 @@ class TeamMember(AbstractBaseUser):
     last_name = models.CharField(max_length=20)
     website = models.URLField(max_length=200)
     bio = models.TextField(blank=True)
-
-    ###############################BADGES ADDED HERE ###############################################
     badges = models.ManyToManyField(Badges)
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
@@ -87,6 +81,5 @@ class TeamMember(AbstractBaseUser):
         # Handle whether the user is a member of staff?"
         return self.is_admin
 
-############### END OF TEAM MEMBER ##################################
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
