@@ -4,7 +4,7 @@ import datetime
 from django.utils import timezone
 # Create your models here.
 
-    
+
 class Task(models.Model):
     description = models.CharField(max_length=100)
     project = models.ForeignKey('Project', related_name='tasks')
@@ -12,11 +12,11 @@ class Task(models.Model):
     deadline = models.DateField(blank=True, null=True)
 
     def __unicode__(self):
-	return self.title
+	   return self.title
 
 class Project(models.Model):
     name = models.CharField(max_length=30)
-    description = models.CharField(max_length=50)
+    description = models.TextField(max_length=300)
     owner = models.ForeignKey(TeamMember, related_name="projects_owned")
     collaborators = models.ManyToManyField(TeamMember, related_name="projects", through='Role')
     start_date = models.DateField(max_length=10)
@@ -26,9 +26,6 @@ class Project(models.Model):
     def __unicode__(self):
         return self.name
 
-    def project_complete(self, deadline):
-	return self.deadline >= timezone.now()
-
 class Role(models.Model):
     profile = models.ForeignKey(TeamMember, related_name='roles')
     project = models.ForeignKey(Project)
@@ -36,4 +33,3 @@ class Role(models.Model):
 
     def __unicode__(self):
 	return self.role_name
-

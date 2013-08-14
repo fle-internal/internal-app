@@ -6,6 +6,7 @@ from django.utils.safestring import mark_safe
 
 from django.conf import settings
 from django.db import models
+from django.db.models import Avg
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 def get_image_path(instance, filename):
@@ -64,6 +65,21 @@ class TeamMember(AbstractBaseUser):
     def get_short_name(self):
         # For this case we return email. Could also be User.first_name if you have this field
         return self.email
+
+    def feedback_averages(self):
+        from feedbacks.models import Feedback
+        if Feedback.objects.filter(target_id=self.id).count():
+            result = Feedback.objects.filter(target_id=self.id).aggregate(Avg('participation_rating'),
+                                                                          Avg('contribution_rating'),
+                                                                          Avg('communication_rating'),
+                                                                          Avg('ease_of_working_together_rating'))
+            result['overall_rating__avg'] = (result['participation_rating__avg']
+                                             + result['contribution_rating__avg']
+                                             + result['communication_rating__avg']
+                                             + result['ease_of_working_together_rating__avg'])/4
+            return result
+        else:
+            return None
 
     def __unicode__(self):
         return self.email

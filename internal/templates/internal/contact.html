@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+| Contact
+{% endblock %}
+
+{% block head %}
+<link rel='stylesheet' href='{% static 'css/stylesheet' %}'
+{% endblock %}
+
+{% block content %}
+  <h1 align=center>Contact us</h1>
+  <br/>
+  <div align=center>
+  	<p>Email: info@learningequality.org</p>
+    <a href = "http://chat.learningequality.org:3000/">Chat with the team!</a><br/>
+    <a href = "http://kalite.learningequality.org/">Come to the offical site!</a><br/>
+    <a href = "https://drive.google.com/?tab=mo&amp;authuser=0#folders/0B1eobeaicL7IcnMzMktXM3RzajQ">Our Google Drive Shared Folder!</a><br/>
+  </div>
+{% endblock %}

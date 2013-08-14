@@ -7,7 +7,6 @@
 
     <title> KALite Internal {% block title %} Home page {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type="text/css" media="screen" />
-
     {% block head %}
     {% endblock %}
   </head>
@@ -22,7 +21,7 @@
 	    <span class="icon-bar"></span>
 	    <span class="icon-bar"></span>
 	  </a>
-	  <a class="brand" href="#">
+	  <a class="brand" href="/">
 	    KA Lite
 	  </a>
 	  <div class="nav-collapse">
@@ -50,6 +49,16 @@
 		</a>
 	      </li>
 	      {% endif %}
+	      <li class="item">
+		<a href="{% url 'project_index' %}">
+		  Projects
+		</a>
+	      </li>
+	      <li class="item">
+		<a href="{% url 'profile_index' %}">
+		  Profiles
+		</a>
+	      </li>
 	    </ul>
 	  </div>
 	</div>
@@ -66,18 +75,19 @@
 	{% block content %}
 	{% endblock %}
 
-      </div>
-    </div>  
-    <div id = "contact_footer"> 
-    <h3>communication CHANNELS:</h3>
+  </div>
+    </div>
+      <div id = "contact_footer">
+    <!--<h3>communication CHANNELS:</h3>
     <p>Email: info@learningequality.org</p>
     <a href = "http://chat.learningequality.org:3000/">Chat with the team!</a>
     <a href = "http://kalite.learningequality.org/">Come to the offical site!</a>
-    <a href = "https://drive.google.com/?tab=mo&amp;authuser=0#folders/0B1eobeaicL7IcnMzMktXM3RzajQ">Our Google Drive Shared Folder!</a> 
+    <a href = "https://drive.google.com/?tab=mo&amp;authuser=0#folders/0B1eobeaicL7IcnMzMktXM3RzajQ">Our Google Drive Shared Folder!</a>-->
+    <a href='/contact/'><h4>Contact</h4></a>
 
   </div>
     </div>
-  <a href="#top_bar" id="top-link">Top of Page</a>	
+  <a href="#top_bar" id="top-link">Top of Page</a>
   <script>
 
     $(document).ready(function(){
