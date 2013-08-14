@@ -18,7 +18,7 @@ class Project(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField(max_length=300)
     owner = models.ForeignKey(TeamMember, related_name="projects_owned")
-    collaborators = models.ManyToManyField(TeamMember, related_name="projects", through='Role')
+    collaborators = models.ManyToManyField(TeamMember, through='Role')
     start_date = models.DateField(max_length=10)
     deadline = models.DateField(max_length=10)
     website = models.URLField()
@@ -27,6 +27,7 @@ class Project(models.Model):
         return self.name
 
 class Role(models.Model):
+     
     profile = models.ForeignKey(TeamMember, related_name='roles')
     project = models.ForeignKey(Project)
     role_name = models.CharField(max_length=100)
