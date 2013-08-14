@@ -1,7 +1,8 @@
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.views import logout_then_login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login 
+from django.contrib.auth.views import logout_then_login, password_change
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
+
 from django.shortcuts import render
 
 from profiles.models import TeamMember
@@ -39,5 +40,11 @@ def profile_new(request):
         else:
             pass  # Return an 'invalid login' error message.
 
+#I could have used the password_change built-in view directly in profiles/urls.py, but it is here because I wanted to use
+# the @login_required decorator
+@login_required
+def change_pw(request):
+    return password_change(request, template_name='profiles/change_pw.html', post_change_redirect='/') 
+    # Todo: Pranav - need to alert the user that password has been changed successfully with the messages framework.
 def logout(request):
     return logout_then_login(request)
