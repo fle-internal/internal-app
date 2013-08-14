@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} Change your password {% endblock %}
+{% block content %}
+
+<div class="label label-important" style="padding: 10px;margin: 10px;">
+	Please enter your old password, for security's sake, and then enter your new password twice so we can verify you typed it in correctly.
+</div>
+
+<form action="{%url 'change_pw' %}" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
