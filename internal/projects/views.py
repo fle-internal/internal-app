@@ -18,6 +18,7 @@ def create_project(request):
 	else:
 		form = ProjectForm(initial={ 'widgets': { 'owner': forms.HiddenInput }, 'owner': request.user })
 
+
 	args = {}
 	args.update(csrf(request))
 	args['form'] = form
