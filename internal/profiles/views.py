@@ -40,8 +40,8 @@ def profile_new(request):
         else:
             pass  # Return an 'invalid login' error message.
 
-#I could have used the password_change built-in view directly in profiles/urls.py, but it is here because I wanted to use
-# the @login_required decorator
+# Note, all user defined functions about password change start with 'change_pw', whereas django's
+# begin with password_change
 @login_required
 def change_pw(request):
     return password_change(request, template_name='profiles/change_pw.html', post_change_redirect='/') 
