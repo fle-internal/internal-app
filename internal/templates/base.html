@@ -30,7 +30,20 @@
 		  Home
 		</a>
 	      </li>
-	      {% if user.is_authenticated %}
+	      <li class="item">
+		<a href="{% url 'project_index' %}">
+		  Projects
+		</a>
+	      </li>
+	      <li class="item">
+		<a href="{% url 'profile_index' %}">
+		  Profiles
+		</a>
+	      </li>
+	    </ul>
+
+	    <ul class="nav" style="float:right">
+	    {% if user.is_authenticated %}
 	      <li class="item">
 		<a href="{% url 'profile_detail' user.id %}">
 		  {{ user.email }}
@@ -47,18 +60,9 @@
 		  Login
 		</a>
 	      </li>
-	      {% endif %}
-	      <li class="item">
-		<a href="{% url 'project_index' %}">
-		  Projects
-		</a>
-	      </li>
-	      <li class="item">
-		<a href="{% url 'profile_index' %}">
-		  Profiles
-		</a>
-	      </li>
+	      {% endif %}	
 	    </ul>
+
 	  </div>
 	</div>
       </div>
