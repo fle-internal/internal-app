@@ -22,9 +22,9 @@
 <div class="row">
   <div class="login-form">
   	<span id="github-call" class="label">
-  		Hey, you can use your Github account to signup and login now! 
-  		Click <a href="http://localhost:8000/login/github"> here </a> to proceed. 
-  	</span>	
+  		Hey, you can use your Github account to signup and login now!
+  		Click <a href="{% url 'socialauth_begin' 'github' %}"> here </a> to proceed.
+  	</span>
     <form class="form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}" >
       {% csrf_token %}
       {% if form.errors %}
