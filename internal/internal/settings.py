@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     'profiles',
     'projects',
     'internal',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging
