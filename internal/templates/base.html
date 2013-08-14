@@ -25,17 +25,17 @@
 	  </a>
 	  <div class="nav-collapse">
 	    <ul class="nav">
-	      <li class="active">
+	      <li class="active" id="home-nav">
 		<a href="{% url 'profile_index' %}">
 		  Home
 		</a>
 	      </li>
-	      <li class="item">
+	      <li class="item" id="project-nav">
 		<a href="{% url 'project_index' %}">
 		  Projects
 		</a>
 	      </li>
-	      <li class="item">
+	      <li class="item" id="profiles-nav">
 		<a href="{% url 'profile_index' %}">
 		  Profiles
 		</a>
@@ -94,18 +94,34 @@
   <script>
 
     $(document).ready(function(){
-    $(window).scroll(function(){
-    if ($(this).scrollTop() > 100) {
-    $('#top-link').fadeIn();
-    } else {
-    $('#top-link').fadeOut();
-    }
-    });
-    // scroll-to-top animate
-    $('#top-link').click(function(){
-    $("html, body").animate({ scrollTop: 0 }, 600);
-    return false;
-    });
+	    $(window).scroll(function(){
+		    if ($(this).scrollTop() > 100) {
+		    $('#top-link').fadeIn();
+	    	}
+	    	else {
+			    $('#top-link').fadeOut();
+			}
+			});
+	    // scroll-to-top animate
+	    $('#top-link').click(function(){
+		    $("html, body").animate({ scrollTop: 0 }, 600);
+		    return false;
+	    });
+
+	    var cur_path = window.location.pathname;
+	    switch(cur_path){
+	    	case "/projects/":
+	    		$('#project-nav').addClass('active').siblings().removeClass('active');
+	    		break;
+	    	case "/profiles/":
+	    		$('#profiles-nav').addClass('active').siblings().removeClass('active');
+	    		break;
+	    	default:
+	    		$('#home-nav').addClass('active').siblings().removeClass('active');
+	    		break;
+
+	    }
+
     });
 
   </script>
