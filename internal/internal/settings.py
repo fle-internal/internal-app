@@ -105,6 +105,11 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.contrib.github.GithubBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 ROOT_URLCONF = 'internal.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -133,6 +138,7 @@ INSTALLED_APPS = (
     'profiles',
     'projects',
     'internal',
+    'social_auth'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -165,4 +171,9 @@ LOGGING = {
 }
 
 LOGIN_URL = 'django.contrib.auth.views.login'
-LOGIN_REDIRECT_URL = 'profile_index'
+LOGIN_REDIRECT_URL = '/'
+
+# Github login settings:
+GITHUB_APP_ID = 'ffae3812c9fc3b659296'
+GITHUB_API_SECRET = '894582ecc28dcefd6414c018b52655905aa1d1f3'
+SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
