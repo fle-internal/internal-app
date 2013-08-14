@@ -4,11 +4,8 @@ from django.core.context_processors import csrf
 from django.views.generic import *
 from projects.models import *
 from projects.forms import *
-from django.contrib.auth.decorators import login_required
-from django import forms
 
 #create project page which lets you assign the project name, members, and member positions
-@login_required
 def create_project(request):
 	if request.POST:
 		form = ProjectForm(request.POST)
@@ -16,7 +13,7 @@ def create_project(request):
 			form.save()
 			return HttpResponseRedirect('/projects/')
 	else:
-		form = ProjectForm(initial={ 'widgets': { 'owner': forms.HiddenInput }, 'owner': request.user })
+		form = ProjectForm()
 
 	args = {}
 	args.update(csrf(request))
