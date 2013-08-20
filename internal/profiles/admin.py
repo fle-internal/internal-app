@@ -3,6 +3,8 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from models import Badges
+
 
 from profiles.models import TeamMember
 
@@ -51,6 +53,7 @@ class UserChangeForm(forms.ModelForm):
         return self.initial["password"]
 
 
+
 class MyUserAdmin(UserAdmin):
     # The forms to add and change user instances
     form = UserChangeForm
@@ -67,7 +70,9 @@ class MyUserAdmin(UserAdmin):
         ('Personal info', {'fields': ('first_name', 'last_name')}),
         ('Permissions', {'fields': ('is_admin',)}),
         ('Important dates', {'fields': ('last_login',)}),
+        ('Badges', {'fields':('badges',)}), 
     )
+
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
@@ -78,8 +83,11 @@ class MyUserAdmin(UserAdmin):
     ordering = ('email',)
     filter_horizontal = ()
 
+
+
 # Now register the new UserAdmin...
 admin.site.register(TeamMember, MyUserAdmin)
+admin.site.register(Badges)
 # ... and, since we're not using Django's builtin permissions,
 # unregister the Group model from admin.
 # admin.site.unregister(Group)

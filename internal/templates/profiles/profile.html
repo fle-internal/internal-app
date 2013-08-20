@@ -41,11 +41,23 @@
   Ease of working together: {{ avg.ease_of_working_together_rating__avg }} <br/>
 
   {% else %}
-
   {{person.first_name}} doesn't have any feedbacks yet! <br/>
   Help them out:<br/>
   {% endif %}
+
+
   <br/>
-  <a href='/feedbacks/create/'>Submit feedback</a>
+  <a href={% url 'feedback_create' user.id %}>Submit feedback</a>
 </div>
+
+<div class="span3 well">
+<h3>Badges:</h3>
+ <ul>
+{% for badge in person.badges.all %}
+    <li>{{ badge }}:</li>
+    For {{ badge.description }}</li>
+{% endfor %}
+</ul>
+</div>
+
 {% endblock %}

@@ -3,6 +3,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
     <title> KALite Internal {% block title %} Home page {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type="text/css" media="screen" />
@@ -25,17 +26,41 @@
 	  </a>
 	  <div class="nav-collapse">
 	    <ul class="nav">
-	      <li class="active">
+	      <li class="active" id="home-nav">
 		<a href="{% url 'profile_index' %}">
 		  Home
 		</a>
 	      </li>
-	      {% if user.is_authenticated %}
+	      <li class="item" id="project-nav">
+		<a href="{% url 'project_index' %}">
+		  Projects
+		</a>
+	      </li>
+	      <li class="item" id="profiles-nav">
+		<a href="{% url 'profile_index' %}">
+		  Profiles
+		</a>
+	      </li>
+	    </ul>
+
+	    <ul class="nav" style="float:right">
+	    {% if user.is_authenticated %}
 	      <li class="item">
 		<a href="{% url 'profile_detail' user.id %}">
 		  {{ user.email }}
 		</a>
 	      </li>
+	      <li class="dropdown">
+	      <a class="dropdown-toggle" id="settings" role="button" data-toggle="dropdown" href="#"> Options 
+	      	<b class="caret"></b>
+	      </a>
+  			<ul class="dropdown-menu" role="menu" aria-labelledby="settings">
+  				<li> 
+  					<a href="{%url 'change_pw' %}">
+  					Change Password </a>
+  				</li>
+  			</ul>
+  		</li>
 	      <li class="item">
 		<a href="{% url 'logout' %}">
 		  (logout)
@@ -47,18 +72,9 @@
 		  Login
 		</a>
 	      </li>
-	      {% endif %}
-	      <li class="item">
-		<a href="{% url 'project_index' %}">
-		  Projects
-		</a>
-	      </li>
-	      <li class="item">
-		<a href="{% url 'profile_index' %}">
-		  Profiles
-		</a>
-	      </li>
+	      {% endif %}	
 	    </ul>
+
 	  </div>
 	</div>
       </div>
@@ -90,18 +106,33 @@
   <script>
 
     $(document).ready(function(){
-    $(window).scroll(function(){
-    if ($(this).scrollTop() > 100) {
-    $('#top-link').fadeIn();
-    } else {
-    $('#top-link').fadeOut();
-    }
-    });
-    // scroll-to-top animate
-    $('#top-link').click(function(){
-    $("html, body").animate({ scrollTop: 0 }, 600);
-    return false;
-    });
+	    $(window).scroll(function(){
+		    if ($(this).scrollTop() > 100) {
+		    $('#top-link').fadeIn();
+	    	}
+	    	else {
+			    $('#top-link').fadeOut();
+			}
+			});
+	    // scroll-to-top animate
+	    $('#top-link').click(function(){
+		    $("html, body").animate({ scrollTop: 0 }, 600);
+		    return false;
+	    });
+
+	    var cur_path = window.location.pathname;
+	    switch(cur_path){
+	    	case "/projects/":
+	    		$('#project-nav').addClass('active').siblings().removeClass('active');
+	    		break;
+	    	case "/profiles/":
+	    		$('#profiles-nav').addClass('active').siblings().removeClass('active');
+	    		break;
+	    	default:
+	    		$('#home-nav').addClass('active').siblings().removeClass('active');
+	    		break;
+	    }
+
     });
 
   </script>

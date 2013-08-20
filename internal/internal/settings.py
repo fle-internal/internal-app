@@ -139,6 +139,7 @@ INSTALLED_APPS = (
     'projects',
     'internal',
     'social_auth'
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging

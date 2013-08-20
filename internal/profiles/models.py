@@ -1,4 +1,9 @@
 import os
+
+import urllib
+import hashlib
+from django.utils.safestring import mark_safe
+
 from django.conf import settings
 from django.db import models
 from django.db.models import Avg
@@ -28,23 +33,27 @@ class TeamMemberManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+class Badges(models.Model):
+    badge_name = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
+
+    def __unicode__(self):
+        return u'%s' % (self.badge_name)
 
 class TeamMember(AbstractBaseUser):
     email = models.EmailField(max_length=254, unique=True, db_index=True)
-
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
     objects = TeamMemberManager()
-
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     website = models.URLField(max_length=200)
     bio = models.TextField(blank=True)
-
+    badges = models.ManyToManyField(Badges)
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
+
 
     def full_name(self):
         # For this case we return email. Could also be User.first_name User.last_name if you have these fields
@@ -87,7 +96,6 @@ class TeamMember(AbstractBaseUser):
     def is_staff(self):
         # Handle whether the user is a member of staff?"
         return self.is_admin
-
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
