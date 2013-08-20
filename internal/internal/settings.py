@@ -140,6 +140,7 @@ INSTALLED_APPS = (
     'internal',
     'social_auth',
     'south',
+    'django_extensions',
 )
 
 # A sample logging configuration. The only tangible logging
