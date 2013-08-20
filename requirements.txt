@@ -1,0 +1,10 @@
+Django==1.5.1
+South==0.8.2
+Werkzeug==0.9.3
+django-extensions==1.1.1
+django-social-auth==0.7.25
+httplib2==0.8
+oauth2==1.5.211
+python-openid==2.2.5
+six==1.3.0
+wsgiref==0.1.2
