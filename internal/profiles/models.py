@@ -7,7 +7,10 @@ from django.utils.safestring import mark_safe
 from django.conf import settings
 from django.db import models
 from django.db.models import Avg
+from django.db.models.signals import post_save
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+
+from social_auth.models import UserSocialAuth
 
 def get_image_path(instance, filename):
     return os.path.join('photos', str(instance.id), filename)
@@ -50,6 +53,8 @@ class TeamMember(AbstractBaseUser):
     website = models.URLField(max_length=200)
     bio = models.TextField(blank=True)
     badges = models.ManyToManyField(Badges)
+    avatar = models.URLField(null=True)
+
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
@@ -96,6 +101,17 @@ class TeamMember(AbstractBaseUser):
     def is_staff(self):
         # Handle whether the user is a member of staff?"
         return self.is_admin
+
+    @staticmethod
+    def _set_avatar_callback(sender, **kwargs):
+        if kwargs['created']:
+            user = kwargs['instance']
+            if user.password == '!': # means user is created through django social auth
+                avatar_url = UserSocialAuth.objects.filter(user=user)[0].extra_data['avatar']
+                user.avatar = avatar_url
+                user.save()
+
+post_save.connect(TeamMember._set_avatar_callback, weak=False, sender=TeamMember, dispatch_uid='save_avatar')
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)

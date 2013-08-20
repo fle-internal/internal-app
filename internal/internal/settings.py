@@ -138,7 +138,7 @@ INSTALLED_APPS = (
     'profiles',
     'projects',
     'internal',
-    'social_auth'
+    'social_auth',
     'south',
 )
 
@@ -174,7 +174,13 @@ LOGGING = {
 LOGIN_URL = 'django.contrib.auth.views.login'
 LOGIN_REDIRECT_URL = '/'
 
+# social auth settings
+SOCIAL_AUTH_USER_MODEL = 'profiles.TeamMember'
+
 # Github login settings:
 GITHUB_APP_ID = 'ffae3812c9fc3b659296'
 GITHUB_API_SECRET = '894582ecc28dcefd6414c018b52655905aa1d1f3'
 SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
+GITHUB_EXTRA_DATA = [
+    ('avatar_url', 'avatar'),
+]
