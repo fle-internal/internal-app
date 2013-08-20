@@ -176,6 +176,16 @@ LOGIN_REDIRECT_URL = '/'
 
 # social auth settings
 SOCIAL_AUTH_USER_MODEL = 'profiles.TeamMember'
+SOCIAL_AUTH_PIPELINE = (
+    'social_auth.backends.pipeline.social.social_auth_user',
+    'social_auth.backends.pipeline.associate.associate_by_email',
+    'social_auth.backends.pipeline.user.get_username',
+    'social_auth.backends.pipeline.user.create_user',
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'social_auth.backends.pipeline.user.update_user_details',
+    'profiles.pipeline.set_user_gravatar',
+)
 
 # Github login settings:
 GITHUB_APP_ID = 'ffae3812c9fc3b659296'

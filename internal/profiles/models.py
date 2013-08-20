@@ -102,16 +102,5 @@ class TeamMember(AbstractBaseUser):
         # Handle whether the user is a member of staff?"
         return self.is_admin
 
-    @staticmethod
-    def _set_avatar_callback(sender, **kwargs):
-        if kwargs['created']:
-            user = kwargs['instance']
-            if user.password == '!': # means user is created through django social auth
-                avatar_url = UserSocialAuth.objects.filter(user=user)[0].extra_data['avatar']
-                user.avatar = avatar_url
-                user.save()
-
-post_save.connect(TeamMember._set_avatar_callback, weak=False, sender=TeamMember, dispatch_uid='save_avatar')
-
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
