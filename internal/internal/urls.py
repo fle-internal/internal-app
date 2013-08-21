@@ -18,5 +18,6 @@ urlpatterns = patterns('',
     url(r'^profiles/', include(profiles.urls)),
     url(r'^projects/', include(projects.urls)),
     url(r'^feedbacks/', include(feedbacks.urls)),
-    url(r'^contact/', views.contact)
+    url(r'^contact/', views.contact),
+    url(r'', include('social_auth.urls')),
 )
