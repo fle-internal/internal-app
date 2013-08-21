@@ -195,3 +195,8 @@ SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
 GITHUB_EXTRA_DATA = [
     ('avatar_url', 'avatar'),
 ]
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
