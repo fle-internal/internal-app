@@ -43,7 +43,7 @@
     {% for person in persons %}
     <div class="profile_container">
       <div class="headshot_frame">
-	<img src="{% static img %}" alt="member"/> <!-- TODO: fix when profile images are working now -->
+	<img src="{{ person.avatar }}" alt="member"/> <!-- TODO: fix when profile images are working now -->
 	<a style="color:black;" href="{% url 'profile_detail' person.id %}">{{ person.full_name }}</a>
       </div>
       <div class="profile_text">
@@ -52,7 +52,3 @@
     </div>
     {% endfor %}
 {% endblock %}
-
-
-
-
