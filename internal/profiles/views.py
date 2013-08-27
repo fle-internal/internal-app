@@ -7,13 +7,24 @@ from django.shortcuts import render
 
 from profiles.models import TeamMember
 from feedbacks.models import Feedback
+from forms import BadgeForm
+from models import Badge
+
 
 
 @login_required
 def profile(request, id):
     person = TeamMember.objects.get(pk=id)
+    if request.method == 'POST':
+        form = BadgeForm(request.POST, request.FILES)
+        if form.is_valid():
+            b = Badge(badge_name=form.cleaned_data['name'], description=form.cleaned_data['description'], badge_image=form.cleaned_data['image'])
+            b.save()
+            person.badge.add(b)
+            person.save()
+    upload_form = BadgeForm()
     return render(request,'profiles/profile.html', {'person': person,
-                                                        'avg': person.feedback_averages()})
+                                                        'avg': person.feedback_averages(), 'form': upload_form})
 
 def profile_index(request):
     persons = TeamMember.objects.all()

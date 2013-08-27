@@ -53,11 +53,20 @@
 <div class="span3 well">
 <h3>Badges:</h3>
  <ul>
-{% for badge in person.badges.all %}
+{% for badge in person.badge.all %}
     <li>{{ badge }}:</li>
+    <img src="{% static badge.badge_image  %}" alt="My image" height="100" width="100" /><br/>
     For {{ badge.description }}</li>
 {% endfor %}
 </ul>
+<br/>
+Upload a badge for {{ person.full_name }} here!<br/>
+<form action="" method="post" enctype="multipart/form-data">
+            {{ form.as_table }}
+        {% csrf_token %}
+        <input type="submit" value="Submit">
+    </form>
+
 </div>
 
 {% endblock %}
