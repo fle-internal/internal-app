@@ -28,19 +28,25 @@ class TeamMemberManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+class Badge(models.Model):
+    badge_name = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
+    badge_image = models.ImageField(upload_to="images/")
+    #user_upload_image = models.ImageField(upload_to = 'images/')
+
+    def __unicode__(self):
+        return u'%s' % (self.badge_name)
 
 class TeamMember(AbstractBaseUser):
     email = models.EmailField(max_length=254, unique=True, db_index=True)
-
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
     objects = TeamMemberManager()
-
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     website = models.URLField(max_length=200)
     bio = models.TextField(blank=True)
+    badge = models.ManyToManyField(Badge)
 
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
