@@ -54,6 +54,7 @@ class TeamMember(AbstractBaseUser):
     bio = models.TextField(blank=True)
     badges = models.ManyToManyField(Badges)
     avatar = models.URLField(null=True)
+    github_login = models.CharField(max_length=50, default='')
 
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 

@@ -194,6 +194,7 @@ GITHUB_API_SECRET = '894582ecc28dcefd6414c018b52655905aa1d1f3'
 SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
 GITHUB_EXTRA_DATA = [
     ('avatar_url', 'avatar'),
+    ('login', 'username'),
 ]
 
 try:
