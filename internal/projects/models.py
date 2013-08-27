@@ -10,6 +10,7 @@ class Task(models.Model):
     project = models.ForeignKey('Project', related_name='tasks')
     assigned = models.ForeignKey(TeamMember, related_name='tasks_assigned')
     deadline = models.DateField(blank=True, null=True)
+    github_link = models.URLField(blank=True, null=True, db_index=True)
 
     def __unicode__(self):
 	   return self.title
