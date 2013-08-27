@@ -1,8 +1,16 @@
 import os
+
+import urllib
+import hashlib
+from django.utils.safestring import mark_safe
+
 from django.conf import settings
 from django.db import models
 from django.db.models import Avg
+from django.db.models.signals import post_save
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+
+from social_auth.models import UserSocialAuth
 
 def get_image_path(instance, filename):
     return os.path.join('photos', str(instance.id), filename)
@@ -32,7 +40,6 @@ class Badge(models.Model):
     badge_name = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
     badge_image = models.ImageField(upload_to="images/")
-    #user_upload_image = models.ImageField(upload_to = 'images/')
 
     def __unicode__(self):
         return u'%s' % (self.badge_name)
@@ -47,10 +54,12 @@ class TeamMember(AbstractBaseUser):
     website = models.URLField(max_length=200)
     bio = models.TextField(blank=True)
     badge = models.ManyToManyField(Badge)
+    avatar = models.URLField(null=True)
 
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
+
 
     def full_name(self):
         # For this case we return email. Could also be User.first_name User.last_name if you have these fields
@@ -93,7 +102,6 @@ class TeamMember(AbstractBaseUser):
     def is_staff(self):
         # Handle whether the user is a member of staff?"
         return self.is_admin
-
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)

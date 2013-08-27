@@ -6,6 +6,14 @@
 	.controls{
 		margin-left: 0px
 	}
+	#github-call{
+		white-space: pre-line;
+		word-wrap: break-word;
+		width: 220px;
+		padding: 10px;
+		margin: 10px;
+		margin-left: 0px;
+	}
 </style>
 {% endblock %}
 
@@ -13,6 +21,10 @@
 
 <div class="row">
   <div class="login-form">
+  	<span id="github-call" class="label">
+  		Hey, you can use your Github account to signup and login now!
+  		Click <a href="{% url 'socialauth_begin' 'github' %}"> here </a> to proceed.
+  	</span>
     <form class="form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}" >
       {% csrf_token %}
       {% if form.errors %}
@@ -28,9 +40,9 @@
 	  {{ form.password.label_tag }}
 	  {{ form.password }}
 	</div>
+	<input type="hidden" name="next" value="{{ next }}"/>
 	<div class="control-group">
 	  <div class="controls">
-	  	New user? Sign up <a href={%url 'signup' %}>here</a>
 	    <button class="btn btn-success">Login</button>
 
 	  </div>
