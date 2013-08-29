@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from models import Badges
+from models import Badge
 
 
 from profiles.models import TeamMember
@@ -70,7 +70,7 @@ class MyUserAdmin(UserAdmin):
         ('Personal info', {'fields': ('first_name', 'last_name')}),
         ('Permissions', {'fields': ('is_admin',)}),
         ('Important dates', {'fields': ('last_login',)}),
-        ('Badges', {'fields':('badges',)}), 
+        ('Badge', {'fields':('badge',)}), 
     )
 
     add_fieldsets = (
@@ -87,7 +87,7 @@ class MyUserAdmin(UserAdmin):
 
 # Now register the new UserAdmin...
 admin.site.register(TeamMember, MyUserAdmin)
-admin.site.register(Badges)
+admin.site.register(Badge)
 # ... and, since we're not using Django's builtin permissions,
 # unregister the Group model from admin.
 # admin.site.unregister(Group)
