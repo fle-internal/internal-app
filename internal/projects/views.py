@@ -1,28 +1,35 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from projects.models import Project
+from django.shortcuts import render, render_to_response
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.context_processors import csrf
+from django.views.generic import *
+from projects.models import *
+from projects.forms import *
 
 #create project page which lets you assign the project name, members, and member positions
 def create_project(request):
-	return render(request, 'projects/create_project.html', {})
+	if request.POST:
+		form = ProjectForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/projects/')
+	else:
+		form = ProjectForm()
 
-def project_index(request):
-	username = 'User' #fix for later
-	return render(request, 'projects/project_index.html', {'user_name': username})
+	args = {}
+	args.update(csrf(request))
+	args['form'] = form
+	return render_to_response('projects/create_project.html', args)
 
-def project_details(request):
-	#variable values are placeholders for now
-	title = "KA Lite"
-	description = "Internal application for members within the org"
-	active = True
-	deadline = "September 1, 2013"
-	leader = "Khan Academy"
-	todo = ['project models', 'project details', 'profiles', 
-		'profile details']
-	team_members= {'Angelique':'Project details', 'Andres':'Project Models'}
-	return render(request, 'projects/project_detail.html', {
-			'project_title':title,
-			'project_descrip':description,
-			'active':active, 'deadline':deadline,
-			'leader':leader, 'team_members':team_members,
-			'todo':todo})
+class IndexList(ListView):
+	context_object_name = 'index'
+	queryset = Project.objects.order_by('-deadline')
+	template_name = 'projects/project_index.html'
+
+def details(request, id):
+	detail = Project.objects.get(pk=id)
+	task = Task.objects.get(pk=id)
+	role = Role.objects.get(pk=id)
+	return render(request, 'projects/project_detail.html',
+			{'detail':detail,
+			'task':task,
+			'role':role})

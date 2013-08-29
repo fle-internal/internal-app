@@ -1,27 +1,34 @@
 {% extends 'base.html' %}
+{%load staticfiles %}
 
 {% block title %}| Create Project{% endblock %}
 
+{% block head %}
+<link style='text/css' rel='stylesheet' href='{% static 'projects/project.css' %}'/>
+{% endblock %}
+
+<style='text/css'>
+</style>
 
 {% block content %}
 
-<style type="text/css">
-    #div{
-	  font-size: 1.5em;
-	  padding:30px
-	}
-</style>
+<body id='pad-top'>
+  <div id='section'>
 
-<body>
-  <br/><br/>
-  <div id="div">
-    <b>Project title</b>: <br/><br/>
-    <b>Description</b>: <br/><br/>
-    <b>Deadline</b>: <br/><br/>
-    <b>GitHub</b>: <br/><br/>
-    <b>Leader(s): <br/><br/>
-    <b>Collaborators</b>: <br/><br/>
+    <form action='/projects/create/' method='post'>{% csrf_token %}
+    
+	<h5>{{form.as_p}}</h5>
+    
   </div>
+
+<p Align=Center>
+	<a href='/projects/'>Cancel</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='submit' name='submit' value='Create Project'></p>
+<br/>
+<br/>
+</form>
+
 </body>
 
 {% endblock%}

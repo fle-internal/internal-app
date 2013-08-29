@@ -1,8 +1,8 @@
 from django.conf.urls import *
 
-from profiles import views
+from profiles.views import *
 
 urlpatterns = patterns('',
-    url(r'', views.profile_index, name='profile_index'),
-    url(r'/(?P<id>\d+)$', views.profile, name='profile_detail'),
+    url(r'^$', profile_index, name='profile_index'),
+    url(r'(?P<id>\d+)/$', profile, name='profile_detail'),
 )

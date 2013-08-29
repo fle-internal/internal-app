@@ -1,23 +1,35 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}| Project Index{% endblock %}
 
-{% block content %}
-<style type="text/css">
-  #div{
-	  font-size: 1.5em;
-	  padding:30px
-	}
-</style>
+{% block head %}
+<link type="test/css" rel="stylesheet" href="{% static 'projects/project.css' %}"/>
+{% endblock %}
 
-<!--<link style="text/css" rel="stylesheet" href="/Users/angeliquedecastro/Documents/django/kalite_internal//templates/stylesheet.css"/>-->
-<br/><br/>
-<div id="div">
-  {{ user_name }}'s Active Projects: <br/><br/>
+{% block content %}
+<body id='pad-top'>
+<div id="section">
+  <h2>{{ index.owner }}'s Active Projects:</h2>
+  {% if not projects %}
+    <p id='list'><i id='description'>{{ index.owner }} currently has no active projects.</i></p>
+  {% endif %}
+  {% for project in index.name %}
+    <p id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a></p>
+  {% endfor %}
   <!--list user's projects and subtitle it with their position-->
-  Past projects: <br/><br/>
+  <!--also make clickthrough links to the github or other relevant page-->
+</div>
+
+<!--check if projects are active or not-->
+<div id='section'>
+  <h2>Past projects:</h2>
+  {% for done in past_projects %}
+    <p id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a>{{ done }}</a></p>
+  {% endfor %}
   <!--list user's past inactive/complete projects by month including position-->
   <!--make project titles click throughs to github? final result?-->
 </div>
+</body>
 
 {% endblock %}

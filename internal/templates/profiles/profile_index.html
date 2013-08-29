@@ -3,21 +3,17 @@
 {% block title %}Profiles{% endblock %}
 {% block head %}
   <link rel="stylesheet" type="text/css" href="{% static 'profiles/profile.css' %}" />
-  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-  <script src="js/jquery-2.0.3.js"></script>
+  <link href='http://fonts.googleapis.com/css?famliy=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block content %}
   <div id="top_bar">
-    <div id="logo">
-      <img src="{% static 'profiles/img/kalitebanner.png' %}" alt="none" />
+    <!--<div id="logo">-->
+      <img src="{% static 'profiles/img/banner.png' %}" alt="none" />
     </div>
   </div>
 
   <div id="home_page">
-    <div id = "group_picture">
-      <img src = "{% static 'profiles/img/group.jpg' %}" alt="group"/>
-    </div>
 
     <div id = "about_us">
       <h2>about us - KA Lite</h2>
@@ -44,57 +40,19 @@
 
   <div id="team_content">
     <h2>the TEAM</h2>
-    {% for img in imgs %}
+    {% for person in persons %}
     <div class="profile_container">
       <div class="headshot_frame">
-	<img src="{% static img %}" alt="member" />
-	<a href="javascript:AlertIt();">Jamie</a>
+	<img src="{% static img %}" alt="member"/> <!-- TODO: fix when profile images are working now -->
+	<a style="color:black;" href="{% url 'profile_detail' person.id %}">{{ person.full_name }}</a>
       </div>
       <div class="profile_text">
-	He loves candy!
+	{{ person.bio }}
       </div>
     </div>
     {% endfor %}
-
-  <div id = "login">
-    <h2>login</h2>
-    <h3>Log into your account to manage your current projects and create feedback for other FLE contributors!</h3>
-    <form>
-      Email login: <input type="text" placeholder="Enter your  login" name="firstname"><br>
-      Password: <input type="text" placeholder="---------------" name="lastname">
-    </form>
-
-  </div>
-
-  <div id = "contact">
-    <h2>communication CHANNELS</h2>
-    <p>info@learningequality.org</p>
-    <a href = "http://chat.learningequality.org:3000/">Chat with the team!</a>
-    <br/>
-
-    <a href = "http://kalite.learningequality.org/">Come to the offical site!</a>
-    <br/>
-    <a href = "https://drive.google.com/?tab=mo&amp;authuser=0#folders/0B1eobeaicL7IcnMzMktXM3RzajQ">Our Google Drive Shared Folder!</a>
-
-  </div>
-
-  <a href="#top_bar" id="top-link">Top of Page</a>
-  <script>
-
-    $(document).ready(function(){
-    $(window).scroll(function(){
-    if ($(this).scrollTop() > 100) {
-    $('#top-link').fadeIn();
-    } else {
-    $('#top-link').fadeOut();
-    }
-    });
-    // scroll-to-top animate
-    $('#top-link').click(function(){
-    $("html, body").animate({ scrollTop: 0 }, 600);
-    return false;
-    });
-    });
-
-  </script>
 {% endblock %}
+
+
+
+

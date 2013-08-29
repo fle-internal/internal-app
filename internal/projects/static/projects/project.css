@@ -1,0 +1,18 @@
+#pad-top{
+	/*margin-top: 4em;*/
+}
+#section{
+	font-size: 1.5em;
+	/*margin-left:1.5em;
+	margin-top:1em;*/
+}
+#list{
+	margin-top:1em;
+	margin-left:1.5em;
+	font-size:1em;	  
+}
+#description{
+	font-size: 0.8em;
+	color: gray;
+}
+

@@ -1,6 +1,7 @@
 import os
 from django.conf import settings
 from django.db import models
+from django.db.models import Avg
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 def get_image_path(instance, filename):
@@ -39,18 +40,43 @@ class TeamMember(AbstractBaseUser):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     website = models.URLField(max_length=200)
+    bio = models.TextField(blank=True)
 
     # profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
 
-    def get_full_name(self):
+    def full_name(self):
         # For this case we return email. Could also be User.first_name User.last_name if you have these fields
-        return self.email
+        if self.first_name == '' and self.last_name == '':
+            return self.email
+        else:
+            return ' '.join([self.first_name, self.last_name])
 
     def get_short_name(self):
         # For this case we return email. Could also be User.first_name if you have this field
         return self.email
+
+    def feedback_averages(self):
+        from feedbacks.models import Feedback
+        if Feedback.objects.filter(target_id=self.id).count() > 0: 
+            return Feedback.objects.filter(target_id=self.id).aggregate(Avg('participation_rating'),
+                                                                    Avg('contribution_rating'),
+                                                                    Avg('communication_rating'),
+                                                                    Avg('ease_of_working_together_rating'))
+        else:
+            return 0
+
+    def overall_feedback_avgs(self):
+        from feedbacks.models import Feedback
+        if Feedback.objects.filter(target_id=self.id).count() > 0:
+            avgs = self.feedback_averages()
+            return (avgs['participation_rating__avg']
+                + avgs['contribution_rating__avg'] 
+                + avgs['communication_rating__avg'] 
+                + avgs['ease_of_working_together_rating__avg'])/4
+        else:
+            return 0
 
     def __unicode__(self):
         return self.email

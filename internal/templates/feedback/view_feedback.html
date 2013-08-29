@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+  <link rel='stylesheet' style='text/css' href='{% static 'feedbacks/view_feedback.css' %}' />
+{% endblock %}
+
+{% block content %}
+
+<body>
+<h2>{{ feedback.target }}'s feedbacks for {{ feedback.project }}</h2>
+<div>
+  <p>{{ feedback.participation_rating }}</p><br/>
+  <p>{{ feedback.participation_rationale }}</p>
+  <br/>
+  <p>{{ feedback.contribution_rating }}</p><br/>
+  <p>{{ feedback.contribution_rationale }} </p></br>
+  <br/>
+  <p>{{ feedback.communication_rating }}</p><br/>
+  <p>{{ feedback.communication_rationale  }}</p><br/>
+  <br/>
+  <p>{{ feedback.ease_of_working_together_rating }}</p><br/>
+  <p>{{ feedback.ease_of_working_together_rationale }}<br/>
+</div>
+</body>
+
+{% endblock %}
