@@ -7,13 +7,14 @@ from django.utils import timezone
 
 class Task(models.Model):
     description = models.CharField(max_length=100)
-    project = models.ForeignKey('Project', related_name='tasks')
-    assigned = models.ForeignKey(TeamMember, related_name='tasks_assigned')
+    project = models.ForeignKey('Project', related_name='tasks', null=True)
+    assigned = models.ForeignKey(TeamMember, related_name='tasks_assigned', null=True)
     deadline = models.DateField(blank=True, null=True)
     github_link = models.URLField(blank=True, null=True, db_index=True)
+    status = models.CharField(max_length=7, default='open')
 
     def __unicode__(self):
-	   return self.title
+        return self.description
 
 class Project(models.Model):
     name = models.CharField(max_length=30)
@@ -23,6 +24,7 @@ class Project(models.Model):
     start_date = models.DateField(max_length=10)
     deadline = models.DateField(max_length=10)
     website = models.URLField()
+    github_milestone_link = models.URLField(blank=True, null=True, db_index=True)
 
     def __unicode__(self):
         return self.name
