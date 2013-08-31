@@ -5,7 +5,7 @@ from profiles.models import TeamMember
 from projects.models import Project, Task
 
 @receiver(github_issue_updated)
-def update_task_from_issue(issue, **kwargs):
+def update_task_from_issue(issue, repo):
     url = issue['html_url']
     try:
         task = Task.objects.get(github_link=url)
@@ -13,7 +13,7 @@ def update_task_from_issue(issue, **kwargs):
         task = Task()
 
     try:
-        task.project = Project.objects.get(github_milestone_link=issue['milestone']['url'])
+        task.project = Project.objects.get(github_repo_link=repo['html_url'])
     except (Project.DoesNotExist, TypeError):
         pass
 

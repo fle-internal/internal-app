@@ -24,7 +24,7 @@ class Project(models.Model):
     start_date = models.DateField(max_length=10)
     deadline = models.DateField(max_length=10)
     website = models.URLField()
-    github_milestone_link = models.URLField(blank=True, null=True, db_index=True)
+    github_repo_link = models.URLField(blank=True, null=True, db_index=True)
 
     def __unicode__(self):
         return self.name
