@@ -19,7 +19,7 @@ class TaskTestCase(TestCase):
         self.data = {
             'html_url': 'github.com/barbero',
             'assignee': { 'login': 'aronasorman' },
-            'milestone': { 'url': 'somewhere' },
+            'milestone': { 'title': 'somewhere' },
             'title': 'fake issue',
         }
         self.repo = {
@@ -32,10 +32,10 @@ class TaskTestCase(TestCase):
         Task.objects.get(github_link=self.data['html_url']) # raise error if not created
 
     def test_milestone_assigned(self):
-        data_no_milestone = copy.copy(self.data)
-        data_no_milestone['milestone'] = None
-        update_task_from_issue(data_no_milestone, self.repo)
-        p = Project.objects.create(name='random project',
+        empty_repo = None
+        t = update_task_from_issue(self.data, empty_repo)
+        self.assertEquals(t.project_id, None, "project has been assigned")
+        p = Project.objects.create(name='somewhere',
                                    owner_id=1,
                                    start_date=datetime.datetime.today(),
                                    deadline=datetime.datetime.today(),
@@ -52,3 +52,19 @@ class TaskTestCase(TestCase):
                 )
         t = update_task_from_issue(self.data, self.repo)
         self.assertEquals(t.assigned_id, user.id, "user is not assigned")
+
+    def test_milestones_with_same_repo_should_be_distinguished(self):
+        p1 = Project.objects.create(name='project1',
+                                    owner_id=1,
+                                    start_date=datetime.datetime.today(),
+                                    deadline=datetime.datetime.today(),
+                                    github_repo_link=self.repo['html_url'],
+        )
+        p2 = Project.objects.create(name='somewhere',
+                                    owner_id=1,
+                                    start_date=datetime.datetime.today(),
+                                    deadline=datetime.datetime.today(),
+                                    github_repo_link=self.repo['html_url'],
+        )
+        t = update_task_from_issue(self.data, self.repo)
+        self.assertEquals(t.project_id, p2.id, "the wrong project was assigned")

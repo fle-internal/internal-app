@@ -1,10 +1,8 @@
 from django.dispatch import receiver
 
-from events.signals import github_issue_updated
 from profiles.models import TeamMember
 from projects.models import Project, Task
 
-@receiver(github_issue_updated)
 def update_task_from_issue(issue, repo):
     url = issue['html_url']
     try:
@@ -13,7 +11,7 @@ def update_task_from_issue(issue, repo):
         task = Task()
 
     try:
-        task.project = Project.objects.get(github_repo_link=repo['html_url'])
+        task.project = Project.objects.get(github_repo_link=repo['html_url'], name=issue['milestone']['title'])
     except (Project.DoesNotExist, TypeError):
         pass
 

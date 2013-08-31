@@ -26,6 +26,9 @@ class Project(models.Model):
     website = models.URLField()
     github_repo_link = models.URLField(blank=True, null=True, db_index=True)
 
+    class Meta:
+      unique_together = ('name', 'github_repo_link')
+
     def __unicode__(self):
         return self.name
 
