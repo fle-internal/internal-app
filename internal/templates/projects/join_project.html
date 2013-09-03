@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{%load staticfiles %}
+
+{% block title %}| Create Project{% endblock %}
+
+{% block head %}
+<link style='text/css' rel='stylesheet' href='{% static 'projects/project.css' %}'/>
+{% endblock %}
+
+<style='text/css'>
+</style>
+
+{% block content %}
+
+<body id='pad-top'>
+  <div id='section'>
+
+     <form  method='post'>{% csrf_token %}
+	  <b>Thanks {{collaborator}}!</b>
+	 <b>You have joined the project as {{role}} at {{project.name}}!</b>
+  </div>
+
+<p Align=left>
+	<a href='/projects/'>Back</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<br/>
+<br/>
+</form>
+
+</body>
+
+{% endblock%}
