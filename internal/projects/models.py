@@ -2,7 +2,6 @@ from django.db import models
 from profiles.models import TeamMember
 import datetime
 from django.utils import timezone
-from django.forms import ModelForm
 # Create your models here.
 
 
@@ -35,7 +34,3 @@ class Role(models.Model):
     def __unicode__(self):
 	return self.role_name
 	
-class RoleForm(models.Model):
-     class Meta:
-         model = Role
-         fields = ['profile' 'project', 'role_name']

@@ -42,12 +42,9 @@ def join_project(request, id):
         q = request.GET['q']
 	detail = Project.objects.get(pk=id)	
 	roles= Role.objects.filter(project=detail)
-	form = RoleForm(request.POST,{'role_name':q,'profile':request.user,'project':detail})
-<<<<<<< HEAD
-	form.save()
-=======
+	#form = Role(request.POST,{'role_name':q,'profile':request.user,'project':detail})
 	#form.save()
->>>>>>> Project management
+	#form.save()
 	return render_to_response('projects/join_project.html', {'role':q,'collaborator':request.user,'project':detail})
     else:
 	    return render_to_response('projects/join_project.html', {'error': True})
