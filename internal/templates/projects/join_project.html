@@ -15,16 +15,15 @@
 <body id='pad-top'>
   <div id='section'>
 
-    <form action='/projects/create/' method='post'>{% csrf_token %}
-    
-	 <h5>{{form.as_p}}</h5>
-    
+     <form  method='post'>{% csrf_token %}
+	  <b>Thanks {{collaborator}}!</b>
+	 <b>You have joined the project as {{role}} at {{project.name}}!</b>
   </div>
 
-<p Align=Center>
-	<a href='/projects/'>Cancel</a>
+<p Align=left>
+	<a href='/projects/'>Back</a>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type='submit' name='submit' value='Create Project'></p>
+
 <br/>
 <br/>
 </form>

@@ -4,28 +4,25 @@
 {% block title %}| Project Index{% endblock %}
 
 {% block head %}
-<link type="test/css" rel="stylesheet" href="{% static 'projects/project.css' %}"/>
 {% endblock %}
+<link type="test/css" rel="stylesheet" href="{% static 'projects/project.css' %}"/>
 
 {% block content %}
 <body id='pad-top'>
 <div id="section">
-  <h2>{{ index.owner }}'s Active Projects:</h2>
-  {% if not projects %}
-    <p id='list'><i id='description'>{{ index.owner }} currently has no active projects.</i></p>
-  {% endif %}
-  {% for project in index.name %}
-    <p id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a></p>
-  {% endfor %}
+  
+  
   <!--list user's projects and subtitle it with their position-->
   <!--also make clickthrough links to the github or other relevant page-->
 </div>
 
 <!--check if projects are active or not-->
 <div id='section'>
-  <h2>Past projects:</h2>
-  {% for done in past_projects %}
-    <p id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a>{{ done }}</a></p>
+  <h2>Projects:</h2>
+  {% for project in projects %}
+    <b id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a>{{ done }}</a></b>
+	 <li>{{ project.description }}</li>
+
   {% endfor %}
   <!--list user's past inactive/complete projects by month including position-->
   <!--make project titles click throughs to github? final result?-->
