@@ -11,7 +11,7 @@ from django import forms
 @login_required
 def create_project(request):
 	if request.POST:
-		form = ProjectForm(request.POST)
+	   	form = ProjectForm(request.POST)
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect('/projects/')
@@ -25,15 +25,34 @@ def create_project(request):
 	return render_to_response('projects/create_project.html', args)
 
 class IndexList(ListView):
-	context_object_name = 'index'
+	context_object_name = 'projects'
 	queryset = Project.objects.order_by('-deadline')
 	template_name = 'projects/project_index.html'
 
 def details(request, id):
 	detail = Project.objects.get(pk=id)
-	task = Task.objects.get(pk=id)
-	role = Role.objects.get(pk=id)
+	roles= Role.objects.filter(project=detail)
 	return render(request, 'projects/project_detail.html',
-			{'detail':detail,
-			'task':task,
-			'role':role})
+			{'project':detail,
+			'roles':roles})	
+
+@login_required
+def join_project(request, id):
+    if 'q' in request.GET:
+        q = request.GET['q']
+	detail = Project.objects.get(pk=id)	
+	roles= Role.objects.filter(project=detail)
+	form = RoleForm(request.POST,{'role_name':q,'profile':request.user,'project':detail})
+<<<<<<< HEAD
+	form.save()
+=======
+	#form.save()
+>>>>>>> Project management
+	return render_to_response('projects/join_project.html', {'role':q,'collaborator':request.user,'project':detail})
+    else:
+	    return render_to_response('projects/join_project.html', {'error': True})
+
+def edit_project(request, id):
+	detail = Project.objects.get(pk=id)
+	roles= Role.objects.filter(project=detail)
+	return render_to_response('projects/edit_project.html',)
