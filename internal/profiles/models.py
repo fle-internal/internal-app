@@ -36,9 +36,10 @@ class TeamMemberManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-class Badges(models.Model):
+class Badge(models.Model):
     badge_name = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
+    badge_image = models.ImageField(upload_to="images/")
 
     def __unicode__(self):
         return u'%s' % (self.badge_name)
@@ -52,7 +53,7 @@ class TeamMember(AbstractBaseUser):
     last_name = models.CharField(max_length=20)
     website = models.URLField(max_length=200)
     bio = models.TextField(blank=True)
-    badges = models.ManyToManyField(Badges)
+    badge = models.ManyToManyField(Badge)
     avatar = models.URLField(null=True)
     github_login = models.CharField(max_length=50, default='')
 
