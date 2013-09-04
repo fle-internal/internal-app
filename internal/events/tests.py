@@ -10,7 +10,7 @@ import datetime
 
 from django.test import TestCase
 
-from events.github import update_task_from_issue
+from events.github import update_task_from_issue, create_project_from_milestone
 from profiles.models import TeamMember
 from projects.models import Task, Project
 
@@ -68,3 +68,16 @@ class TaskTestCase(TestCase):
         )
         t = update_task_from_issue(self.data, self.repo)
         self.assertEquals(t.project_id, p2.id, "the wrong project was assigned")
+
+class MilestoneTestCase(TestCase):
+
+    def setUp(self):
+        self.milestone = {'title': 'fake milestone',
+                          'description': 'something',
+                          'due_on': '2011-04-10T20:09:31Z',
+                          'created_at': '2011-04-10T20:09:31Z' }
+        self.repo = { 'html_url': 'somewhere' }
+
+    def test_milestone_created(self):
+        create_project_from_milestone(self.milestone, self.repo)
+        Project.objects.get(name=self.milestone['title'], github_repo_link=self.repo['html_url'])

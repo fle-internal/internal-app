@@ -19,7 +19,7 @@ class Task(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField(max_length=300)
-    owner = models.ForeignKey(TeamMember, related_name="projects_owned")
+    owner = models.ForeignKey(TeamMember, related_name="projects_owned", null=True)
     collaborators = models.ManyToManyField(TeamMember, related_name="projects", through='Role')
     start_date = models.DateField(max_length=10)
     deadline = models.DateField(max_length=10)
@@ -27,7 +27,7 @@ class Project(models.Model):
     github_repo_link = models.URLField(blank=True, null=True, db_index=True)
 
     class Meta:
-      unique_together = ('name', 'github_repo_link')
+        unique_together = ('name', 'github_repo_link')
 
     def __unicode__(self):
         return self.name
