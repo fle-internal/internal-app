@@ -43,6 +43,7 @@ form li {
   clear: both;
 }
 
+/*
 #top-link{
   display:none;
   position:fixed;
@@ -55,11 +56,18 @@ form li {
   background:white;
   padding:10px;
 }
-
+*/
 #contact_footer a{
   color: black;
+  bottom:0px;
+
+
 }
 
 #contact_footer a:hover {
   color: black ;
+}
+
+img{
+  border-radius: 100px;
 }

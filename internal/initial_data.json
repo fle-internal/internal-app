@@ -10,7 +10,7 @@
 	          "is_admin": true,
             "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
             "email": "ngovkevin@gmail.com",
-            "badges": [1, 2]
+            "badge": [1, 2]
           }
     },
   {
@@ -23,7 +23,7 @@
             "last_name": "De Castro",
             "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
             "email": "fearthecompilermwahahaha@haha.com",
-            "badges": [1, 2, 5 ,6]
+            "badge": [1, 2, 5 ,6]
           }
     },
   {
@@ -36,7 +36,7 @@
             "last_name": "Silva",
             "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
             "email": "el.ultimo.languis@fakeaccount.com",
-            "badges": [1, 2, 3, 4, 5 ,6]
+            "badge": [1, 2, 3, 4, 5 ,6]
 
           }
     },
@@ -50,7 +50,7 @@
             "last_name": "Rao",
             "password": "pbkdf2_sha256$10000$uwFfiyBA9Qak$xtBn5VF1by/aL1WGoizA5bf/nXP3xqzSwQ/Dfvcrqts=",
             "email": "pnpranavrao@fakeaccount.com",
-            "badges": [5 ,6]
+            "badge": [5 ,6]
 
           }
     },
@@ -112,54 +112,73 @@
     },
 
  {
-  "model": "profiles.Badges",
+  "model": "profiles.Badge",
   "pk": 1,
   "fields": {
       "badge_name": "Python Badge",
-      "description": "Being a Python God"
+      "description": "Being a Python God",
+      "badge_image": "images/python.jpg"
+
   }
     },
 
     {
-  "model": "profiles.Badges",
+  "model": "profiles.Badge",
   "pk": 2,
   "fields": {
       "badge_name": "FLE Intern Badge",
-      "description": "Being an awesome fle intern!"
+      "description": "Being an awesome fle intern!",
+      "badge_image": "images/intern.jpg"
   }
     },
 
     {
-  "model": "profiles.Badges",
+  "model": "profiles.Badge",
   "pk": 3,
   "fields": {
       "badge_name": "KALITE Contributor Badge",
-      "description": "Being an awesome contributor to KALITE"
+      "description": "Being an awesome contributor to KALITE",
+      "badge_image": "images/contributor.jpg"
+
   }
     },
     {
-  "model": "profiles.Badges",
+  "model": "profiles.Badge",
   "pk": 4,
   "fields": {
       "badge_name": "Marketing Badge",
-      "description": "Saving the world and getting KALITE known"
+      "description": "Saving the world and getting KALITE known",
+      "badge_image": "images/cup.jpg"
+
   }
     },
 
     {
-  "model": "profiles.Badges",
+  "model": "profiles.Badge",
   "pk": 5,
   "fields": {
       "badge_name": "Hacking Badge",
-      "description": "Capable of hacking anything"
+      "description": "Capable of hacking anything",
+      "badge_image": "images/badge1.jpg"
+
   }
     },
     {
-  "model": "profiles.Badges",
+  "model": "profiles.Badge",
   "pk": 6,
   "fields": {
       "badge_name": "Beast Badge",
-      "description": "Being a beast at everything"
+      "description": "Being a beast at everything",
+      "badge_image": "images/boulder.jpg"
+  }
+    },
+    {
+  "model": "profiles.Badge",
+  "pk": 7,
+  "fields": {
+      "badge_name": "Leadership Badge",
+      "description": "Taking lead on a project",
+      "badge_image": "images/leader.jpg"
   }
     }
 ]
