@@ -25,6 +25,7 @@ def update_task_from_issue(issue, repo):
     # the following attributes are the ones that are always set
     task.description = issue['title']
     task.github_link = url
+    task.status = issue['state']
     task.save()
     return task
 

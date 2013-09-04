@@ -21,6 +21,7 @@ class TaskTestCase(TestCase):
             'assignee': { 'login': 'aronasorman' },
             'milestone': { 'title': 'somewhere' },
             'title': 'fake issue',
+            'state': 'open',
         }
         self.repo = {
                 'html_url' : 'github.com/fakerepo',
@@ -68,6 +69,14 @@ class TaskTestCase(TestCase):
         )
         t = update_task_from_issue(self.data, self.repo)
         self.assertEquals(t.project_id, p2.id, "the wrong project was assigned")
+
+    def test_task_status_changes(self):
+        t1 = update_task_from_issue(self.data, self.repo)
+        self.assertEquals(t1.status, 'open', 'task status was not open')
+        self.data['state'] = 'closed'
+        t2 = update_task_from_issue(self.data, self.repo)
+        self.assertEquals(t1.id, t2.id, 'not same object')
+        self.assertEquals(t2.status, 'closed', 'task not closed')
 
 class MilestoneTestCase(TestCase):
 
