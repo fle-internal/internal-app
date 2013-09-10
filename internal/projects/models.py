@@ -38,5 +38,8 @@ class Role(models.Model):
     project = models.ForeignKey(Project)
     role_name = models.CharField(max_length=100)
 
+    class Meta:
+        unique_together = (("profile", "project"), )
+
     def __unicode__(self):
         return self.role_name
