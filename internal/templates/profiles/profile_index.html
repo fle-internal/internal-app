@@ -11,8 +11,6 @@
     <!--<div id="logo">-->
       <img src="{% static 'profiles/img/banner.png' %}" alt="none" />
     </div>
-  </div>
-
   <div id="home_page">
 
     <div id = "about_us">
@@ -29,19 +27,9 @@
     </div>
   </div>
   <div id = "separator"></div>
-
-  <script type="text/javascript">
-    function AlertIt() {
-    var answer = confirm ("Need to implement, but the user should be logged in. If he/she is, then they can view profiles--capable of adding projects and submitting any feedback")
-    if (answer)
-    window.location="profile.html";
-    }
-  </script>
-
-  <div id="team_content">
     <h2>the TEAM</h2>
     {% for person in persons %}
-    <div class="profile_container">
+    <div class="profile_container" style="padding-bottom:100px;">
       <div class="headshot_frame">
 	<img src="{{ person.avatar }}" alt="member"/> <!-- TODO: fix when profile images are working now -->
 	<a style="color:black;" href="{% url 'profile_detail' person.id %}">{{ person.full_name }}</a>

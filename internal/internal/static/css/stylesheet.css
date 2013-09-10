@@ -19,6 +19,7 @@
 
 body {
     padding-top: 65px;
+    padding-bottom:60px;
 }
 
 form ul {
@@ -33,14 +34,16 @@ form li {
 }
 
 #contact_footer{
-  position:fixed;
+  position:fixed; /*Something else is controll the element*/
   left:0px;
   bottom:0px;
   width:100%;
   border-top: 1px solid black;
   background-color: white;
   text-indent: 10px;
-  clear: both;
+
+  /*z-index:-1;*/
+  /*clear: both;*/
 }
 
 /*
