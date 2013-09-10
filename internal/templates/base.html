@@ -68,7 +68,7 @@
 	      </li>
 	      {% else %}
 	      <li class="login">
-		<a href="{% url 'django.contrib.auth.views.login' %}">
+		<a href="{% url 'socialauth_begin' 'github' %}">
 		  Login
 		</a>
 	      </li>

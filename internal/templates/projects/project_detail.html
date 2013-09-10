@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load staticfiles %}
 
 {% block title %}| Project Details {% endblock %}
@@ -11,11 +11,13 @@
 <body id='pad-top'>
 <div id="section">
   <h1>{{ project_title }}</h1>
+  
   <DL>
-    <DT>Description:</p>
-    <dd style="font-size:0.8em"> {{ details.description }}</dd>
+    <DT>Description: <a href="{% url 'project_edit' project.id%}" style="font-size: 15px; text-decoration: none">[Edit Project]</a></p>
+    <dd style="font-size:0.8em"> {{ project.description }}</dd>
   </dl>
-  <a href='{{ details.website }}'>Github</a> <br/><br/>
+  
+  <a href='{{ project.github_repo_link }}'>Github</></a> <br/><br/>
   {% if not is_active %}Deadline: {{ details.deadline }}<br/><br/>
   {% else %}<em><b>Project completed</b></em><br/>
   {% endif %}
@@ -23,11 +25,11 @@
 
 <div id="section">
   <!--include click through links on names to their profile-->
-  <b>Leader(s):</b> {{ details.owner }} <br/>
+  <b>Leader(s):</b> {{ project.owner }} <br/>
   <DL>
     <DT>Team members:</dt>
-	{% for member in details.collaborators %}
-	  <dl id="list">{{ member}} <i id="description">{{ role.role_name }}</i></dl>
+	{% for role in roles%}
+	  <dl id="list">{{ role.profile}} <i id="description">{{ role.role_name }}</i></dl>
 	{% endfor %}
   </DL>
 </div>
@@ -39,8 +41,12 @@
 	<li style="margin-left:1em">{{ task.description }}</li>
   {% endfor %}
   </ul>
-
-  <!--strikethroughs for done tasks? mini deadline dates next to each task?-->
+  <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Submit" class="btn btn-success btn-large" />
+  </form>
+ <!--strikethroughs for done tasks? mini deadline dates next to each task?-->
   
 </div><br/><br/>
 </body>

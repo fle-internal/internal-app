@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'bootstrap',
+    'events',
     'feedbacks',
     'profiles',
     'projects',
@@ -189,11 +190,12 @@ SOCIAL_AUTH_PIPELINE = (
 )
 
 # Github login settings:
-GITHUB_APP_ID = 'ffae3812c9fc3b659296'
-GITHUB_API_SECRET = '894582ecc28dcefd6414c018b52655905aa1d1f3'
+GITHUB_APP_ID = '27d42779d9a3c62dde2e'
+GITHUB_API_SECRET = 'a47716fac0461c7db8d34bd1738108384f098179'
 SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
 GITHUB_EXTRA_DATA = [
     ('avatar_url', 'avatar'),
+    ('login', 'username'),
 ]
 
 try:

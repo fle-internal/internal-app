@@ -23,8 +23,11 @@ def profile(request, id):
             person.badge.add(b)
             person.save()
     upload_form = BadgeForm()
+    tasks = person.tasks_assigned.filter(status="open")
     return render(request,'profiles/profile.html', {'person': person,
-                                                        'avg': person.feedback_averages(), 'form': upload_form})
+                                                        'avg': person.feedback_averages(),
+                                                        'form': upload_form,
+                                                        'tasks': tasks})
 
 def profile_index(request):
     persons = TeamMember.objects.all()
