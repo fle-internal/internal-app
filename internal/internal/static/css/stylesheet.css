@@ -19,6 +19,7 @@
 
 body {
     padding-top: 65px;
+    padding-bottom:60px;
 }
 
 form ul {
@@ -33,35 +34,18 @@ form li {
 }
 
 #contact_footer{
-  position:fixed;
+  position:fixed; 
   left:0px;
   bottom:0px;
   width:100%;
   border-top: 1px solid black;
   background-color: white;
   text-indent: 10px;
-  clear: both;
 }
 
-/*
-#top-link{
-  display:none;
-  position:fixed;
-    right:5px;
-    bottom:5px;
-    color:black;
-    font-weight:bold;
-  text-decoration:none;
-    border:1px solid: white;
-  background:white;
-  padding:10px;
-}
-*/
 #contact_footer a{
   color: black;
   bottom:0px;
-
-
 }
 
 #contact_footer a:hover {
