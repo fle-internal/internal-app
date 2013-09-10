@@ -34,37 +34,18 @@ form li {
 }
 
 #contact_footer{
-  position:fixed; /*Something else is controll the element*/
+  position:fixed; 
   left:0px;
   bottom:0px;
   width:100%;
   border-top: 1px solid black;
   background-color: white;
   text-indent: 10px;
-
-  /*z-index:-1;*/
-  /*clear: both;*/
 }
 
-/*
-#top-link{
-  display:none;
-  position:fixed;
-    right:5px;
-    bottom:5px;
-    color:black;
-    font-weight:bold;
-  text-decoration:none;
-    border:1px solid: white;
-  background:white;
-  padding:10px;
-}
-*/
 #contact_footer a{
   color: black;
   bottom:0px;
-
-
 }
 
 #contact_footer a:hover {
