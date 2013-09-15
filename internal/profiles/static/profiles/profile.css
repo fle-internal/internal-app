@@ -10,12 +10,7 @@
   position:relative;
 }
 
-ul > li > a{
-  text-decoration:none;
-  color:inherit;
-}
-
-ul > li > a:hover{
+.link-decor{
   text-decoration:none;
   color:inherit;
 }

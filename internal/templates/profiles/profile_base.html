@@ -82,14 +82,14 @@
         <br/>
         {% for role in person.roles.all %}
         <ul class='projects list' align=center>
-          <li><a href="{% url 'project_detail' role.project.id %}">{{ role.project.name }}</a> as <b>{{ role.role_name }}</b>
+          <li><a class='link-decor' href="{% url 'project_detail' role.project.id %}">{{ role.project.name }}</a> as <b>{{ role.role_name }}</b>
   			{% if role.project.owner.id == person.id %}
   			and <b>project owner</b></li>
   			{% endif %}
         </ul>
         {% endfor %}
         <p align=right>
-        <a href="{% url 'project_create' %}"><button class="btn btn-1 btn-1a">Create Project</button></a>
+        <a class='link-decor' href="{% url 'project_create' %}"><button class="btn btn-1 btn-1a">Create Project</button></a>
         </p>
       </div>
 
@@ -111,7 +111,7 @@
   		{% endif %}
         </div>
           <p align=right>
-        <a href="{% url 'feedback_create' user.id %}"><button class="btn btn-1 btn-1a btn-submit" >Submit Feedback</button></a>
+        <a  class='link-decor' href="{% url 'feedback_create' user.id %}"><button class="btn btn-1 btn-1a btn-submit" >Submit Feedback</button></a>
         </p>
       </div>
 
