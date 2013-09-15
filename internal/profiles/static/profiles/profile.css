@@ -4,8 +4,27 @@
     background-color:#e9eaed;
 }
 
+.task-drop{
+  margin-left:8em;
+  background-color:#cd4436;
+  font-weight:300;
+  color:#fff;
+}
+
+.task-space{
+  margin-bottom:5em;
+}
+
+a:hover{
+  text-decoration:none;
+  color:inherit;
+}
+
+.task-head{ 
+  font-weight:200;
+}
+
 .profile-banner{
-  z-index: -1;
   margin-bottom:-5em;
   position:relative;
 }
@@ -15,12 +34,21 @@
   color:inherit;
 }
 
+.nav-link{
+  font-weight:200;
+  background-color:#84a7ce;
+}
+
 .list{
-    list-style-type:none;
-    font-size:1.25em;
-    letter-spacing:2px;
-    font-weight:400;
+  list-style-type:none;
+  font-size:1.25em;
+  letter-spacing:2px;
+  font-weight:400;
   }
+
+.badge-list{
+  list-style-type:none;
+}
 
 .title{
   font-size:1.6em;
@@ -29,7 +57,6 @@
 }
 
 .profile-pic{
-  z-index:1;
   height:8em;
   width:8em;
   float:left;
@@ -68,7 +95,7 @@
 }
 
 .badges{
-  margin-top:-2.3em;
+    margin-top:-2.3em;
     background-color:white;
     width:30%;
     float:right;
@@ -106,11 +133,6 @@
   padding-bottom:2em;
   }
 
-.create{
-  font-size:.8em;
-  align:right;
-  }
-
 #feedback{
   clear:both;
   background-color:#2e9f7d;
@@ -121,12 +143,6 @@
   letter-spacing:1px;
   }
 
-.submit-feedback{
-  padding-bottom:.3em;
-  padding-right:.3em;
-  align:right;
-  font-size:.8em;
-  }
 
   /* Button styles */
 /* General button style (reset) */
@@ -176,11 +192,11 @@
 
 
 
-
+/*
 root { 
     display: block;
 }
-/*
+
 body{
     font-family: 'Droid Sans', sans-serif;
     width:100%;
@@ -195,7 +211,7 @@ h2{
   border-top: 1px solid #FFFFFF;
   padding-top:25px;
 }*/
-
+/*
 #top_bar {
     width:80%;
     clear:both;
@@ -215,7 +231,7 @@ h2{
     height:100%;
     float:left;
 }
-
+*/
 
 /*#projects{
     margin-left: 25%;
