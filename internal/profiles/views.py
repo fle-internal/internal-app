@@ -10,8 +10,6 @@ from feedbacks.models import Feedback
 from forms import BadgeForm
 from models import Badge
 
-
-
 @login_required
 def profile(request, id):
     person = TeamMember.objects.get(pk=id)
@@ -23,7 +21,7 @@ def profile(request, id):
             person.badge.add(b)
             person.save()
     upload_form = BadgeForm()
-    return render(request,'profiles/profile.html', {'person': person,
+    return render(request,'profiles/profile_base.html', {'person': person,
                                                         'avg': person.feedback_averages(), 'form': upload_form})
 
 def profile_index(request):
