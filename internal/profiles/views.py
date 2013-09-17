@@ -1,7 +1,9 @@
-from django.contrib.auth import authenticate, login 
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import logout_then_login, password_change
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 
 from django.shortcuts import render
 
@@ -9,8 +11,6 @@ from profiles.models import TeamMember
 from feedbacks.models import Feedback
 from forms import BadgeForm
 from models import Badge
-
-
 
 @login_required
 def profile(request, id):
@@ -24,11 +24,10 @@ def profile(request, id):
             person.save()
     upload_form = BadgeForm()
     tasks = person.tasks_assigned.filter(status="open")
-    return render(request,'profiles/profile.html', {'person': person,
+    return render(request,'profiles/profile_base.html', {'person': person,
                                                         'avg': person.feedback_averages(),
                                                         'form': upload_form,
                                                         'tasks': tasks})
-
 def profile_index(request):
     persons = TeamMember.objects.all()
     return render(request, 'profiles/profile_index.html', {'persons': persons})
@@ -58,7 +57,10 @@ def profile_new(request):
 # begin with password_change
 @login_required
 def change_pw(request):
-    return password_change(request, template_name='profiles/change_pw.html', post_change_redirect='/') 
+    return password_change(request, template_name='profiles/change_pw.html', post_change_redirect='/')
     # Todo: Pranav - need to alert the user that password has been changed successfully with the messages framework.
 def logout(request):
     return logout_then_login(request)
+
+def login(request):
+    return HttpResponseRedirect(reverse('socialauth_begin', args=['github']))
