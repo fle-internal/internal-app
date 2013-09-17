@@ -15,9 +15,11 @@
 <body id='pad-top'>
   <div id='section'>
 
-     <form  method='post'>{% csrf_token %}
-	  <b>Thanks {{collaborator}}!</b>
-	 <b>You have joined the project as {{role}} at {{project.name}}!</b>
+    <form action="" method="post" >
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" class="btn btn-success" value="Submit" />
+    </form>
   </div>
 
 <p Align=left>

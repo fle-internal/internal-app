@@ -173,7 +173,7 @@ LOGGING = {
     }
 }
 
-LOGIN_URL = 'django.contrib.auth.views.login'
+LOGIN_URL = '/profiles/login/'
 LOGIN_REDIRECT_URL = '/'
 
 # social auth settings
