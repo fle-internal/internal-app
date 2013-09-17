@@ -73,6 +73,14 @@ def details(request, id):
 
 @login_required
 def edit_project(request, id):
-    detail = Project.objects.get(pk=id)
-    roles= Role.objects.filter(project=detail)
-    return render_to_response('projects/edit_project.html',)
+    project = Project.objects.get(pk=id)
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('project_index'))
+        else:
+            return render(request, 'projects/edit_project.html', {'form': form})
+    else:
+        form = ProjectForm(instance=project)
+        return render(request, 'projects/edit_project.html', {'form': form})

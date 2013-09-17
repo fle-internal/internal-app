@@ -8,34 +8,12 @@
 {% endblock %}
 
 {% block content %}
-<body id='pad-top'>
-<div id="section">
-  <h1>{{ project_title }} </h1>
-  
-  <DL>
-    <DT>Description:</p>
-    <dd style="font-size:0.8em"> {{ project.description }} <input type="text" size="100" value="" name="description"></dd>
-  </dl>
-  
-  <a href='{{ details.website }}'>Github</a> <br/><br/>
-  {% if not is_active %}Deadline: {{ details.deadline }} <input type="text" size="100" value="" name="description"><br/><br/>
-  {% else %}<em><b>Project completed</b></em><br/>
-  {% endif %}
-</div>
+    <form action='' method='post'>
 
-<div id="section">
-  <!--include click through links on names to their profile-->
-</div>
+      {% csrf_token %}
 
-<div id="section">
-  Tasks:
-  <ul id="list">
-  {% for task in todo %}
-	<li style="margin-left:1em">{{ task.description }} <input type="text" size="25" value="tas name="q"></li>
-  {% endfor %}
-  </ul>
- <!--strikethroughs for done tasks? mini deadline dates next to each task?-->
-  
-</div><br/><br/>
-</body>
+      {{ form.as_p }}
+
+      <input type='submit' class="btn btn-success" name='submit' value='Create Project'></p>
+    </form>
 {% endblock %}
