@@ -29,7 +29,7 @@
   <div id = "separator"></div>
     <h2>the TEAM</h2>
     {% for person in persons %}
-    <div class="profile_container" style="padding-bottom:100px;">
+    <div class="profile_container">
       <div class="headshot_frame">
 	<img src="{{ person.avatar }}" alt="member"/> <!-- TODO: fix when profile images are working now -->
 	<a style="color:black;" href="{% url 'profile_detail' person.id %}">{{ person.full_name }}</a>

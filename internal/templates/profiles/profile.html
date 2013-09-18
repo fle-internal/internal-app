@@ -80,11 +80,6 @@
           <li><a href="{% url 'project_detail' role.project.id %}">{{ role.project.name }}</a></h3> as <b>{{ role.role_name }}</b>
           {% if role.project.owner.id == person.id %}
           and <b>project owner</b>{% endif %}</li>
-          <!--
-          <br/>
-          <li>project</li>
-          <br/>
-          <li>project</li>-->
         {% endfor %}
         </ul>
         <p align=right>
