@@ -1,72 +1,109 @@
-{% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Profile: {{ person.full_name }}{% endblock %}
-
-
-{% block content %}
-<h1>{{ person.full_name }}</h1>
-{% if user.is_authenticated and user.id == person.id %}
-<div class="span5 well">
-    <h2>Tasks</h2>
-    {% for task in tasks %}
-    <p>{{ task.project.name }}: {{ task.description }}</p>
-    {% endfor %}
-</div>
-{% endif %}
-<div class="span5 well">
-<h2>Bio:</h2>
-<p>{{ person.bio }}</p>
-</div>
-<div class="span2 well">
-<h2>Projects:</h2>
-</div>
-{% for role in person.roles.all %}
-<div class="span4 well">
-  <h3><a href="{% url 'project_detail' role.project.id %}">{{ role.project.name }}</a></h3> as <b>{{ role.role_name }}</b>
-  {% if role.project.owner.id == person.id %}
-  and <b>project owner</b>
-  {% endif %}
-</div>
-{% endfor %}
-
-<div class='span4 well'><h3><a href='/projects/create/'>Create Project!</a></h3></div>
-<div class='span4 well'>
-  <h3>Feedback Summary:</h3><br/>
-  {% if avg %}
-  <em>Average stars</em><br/>
-  Overall: {{ avg.overall_rating__avg }} <br/>
-  Participation: {{ avg.participation_rating__avg }}<br/>
-  Contribution: {{ avg.contribution_rating__avg }}<br/>
-  Communication: {{ avg.communication_rating__avg }} <br/>
-  Ease of working together: {{ avg.ease_of_working_together_rating__avg }} <br/>
-
-  {% else %}
-  {{person.first_name}} doesn't have any feedbacks yet! <br/>
-  Help them out:<br/>
-  {% endif %}
-
-
+<!Doctype>
+<head>
+    <title>Internal</title>
+    <link rel="stylesheet" href="{% static 'css/new.css' %}"/>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<head>
+<body>
   <br/>
-  <a href={% url 'feedback_create' user.id %}>Submit feedback</a>
+<div class="bs-docs-example">
+            <div class="tabbable tabs-left">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#lA" data-toggle="tab">Projects</a></li>
+                <li><a href="#lB" data-toggle="tab">Badges</a></li>
+                <li><a href="#lC" data-toggle="tab">Feeedback</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="lA">
+                  <p>Even more da project</p>
+                </div>
+                <div class="tab-pane" id="lB">
+                  <p>Badges badges badges badges mUSHROOM MUSHROOM</p>
+                </div>
+                <div class="tab-pane" id="lC">
+                  <p>Feeeed meeeee</p>
+                </div>
+              </div>
+            </div> <!-- /tabbable -->
+          </div>
+  
 </div>
+  
+    <div>
+      <h1>BANNER</h1>
+    </div>
 
-<div class="span3 well">
-<h3>Badges:</h3>
- <ul>
-{% for badge in person.badge.all %}
-    <li>{{ badge }}:</li>
-    <img src="{% static badge.badge_image  %}" alt="My image" height="100" width="100" /><br/>
-    For {{ badge.description }}</li>
-{% endfor %}
-</ul>
-<br/>
-Upload a badge for {{ person.full_name }} here!<br/>
-<form action="" method="post" enctype="multipart/form-data">
-            {{ form.as_table }}
-        {% csrf_token %}
-        <input type="submit" value="Submit">
-    </form>
+    <img src="{{ person.avatar }}" alt="member" height="112px" width="112px"/>
+    <br/><br/><br/><br/>
+    <h1>&nbsp; {{ person.full_name }}</h1>
+  
+  	<div id='about' class='title'>
+          About
+	    </div>
+	    <div class='info'>
+	        <p>{{ person.bio }}</p>
+	        
+	        <p><b>Contact:</b></p><br/>
+	        {{ person.contact }}
+	        
+	        <p><b>{{ person.github }}</b></p>
+	        
+	        <p><b>Skills:</b></p>
+	        {{ person.skills }}
+	    </div>
+  
+	    <div class='badges'>
+          {% for badge in person.badge.all %}<br/>
+          <img src="{% static badge.badge_image  %}" alt="My image" height="150" width="150" /> :
+          {{ badge.description }}<br/>
+          {% endfor %}
+	    </div>
+      <div id='badges'>
+          Badges
 
-</div>
-
-{% endblock %}
+      </div>
+      
+      <div class='other-links'>
+          Tumblr<br/>
+          Wordpress<br/>
+          Website<br/>
+      </div>
+      <div id='other-links'>
+          Other Links
+      </div>
+      <div id='projects'>
+        <p class='title'>Projects</p>
+        <br/>
+        {% for role in person.roles.all %}
+        <ul class='projects' id='li' align=center>
+          <li><a href="{% url 'project_detail' role.project.id %}">{{ role.project.name }}</a></h3> as <b>{{ role.role_name }}</b>
+          {% if role.project.owner.id == person.id %}
+          and <b>project owner</b>{% endif %}</li>
+        {% endfor %}
+        </ul>
+        <p align=right>
+        <a href='/projects/create/'><button class="btn btn-1 btn-1a">Create Project</button></a>
+        </p>
+      </div>
+      <div id='feedback'>
+        <p class='title'>Feedback Summary</p>
+        <br/>
+        <div class='feedback' align=center>
+        {% if avg %}
+        <i>Average Stars</i><br/>
+        Overall: {{ avg.overall_rating__avg }} <br/>
+        Participation: {{ avg.participation_rating__avg }}<br/>
+        Contribution: {{ avg.contribution_rating__avg }}<br/>
+        Communication: {{ avg.communication_rating__avg }} <br/>
+        Ease of working together: {{ avg.ease_of_working_together_rating__avg }} <br/>
+        {% else %}
+        {{ person.full_name }} doesn't have any feedbacks yet! <br/>
+        Help them out!<br/>
+        {% endif %}
+        </div>
+          <p align=right>
+        <a href={% url 'feedback_create' user.id %}><button class="btn btn-1 btn-1a btn-submit">Submit Feedback</button></a>
+        </p>
+      </div>
+</body>
