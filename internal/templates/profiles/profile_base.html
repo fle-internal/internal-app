@@ -47,11 +47,11 @@
           <img src="{% static badge.badge_image  %}" alt="My image" height="250" width="250" /> &nbsp;
         {% endif %}
       {% endfor %}
-      
+
     </div>
 
     <!--TODO implement gravatar profile images-->
-    <img src='{{ person.profile_img }}' class='profile-pic'>
+    <img src='{{ person.avatar }}' class='profile-pic'>
 
     <br/><br/><br/>
     <h1>&nbsp;{{ person.full_name }}</h1>
@@ -62,16 +62,16 @@
       </div>
       <div class='info'>
           <p>{{ person.bio }}</p>
-          
+
           <p><b>Contact:</b></p><br/>
           {{ person.contact }}
-          
+
           <p><b>{{ person.github }}</b></p>
-          
+
           <p><b>Skills:</b></p>
           {{ person.skills }}
       </div>
-  
+
       <div class='badges'>
           {% for badge in person.badge.all %}
           <img src="{% static badge.badge_image  %}" alt="My image" height="50" width="50" />
@@ -80,7 +80,7 @@
       <div id='badges'>
           Badges
       </div>
-      
+
       <div class='other-links'> <!--TODO implement option to add other links in profile creation-->
           {% for link in links %}
           <ul>
@@ -91,7 +91,7 @@
       <div id='other-links'>
           Other Links
       </div>
-      
+
       <div id='projects'>
         <p class='title'>Projects</p>
         <br/>
@@ -100,7 +100,7 @@
           {% if not role %}
           {{ person.first_name }} is not involved in any projects yet. <br/>
           {% endif %}
-          
+
           {% for role in person.roles.all %}
           {% if forloop.counter == 1 or forloop.counter == 2 or forloop.counter == 3 %}
           <li><a class='link-decor' href="{% url 'project_detail' role.project.id %}">{{ role.project.name }}</a> as <b>{{ role.role_name }}</b> {% if role.project.owner.id == person.id %} and <b>project owner</b></li>
@@ -148,7 +148,7 @@
           {% if not role %}
           {{ person.first_name }} is not involved in any projects yet. <br/>
           {% endif %}
-          
+
           {% for role in person.roles.all %}
           {% if forloop.counter == 1 or forloop.counter == 2 or forloop.counter == 3 %}
           <li><a class='link-decor' href="{% url 'project_detail' role.project.id %}">{{ role.project.name }}</a> as <b>{{ role.role_name }}</b>{% if role.project.owner.id == person.id %} and <b>project owner</b></li>
@@ -156,7 +156,7 @@
           {% endif %}
           {% endfor %}
         </ul>
-        
+
 
         <p align=center>
         <a class='link-decor' href="{% url 'project_create' %}">
@@ -174,7 +174,7 @@
         {% if not person.feedback.all %}
         No evaluations made yet.
         {% endif %}
-        
+
         {% for eval in person.feedback.all %}
         {{ eval }}
         {% endfor %}
