@@ -27,30 +27,29 @@
 	  <div class="nav-collapse">
 	    <ul class="nav">
 	      <li class="active" id="home-nav">
-		<a href="{% url 'profile_index' %}">
-		  Home
-		</a>
+		  	<a href="{% url 'profile_index' %}">
+		  	Home
+			</a>
 	      </li>
 	      <li class="item" id="project-nav">
-		<a href="{% url 'project_index' %}">
-		  Projects
-		</a>
+			<a href="{% url 'project_index' %}">
+		  	Projects
+			</a>
 	      </li>
 	      <li class="item" id="profiles-nav">
 		<a href="{% url 'profile_index' %}">
 		  Profiles
 		</a>
-	      </li>
-	    </ul>
-
-	    <ul class="nav" style="float:right">
-	    {% if user.is_authenticated %}
-	      <li class="item">
+	</li>
+	      	    {% if user.is_authenticated %}
+	     <li class="item" id="profile-nav">
 		<a href="{% url 'profile_detail' user.id %}">
 		  {{ user.email }}
 		</a>
 	      </li>
-	      <li class="dropdown">
+
+	    </ul>
+	    <ul class="nav" style="float:right">
 	      <li class="item">
 		<a href="{% url 'logout' %}">
 		  (logout)
@@ -117,11 +116,13 @@
 	    	case "/profiles/":
 	    		$('#profiles-nav').addClass('active').siblings().removeClass('active');
 	    		break;
+	    	case '/profiles/{{ user.id }}/':
+	    		$('#profile-nav').addClass('active').siblings().removeClass('active');
+	    		break;
 	    	default:
 	    		$('#home-nav').addClass('active').siblings().removeClass('active');
 	    		break;
 	    }
-
     });
 
   </script>
