@@ -3,7 +3,8 @@
 
 {% block title %}| {{ person.full_name }}{% endblock %}
 
-{% block head %}<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>{% endblock %}
+{% block head %}<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>
+{% endblock %}
 
 {% block content %}
 <body class='background'>
@@ -40,15 +41,14 @@
   </ul>
   <div class="tab-content">
   <div class="tab-pane active" id="lB">
-
+<!--
     <div class='profile-banner' align=center>
       {% for badge in person.badge.all %}
         {% if forloop.counter == 1 or forloop.counter == 2 or forloop.counter == 3 %}
           <img src="{% static badge.badge_image  %}" alt="My image" height="250" width="250" /> &nbsp;
         {% endif %}
       {% endfor %}
-
-    </div>
+    </div>-->
 
     <!--TODO implement gravatar profile images-->
     <br/><br/><br/><br/>
@@ -192,7 +192,7 @@
       <div class="tab-pane" id="lE">
 
         {% if not person.badge.all %}
-        No badges yet.
+        No badges yet =( Upload One Below!
         {% endif %}
 
         <div>
@@ -203,7 +203,6 @@
                   <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner" align=center>
-
                   {% for badge in person.badge.all %}
                   {% if forloop.counter == 1 %}
                   <div class="active item">
@@ -217,13 +216,20 @@
                     </div>
                   </div>
                   {% endfor %}
-
                 </div>
                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
                 <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
               </div>
             </div>
-
+          <br/><br/><br/><br/><br/><br/>
+          <div>
+          Upload Badges for {{ person.full_name }}!
+          <form action="" method="post" enctype="multipart/form-data">
+          {{ form.as_table }}
+          {% csrf_token %}
+          <input type="submit" value="Submit">
+          </form>
+          </div>
           <!--<ul>
             {% for badge in person.badge.all %}
             <li class='badge-list'>

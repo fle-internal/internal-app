@@ -40,12 +40,14 @@
 		<a href="{% url 'profile_index' %}">
 		  Profiles
 		</a>
+	</li>
 	      	    {% if user.is_authenticated %}
-	      <li class="item">
+	     <li class="item" id="profile-nav">
 		<a href="{% url 'profile_detail' user.id %}">
 		  {{ user.email }}
 		</a>
 	      </li>
+
 	    </ul>
 	    <ul class="nav" style="float:right">
 	      <li class="item">
@@ -114,11 +116,13 @@
 	    	case "/profiles/":
 	    		$('#profiles-nav').addClass('active').siblings().removeClass('active');
 	    		break;
+	    	case '/profiles/{{ user.id }}/':
+	    		$('#profile-nav').addClass('active').siblings().removeClass('active');
+	    		break;
 	    	default:
 	    		$('#home-nav').addClass('active').siblings().removeClass('active');
 	    		break;
 	    }
-
     });
 
   </script>
