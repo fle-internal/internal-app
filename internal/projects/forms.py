@@ -1,5 +1,6 @@
 from django.forms import *
 from projects.models import *
+from datetime import date
 
 class RoleForm(ModelForm):
 
@@ -10,7 +11,9 @@ class RoleForm(ModelForm):
 
 class ProjectForm(ModelForm):
     name = CharField(label='Project Name')
+    start_date = DateField(widget=forms.TextInput(attrs={'class':'datepicker'}))
+    deadline= DateField(widget=forms.TextInput(attrs={'class':'datepicker'}))
     class Meta:
         model = Project
-        exclude = ("collaborators" , )
+        exclude = ("collaborators" , "start_date", "deadline")
         widgets = { 'owner': HiddenInput }

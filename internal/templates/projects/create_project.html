@@ -5,10 +5,17 @@
 
 {% block head %}
 <link style='text/css' rel='stylesheet' href='{% static 'projects/project.css' %}'/>
+ <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+ <script src="{{ STATIC_URL }}date/jquery-1.9.1.js"></script>
+ <script src="{{ STATIC_URL }}date/jquery-ui.js"></script>
+
+ <script>
+  $(function() {
+    $( ".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
+  });
+  </script>
 {% endblock %}
 
-<style='text/css'>
-</style>
 
 {% block content %}
 
