@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}| FLE DASHBOARD{% endblock %}
+
+{% block head %}<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>    
+                <script src="http://code.jquery.com/jquery.js"></script>
+{% endblock %}
+
+{% block content %}
+<body class='background'>
+
+    <h1>WELCOME TO THE FLE DASHBOARD!</h1>
+    <br/>
+    <br/><br/><br/>
+    <div id='about' class='title'>
+          Fle MetaNews
+    </div>
+          <div class='info'>
+          <p><b>RECENT:</b></p><br/>
+          {% for news in something %}
+          <li>-{{ news.date }} - {{ news.description }}</li>
+          {% endfor %}
+          </div>
+
+      <div id='other-links'>
+          Status: 
+          {% if not user.is_authenticated %}
+          Not logged in, please sign in above!
+          {% else %}
+          You are signed in.
+          {% endif %}
+      </div>
+      <div id='projects'>
+        <p class='title'>Recent Git Merges/Change Updates</p>
+        <br/>
+        <div>
+        <ol class='projects list'>
+        <li>-THIS IS WHERE THE GIT UPDATES WOULD GO ONCE IMPLEMENTED WITH GITHUB</li>
+        {% for updates in something %}
+        <li>-{{ update }}</li>
+        {% endfor %}
+        </ol>
+      </div>
+        <p align=right>
+        <a class='link-decor' href="https://github.com/learningequality"><button class="btn btn-1 btn-1a">Link to the Fle github!</button></a>
+        </p>
+      </div>
+
+ <div class='feedbackk' class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" style="color:black;"id="yo">
+        ANNOUNCEMENTS!
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner" id="yo" style="color:black;">
+        {% for morenews in something %}
+        <li>-{{ morenews }}</li>
+        {% endfor %}
+        SCHOOLS ABOUT TO START!!
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
