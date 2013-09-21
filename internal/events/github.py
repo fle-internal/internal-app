@@ -2,8 +2,16 @@ from datetime import datetime
 
 from django.dispatch import receiver
 
+from events.signals import github_issue_updated
 from profiles.models import TeamMember
 from projects.models import Project, Task
+
+# wrapper function to the main worker function
+@receiver(github_issue_updated)
+def update_task(sender, **kwargs):
+    issue = kwargs['issue']
+    repo = kwargs['repo']
+    return update_task_from_issue(issue, repo)
 
 def update_task_from_issue(issue, repo):
     url = issue['html_url']
