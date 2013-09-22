@@ -2,6 +2,7 @@ import contextlib
 import json
 import urllib
 import urllib2
+from datetime import datetime
 
 from django.conf import settings
 from django.dispatch import receiver
@@ -36,11 +37,13 @@ def _save_issue_event(event):
     actor = event['actor']['login']
     url = event['payload']['issue']['html_url']
     issue_number = event['payload']['issue']['number']
+    date = datetime.strptime(event['payload']['issue']['updated_at'], '%Y-%m-%dT%H:%M:%SZ').date()
     title = "{} {} issue #{}.".format(actor, action, issue_number)
     desc = "User {} has {} issue #{}.".format(actor, action, issue_number)
     return News.objects.create(title=title,
                                description=desc,
                                link=url,
+                               date=date,
                                type='IssuesEvent')
 
 def _save_issue_comment_event(event):
@@ -48,6 +51,7 @@ def _save_issue_comment_event(event):
     actor = event['actor']['login']
     issue_number = event['payload']['issue']['number']
     url = event['payload']['comment']['html_url']
+    date = datetime.strptime(event['payload']['comment']['updated_at'], '%Y-%m-%dT%H:%M:%SZ').date()
     title = "@{} commented on issue #{}".format(actor, issue_number)
     desc = "User @{} commented on issue #{}: {}".format(actor,
                                                         issue_number,
@@ -55,4 +59,5 @@ def _save_issue_comment_event(event):
     return News.objects.create(title=title,
                                description=desc,
                                link=url,
+                               date=date,
                                type='IssueCommentEvent')
