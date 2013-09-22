@@ -7,6 +7,9 @@ class News(models.Model):
     link = models.URLField(null=True, blank=True)
     date = models.DateField()
 
+    class Meta:
+        ordering = ['-date']
+
     @classmethod
     def recent(self):
         return self.objects.all()[:10]
