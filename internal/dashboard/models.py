@@ -5,3 +5,7 @@ class News(models.Model):
     description = models.TextField()
     type = models.CharField(max_length=20)
     link = models.URLField(null=True, blank=True)
+
+    @classmethod
+    def recent(self):
+        return self.objects.all()[:10]
