@@ -127,7 +127,9 @@ a:hover{
   clear:both;
   color:#fff;
   }
-
+#yo{
+  text-align: center;
+}
 .projects{
   align:center;
   padding-bottom:2em;
@@ -137,7 +139,10 @@ a:hover{
   clear:both;
   background-color:#2e9f7d;
 }
-
+.feedbackk{
+  clear:both;
+  background-color:#2e9f7d;
+}
 .feedback{
   padding-bottom:2em;
   letter-spacing:1px;
