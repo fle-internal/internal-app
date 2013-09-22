@@ -26,9 +26,8 @@
 	  </a>
 	  <div class="nav-collapse">
 	    <ul class="nav">
-	      <li class="active" id="home-nav">
-		  	<a href="{% url 'profile_index' %}">
-		  	Home
+	      <li id="home-nav">
+		  	<a href='/dashboard/'>Home</a>
 			</a>
 	      </li>
 	      <li class="item" id="project-nav">
@@ -110,10 +109,10 @@
 
 	    var cur_path = window.location.pathname;
 	    switch(cur_path){
-	    	case "/projects/":
+	    	case '/projects/':
 	    		$('#project-nav').addClass('active').siblings().removeClass('active');
 	    		break;
-	    	case "/profiles/":
+	    	case '/profiles/':
 	    		$('#profiles-nav').addClass('active').siblings().removeClass('active');
 	    		break;
 	    	case '/profiles/{{ user.id }}/':
