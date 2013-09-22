@@ -34,9 +34,25 @@ def save_event(event):
 def _save_issue_event(event):
     action = event['payload']['action']
     actor = event['actor']['login']
+    url = event['payload']['issue']['html_url']
     issue_number = event['payload']['issue']['number']
     title = "{} {} issue #{}.".format(actor, action, issue_number)
     desc = "User {} has {} issue #{}.".format(actor, action, issue_number)
     return News.objects.create(title=title,
                                description=desc,
+                               link=url,
                                type='IssuesEvent')
+
+def _save_issue_comment_event(event):
+    content = event['payload']['comment']['body']
+    actor = event['actor']['login']
+    issue_number = event['payload']['issue']['number']
+    url = event['payload']['comment']['html_url']
+    title = "@{} commented on issue #{}".format(actor, issue_number)
+    desc = "User @{} commented on issue #{}: {}".format(actor,
+                                                        issue_number,
+                                                        content)
+    return News.objects.create(title=title,
+                               description=desc,
+                               link=url,
+                               type='IssueCommentEvent')
