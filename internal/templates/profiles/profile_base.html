@@ -6,14 +6,20 @@
 {% block head %}<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>{% endblock %}
 
 {% block content %}
+
+<style type='text/css'>
+
+
+</style>
+
 <body class='background'>
 
 {% if user.is_authenticated and user.id == person.id %}
 <div class="accordion" id="accordion2 task-drop">
                 <div class="accordion-group task-drop">
-                  <div class="accordion-heading">
+                  <div class="accordion-heading cl-effect-12 cl">
                     <a class="accordion-toggle link-decor" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" align=center>
-                      <div class='cl-effect-12'><h2 class='task-head'>Tasks</h2></div>
+                      <div class=''><h2 class='task-head'>Tasks</h2></div>
                     </a>
                   </div>
                 </div>
@@ -23,7 +29,7 @@
                       No tasks at the moment.
                       {% endif %}
 
-                      {% for task in tasks %}
+                      {% for task in task.project %}
                         <p>{{ task.project.name }}: {{ task.description }}</p>
                       {% endfor %}
                     </div>
@@ -41,9 +47,13 @@
   <div class="tab-content">
   <div class="tab-pane active" id="lB">
 
+{% if user.is_authenticated and user.id == person.id %}
+<br/><br/><br/><br/><br/><br/><br/>
+{% endif %}
+
     <div class='profile-banner' align=center>
       {% for badge in person.badge.all %}
-        {% if forloop.counter == 1 or forloop.counter == 2 or forloop.counter == 3 %}
+        {% if forloop.revcounter == 1 or forloop.revcounter == 2 or forloop.revcounter == 3 %}
           <img src="{% static badge.badge_image  %}" alt="My image" height="250" width="250" /> &nbsp;
         {% endif %}
       {% endfor %}
@@ -51,7 +61,7 @@
     </div>
 
     <!--TODO implement gravatar profile images-->
-    <img src='{{ person.profile_img }}' class='profile-pic'>
+    <img src='{{ person.avatar }}' class='profile-pic' alt='member'>
 
     <br/><br/><br/>
     <h1>&nbsp;{{ person.full_name }}</h1>
@@ -95,19 +105,26 @@
       <div id='projects'>
         <p class='title'>Projects</p>
         <br/>
+
         <div>
-        <ul class='projects list' align=center>
-          {% if not role %}
+          <ul class='content' align=center>
+          {% if not person.roles.all %}
           {{ person.first_name }} is not involved in any projects yet. <br/>
           {% endif %}
-          
+
           {% for role in person.roles.all %}
-          {% if forloop.counter == 1 or forloop.counter == 2 or forloop.counter == 3 %}
-          <li><a class='link-decor' href="{% url 'project_detail' role.project.id %}">{{ role.project.name }}</a> as <b>{{ role.role_name }}</b> {% if role.project.owner.id == person.id %} and <b>project owner</b></li>
+          {% if forloop.revcounter == 1 or forloop.revcounter == 2 or forloop.revcounter == 3 %}
+          <li class='cl-effect-12 cl list'><a class='link-decor' href="{% url 'project_detail' role.project.id %}">
+            {{ role.project.name }}
+          </a>
+          <span style='font-weight:200;'>as </span>
+          {{ role.role_name }} 
+          {% if role.project.owner.id == person.id %}<span style='font-weight:200;'> and</span> project owner
+          </li>
+          <br/><br/>
         {% endif %}
         {% endif %}
         {% endfor %}
-        </ul>
       </div>
 
         <p align=right>
@@ -118,7 +135,7 @@
       <div id='feedback'>
         <p class='title'>Feedback Summary</p>
         <br/>
-        <div class='feedback' align=center>
+        <div class='content' align=center>
         {% if avg %}
         <em>Average stars</em><br/>
       Overall: {{ avg.overall_rating__avg }} <br/>
@@ -139,22 +156,26 @@
 
       <br/><br/>
 </body>
-
-
   </div>
 
+
       <div class="tab-pane" id="lC">
-        <ul class='projects list' align=center>
-          {% if not role %}
-          {{ person.first_name }} is not involved in any projects yet. <br/>
+          {% if not person.roles.all %}
+          {{ person.first_name }} is not involved in any projects yet.<br/>
           {% endif %}
-          
+
+          <ul class='content' align=center>
           {% for role in person.roles.all %}
-          {% if forloop.counter == 1 or forloop.counter == 2 or forloop.counter == 3 %}
-          <li><a class='link-decor' href="{% url 'project_detail' role.project.id %}">{{ role.project.name }}</a> as <b>{{ role.role_name }}</b>{% if role.project.owner.id == person.id %} and <b>project owner</b></li>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
+          <li class='cl-effect-12 cl list'><a class='link-decor' href="{% url 'project_detail' role.project.id %}">
+            {{ role.project.name }}
+          </a>
+          <span style='font-weight:200;'>as </span>
+          {{ role.role_name }} 
+          {% if role.project.owner.id == person.id %}<span style='font-weight:200;'> and</span> project owner
+          </li>
+          <br/><br/>
+        {% endif %}
+        {% endfor %}
         </ul>
         
 
@@ -171,13 +192,20 @@
 
 
       <div class="tab-pane feedback" id="lD">
-        {% if not person.feedback.all %}
-        No evaluations made yet.
+        {% if not avg%}
+        No evaluations made yet.<br/>
         {% endif %}
-        
-        {% for eval in person.feedback.all %}
-        {{ eval }}
-        {% endfor %}
+
+        {% if avg %}
+        Participation<br/>
+        {{ avg.participation__rationale }}<br/>
+        Contribution<br/>
+        {{ avg.contribution__rationale }}<br/>
+        Communication<br/>
+        {{ avg.communication__rationale }} <br/>
+        Ease of working together<br/>
+        {{ avg.ease_of_working_together__rationale }}<br/>
+        {% endif %}
 
         <p align=center>
           <a  class='link-decor' href="{% url 'feedback_create' user.id %}">
@@ -193,8 +221,8 @@
 
         {% if not person.badge.all %}
         No badges yet.
-        {% endif %}
-
+        
+        {% else %}
         <div>
           <div id="myCarousel" class="carousel slide">
                 <ol class="carousel-indicators">
@@ -223,23 +251,12 @@
                 <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
               </div>
             </div>
-
-          <!--<ul>
-            {% for badge in person.badge.all %}
-            <li class='badge-list'>
-              <h3>{{ badge }}</h3>
-              <img src="{% static badge.badge_image  %}" alt="My image" height="100" width="100" />
-                <br/>
-              For {{ badge.description }}
-            </li>
-            <br/>
-            {% endfor %}
-          </ul>
-        </div>-->
+          {% endif %}
 
       <br/><br/>
 
-      {% if not user.is_authenticated and user.id == person.id %}
+          {% if user.is_authenticated and user.id == person.id %}
+          {% else %}
           <div align=center>
           Upload a badge for {{ person.first_name }} here!<br/>
           <form action="" method="post" enctype="multipart/form-data">
@@ -248,7 +265,7 @@
           <input type="submit" value="Submit">
           </form>
         </div>
-      {% endif %}
+        {% endif %}
 
       </div>
 
