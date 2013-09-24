@@ -3,14 +3,11 @@
 
 {% block title %}| {{ person.full_name }}{% endblock %}
 
-{% block head %}<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>{% endblock %}
+{% block head %}<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>    
+                <script src="http://code.jquery.com/jquery.js"></script>
+{% endblock %}
 
 {% block content %}
-
-<style type='text/css'>
-
-
-</style>
 
 <body class='background'>
 
@@ -26,11 +23,14 @@
                 <div id="collapseOne" class="accordion-body collapse in task-drop task-space">
                     <div class="accordion-inner">
                       {% if not tasks %}
-                      No tasks at the moment.
+                      No tasks have been assigned.
                       {% endif %}
 
-                      {% for task in task.project %}
-                        <p>{{ task.project.name }}: {{ task.description }}</p>
+                      {% for task in tasks %}
+                      <ul>
+                        <li>
+                          {{ task.description }}
+                        </li>
                       {% endfor %}
                     </div>
                 </div>
@@ -46,10 +46,10 @@
   </ul>
   <div class="tab-content">
   <div class="tab-pane active" id="lB">
-
+<!--
 {% if user.is_authenticated and user.id == person.id %}
 <br/><br/><br/><br/><br/><br/><br/>
-{% endif %}
+{% endif %}-->
 
     <div class='profile-banner' align=center>
       {% for badge in person.badge.all %}
@@ -57,31 +57,31 @@
           <img src="{% static badge.badge_image  %}" alt="My image" height="250" width="250" /> &nbsp;
         {% endif %}
       {% endfor %}
-      
     </div>
 
-    <!--TODO implement gravatar profile images-->
-    <img src='{{ person.avatar }}' class='profile-pic' alt='member'>
+    <img src='{{ person.gravatar }}' class='profile-pic'>
 
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/>
+
     <h1>&nbsp;{{ person.full_name }}</h1>
-    <br/>
-
+    
+    <br/><br/>
+    
     <div id='about' class='title'>
           About
       </div>
       <div class='info'>
           <p>{{ person.bio }}</p>
-          
+
           <p><b>Contact:</b></p><br/>
           {{ person.contact }}
-          
+
           <p><b>{{ person.github }}</b></p>
-          
+
           <p><b>Skills:</b></p>
           {{ person.skills }}
       </div>
-  
+
       <div class='badges'>
           {% for badge in person.badge.all %}
           <img src="{% static badge.badge_image  %}" alt="My image" height="50" width="50" />
@@ -90,7 +90,7 @@
       <div id='badges'>
           Badges
       </div>
-      
+
       <div class='other-links'> <!--TODO implement option to add other links in profile creation-->
           {% for link in links %}
           <ul>
@@ -101,7 +101,7 @@
       <div id='other-links'>
           Other Links
       </div>
-      
+
       <div id='projects'>
         <p class='title'>Projects</p>
         <br/>
@@ -177,7 +177,7 @@
         {% endif %}
         {% endfor %}
         </ul>
-        
+
 
         <p align=center>
         <a class='link-decor' href="{% url 'project_create' %}">
@@ -221,8 +221,8 @@
 
         {% if not person.badge.all %}
         No badges yet.
-        
-        {% else %}
+        {% endif %}
+
         <div>
           <div id="myCarousel" class="carousel slide">
                 <ol class="carousel-indicators">
@@ -231,7 +231,6 @@
                   <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner" align=center>
-
                   {% for badge in person.badge.all %}
                   {% if forloop.counter == 1 %}
                   <div class="active item">
@@ -245,15 +244,11 @@
                     </div>
                   </div>
                   {% endfor %}
-
                 </div>
                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
                 <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
               </div>
             </div>
-          {% endif %}
-
-      <br/><br/>
 
           {% if user.is_authenticated and user.id == person.id %}
           {% else %}

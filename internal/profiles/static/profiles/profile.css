@@ -20,7 +20,7 @@
 }
 
 .profile-banner{
-  margin-bottom:-5em;
+  margin-bottom:-7em;
   position:relative;
   z-index:-1;
 }
@@ -54,8 +54,8 @@
 }
 
 .profile-pic{
-  height:8em;
-  width:8em;
+  height:12em;
+  width:12em;
   float:left;
   border-radius:5%;
   margin-bottom:1em;
@@ -135,7 +135,6 @@
   padding-bottom:2em;
   letter-spacing:1px;
   }
-
 
   /* Button styles via Mary Lou at Typmanus.net */
 /* General button style (reset) */
