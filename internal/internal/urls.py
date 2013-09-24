@@ -11,10 +11,10 @@ import views
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url('^$', profiles.urls.profile_index, name='home'),
+    url('^$', 'dashboard.views.dashboard', name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^contact/', views.contact),
-    url(r'^dashboard/', views.dashboard),
+    url(r'^dashboard/', include('dashboard.urls')),
     url(r'^events/', include('events.urls')),
     url(r'^feedbacks/', include(feedbacks.urls)),
     url(r'^logout/$', 'profiles.views.logout', name='logout'),
