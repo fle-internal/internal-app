@@ -3,7 +3,7 @@
 
 {% block title %}| {{ person.full_name }}{% endblock %}
 
-{% block head %}<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>    
+{% block head %}<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>
                 <script src="http://code.jquery.com/jquery.js"></script>
 {% endblock %}
 
@@ -59,14 +59,14 @@
       {% endfor %}
     </div>
 
-    <img src='{{ person.gravatar }}' class='profile-pic'>
+    <img src='{{ person.avatar }}' class='profile-pic'>
 
     <br/><br/><br/><br/><br/>
 
     <h1>&nbsp;{{ person.full_name }}</h1>
-    
+
     <br/><br/>
-    
+
     <div id='about' class='title'>
           About
       </div>
@@ -118,7 +118,7 @@
             {{ role.project.name }}
           </a>
           <span style='font-weight:200;'>as </span>
-          {{ role.role_name }} 
+          {{ role.role_name }}
           {% if role.project.owner.id == person.id %}<span style='font-weight:200;'> and</span> project owner
           </li>
           <br/><br/>
@@ -170,7 +170,7 @@
             {{ role.project.name }}
           </a>
           <span style='font-weight:200;'>as </span>
-          {{ role.role_name }} 
+          {{ role.role_name }}
           {% if role.project.owner.id == person.id %}<span style='font-weight:200;'> and</span> project owner
           </li>
           <br/><br/>
