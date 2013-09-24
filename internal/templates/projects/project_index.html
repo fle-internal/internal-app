@@ -4,29 +4,32 @@
 {% block title %}| Project Index{% endblock %}
 
 {% block head %}
+<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>    
+<script src="http://code.jquery.com/jquery.js"></script>
 {% endblock %}
 <link type="test/css" rel="stylesheet" href="{% static 'projects/project.css' %}"/>
 
 {% block content %}
 <body id='pad-top'>
 <div id="section">
-  
-  
   <!--list user's projects and subtitle it with their position-->
   <!--also make clickthrough links to the github or other relevant page-->
 </div>
 
 <!--check if projects are active or not-->
-<div id='section'>
-  <h2>Projects:</h2>
-  {% for project in projects %}
-    <b id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a>{{ done }}</a></b>
-	 <li>{{ project.description }}</li>
-
-  {% endfor %}
-  <!--list user's past inactive/complete projects by month including position-->
-  <!--make project titles click throughs to github? final result?-->
-</div>
+      <div id='feedback'>
+        <p class='title'>Fle Projects:</p>
+        <br/>
+        <div class='feedback' align=center>
+        <em>Active Projects:</em><br/>
+  		{% for project in projects %}
+    	<h4 id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a>{{ done }}</a></h4>
+	 	<li>{{ project.description }}</li>
+  		{% endfor %}
+        </div>
+          <p align=right>
+        <a  class='link-decor' href="{% url 'feedback_create' user.id %}"></a>
+        </p>
+      </div>
 </body>
-
 {% endblock %}
