@@ -8,10 +8,10 @@
     <title> KALite Internal {% block title %} Home page {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type="text/css" media="screen" />
     {% block head %}
-    <script src="http://code.jquery.com/jquery.js"></script>
     {% endblock %}
   </head>
   <body>
+    <script src="http://code.jquery.com/jquery.js"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -26,29 +26,31 @@
 	  </a>
 	  <div class="nav-collapse">
 	    <ul class="nav">
-	      <li id="home-nav">
-		  	<a href='/dashboard/'>Home</a>
-			</a>
+	      <li class="active" id="home-nav">
+		<a href="{% url 'home' %}">
+		  Home
+		</a>
 	      </li>
 	      <li class="item" id="project-nav">
-			<a href="{% url 'project_index' %}">
-		  	Projects
-			</a>
+		<a href="{% url 'project_index' %}">
+		  Projects
+		</a>
 	      </li>
 	      <li class="item" id="profiles-nav">
 		<a href="{% url 'profile_index' %}">
 		  Profiles
 		</a>
-	</li>
-	      	    {% if user.is_authenticated %}
-	     <li class="item" id="profile-nav">
+	      </li>
+	    </ul>
+
+	    <ul class="nav" style="float:right">
+	    {% if user.is_authenticated %}
+	      <li class="item">
 		<a href="{% url 'profile_detail' user.id %}">
 		  {{ user.email }}
 		</a>
 	      </li>
-
-	    </ul>
-	    <ul class="nav" style="float:right">
+	      <li class="dropdown">
 	      <li class="item">
 		<a href="{% url 'logout' %}">
 		  (logout)
@@ -60,7 +62,7 @@
 		  Login
 		</a>
 	      </li>
-	      {% endif %}	
+	      {% endif %}
 	    </ul>
 
 	  </div>
@@ -109,19 +111,17 @@
 
 	    var cur_path = window.location.pathname;
 	    switch(cur_path){
-	    	case '/projects/':
+	    	case "/projects/":
 	    		$('#project-nav').addClass('active').siblings().removeClass('active');
 	    		break;
-	    	case '/profiles/':
+	    	case "/profiles/":
 	    		$('#profiles-nav').addClass('active').siblings().removeClass('active');
-	    		break;
-	    	case '/profiles/{{ user.id }}/':
-	    		$('#profile-nav').addClass('active').siblings().removeClass('active');
 	    		break;
 	    	default:
 	    		$('#home-nav').addClass('active').siblings().removeClass('active');
 	    		break;
 	    }
+
     });
 
   </script>

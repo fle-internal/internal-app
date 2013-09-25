@@ -5,34 +5,26 @@
 
 {% block head %}
 <link style='text/css' rel='stylesheet' href='{% static 'projects/project.css' %}'/>
- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
- <script src="{{ STATIC_URL }}date/jquery-1.9.1.js"></script>
- <script src="{{ STATIC_URL }}date/jquery-ui.js"></script>
-
- <script>
-  $(function() {
-    $( ".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
-  });
-  </script>
 {% endblock %}
 
+<style='text/css'>
+</style>
 
 {% block content %}
 
 <body id='pad-top'>
   <div id='section'>
 
-    <form action='' method='post'>
-
-      {% csrf_token %}
-
-      {{ project_form.as_p }}
-
-      <input type='submit' class="btn btn-success" name='submit' value='Create Project'></p>
-    </form>
+    <form action='/projects/create/' method='post'>{% csrf_token %}
+    
+	<h5>{{form.as_p}}</h5>
+    
   </div>
 
 <p Align=Center>
+	<a href='/projects/'>Cancel</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='submit' name='submit' value='Create Project'></p>
 <br/>
 <br/>
 </form>

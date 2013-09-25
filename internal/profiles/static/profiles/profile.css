@@ -15,21 +15,17 @@
   margin-bottom:5em;
 }
 
-a:hover{
-  text-decoration:none;
-  color:inherit;
-}
-
 .task-head{ 
   font-weight:200;
 }
 
 .profile-banner{
-  margin-bottom:-5em;
+  margin-bottom:-7em;
   position:relative;
+  z-index:-1;
 }
 
-.link-decor{
+.link-decor {
   text-decoration:none;
   color:inherit;
 }
@@ -44,6 +40,7 @@ a:hover{
   font-size:1.25em;
   letter-spacing:2px;
   font-weight:400;
+  padding-top:1em;
   }
 
 .badge-list{
@@ -62,6 +59,7 @@ a:hover{
   float:left;
   border-radius:5%;
   margin-bottom:1em;
+  z-index:1;
   }
 
 #about{
@@ -127,29 +125,18 @@ a:hover{
   clear:both;
   color:#fff;
   }
-#yo{
-  text-align: center;
-}
-.projects{
-  align:center;
-  padding-bottom:2em;
-  }
 
 #feedback{
   clear:both;
   background-color:#2e9f7d;
 }
-.feedbackk{
-  clear:both;
-  background-color:#2e9f7d;
-}
-.feedback{
+
+.content{
   padding-bottom:2em;
   letter-spacing:1px;
   }
 
-
-  /* Button styles */
+  /* Button styles via Mary Lou at Typmanus.net */
 /* General button style (reset) */
 .btn {
   border: none;
@@ -190,4 +177,61 @@ a:hover{
 .btn-submit:hover,
 .btn-submit:active{
   color: #2e9f7d;
+}
+
+/* Link effects via Mary Lou at Typmanus.net/codrops/2013/08/06/creative-link-effects/ */
+/* Effect 12: circle */
+.cl-effect-12 a::before,
+.cl-effect-12 a::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgba(0,0,0,0.1);
+  border-radius: 50%;
+  content: '';
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(0.2);
+  -moz-transform: translateX(-50%) translateY(-50%) scale(0.2);
+  transform: translateX(-50%) translateY(-50%) scale(0.2);
+}
+
+.cl-effect-12 a::after {
+  width: 40px;
+  height: 40px;
+  border-width: 6px;
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(0.8);
+  -moz-transform: translateX(-50%) translateY(-50%) scale(0.8);
+  transform: translateX(-50%) translateY(-50%) scale(0.8);
+}
+
+.cl-effect-12 a:hover::before,
+.cl-effect-12 a:hover::after,
+.cl-effect-12 a:focus::before,
+.cl-effect-12 a:focus::after {
+  opacity: 1;
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(1);
+  -moz-transform: translateX(-50%) translateY(-50%) scale(1);
+  transform: translateX(-50%) translateY(-50%) scale(1);
+}
+
+.cl a {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  color: inherit;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-shadow: 0 0 1px rgba(255,255,255,0.3);
+  font-size: 1.25em;
+}
+
+.cl a:hover,
+.cl a:focus {
+  outline: none;
 }
