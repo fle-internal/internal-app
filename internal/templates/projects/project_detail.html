@@ -10,14 +10,17 @@
 {% endblock %}
 
 {% block content %}
-<body id='pad-top'>
-      <div id='projects'>
+<body id='pad-top' style="background-color:#e9eaed;">
+      <div id='about' class='title' style="background-color:#36669d;width:98.6%">
+          Main Detail
+      </div>
+      <div id='projects' style="background-color:white; color:black;">
         <p class='title'>{{ project_title }}</p>
         <br/>
         <div>
         <ul class='projects list' align=center>
             <DL>
-            <br/><a href="{% url 'project_edit' project.id%}" style="font-siz e: 15px; text-decoration: none">[Edit Project]</a><br/><br/>
+            <br/><a href="{% url 'project_edit' project.id%}" style="font-size: 15px; text-decoration: none">[Edit Project]</a><br/><br/>
             <DT>Description: </p>
             <dd style="font-size:0.8em">Project Name: {{ project.description }}</dd>
             </dl>
@@ -29,8 +32,10 @@
       </div>
     </div>
     </div>
-
-      <div id='feedback'>
+    <div id='about' class='title' style="background-color:#36669d;width:98.6%">
+          Involvement
+      </div>
+      <div id='feedback' style="background-color:white;">
         <br/>
         <div class='feedback' align=center>
         <b>Leader(s):</b> {{ project.owner }} <br/>
@@ -44,8 +49,10 @@
       </div>
       <br/>
 
-
-      <div id='feedbackk' style="background-color: rgb(201, 90, 93)">
+    <div id='about' class='title' style="background-color:#2e9f7d ;width:98.6%">
+          Assign Individual Tasks
+      </div>
+      <div id='feedbackk' style="background-color: white;">
         <ul class='projects list' align=center>
             <br/>Tasks: 
               <ul id="list">
@@ -56,9 +63,10 @@
               <form method="post">
               {% csrf_token %}
               {{ form }}
-              <input type="submit" value="Submit" class="btn btn-success btn-large" style="background-color: rgb(221, 90, 93)" />
+              <input type="submit" value="Submit" class="btn btn-success btn-mini" style="color:white;background-color:#2e9f7d" />
             </form>
         </ul>
+        <br/>
       </div>
     </div>
 </body>
