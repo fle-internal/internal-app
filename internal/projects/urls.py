@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     url(r'^(?P<id>\d+)/$', details, name='project_detail'),
     url(r'^create/$', create_project, name='project_create'),
     url(r'^edit(?P<id>\d+)/$', edit_project, name='project_edit'),
-    url(r'^join/(?P<id>\d+)/$', join_project, name='project_join'),
  )
+	
+

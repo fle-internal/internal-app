@@ -29,9 +29,9 @@
   <div id = "separator"></div>
     <h2>the TEAM</h2>
     {% for person in persons %}
-    <div class="profile_container">
+    <div class="profile_container" style="padding-bottom:100px;">
       <div class="headshot_frame">
-	<img src="{{ person.avatar }}" alt="member"/> <!-- TODO: fix when profile images are working now -->
+	<img src="{{ person.avatar }}" alt="member" height="130" width="130"/> <!-- TODO: fix when profile images are working now -->
 	<a style="color:black;" href="{% url 'profile_detail' person.id %}">{{ person.full_name }}</a>
       </div>
       <div class="profile_text">
