@@ -46,10 +46,6 @@
   </ul>
   <div class="tab-content">
   <div class="tab-pane active" id="lB">
-<!--
-{% if user.is_authenticated and user.id == person.id %}
-<br/><br/><br/><br/><br/><br/><br/>
-{% endif %}-->
 
     <div class='profile-banner' align=center>
       {% for badge in person.badge.all %}
@@ -59,13 +55,13 @@
       {% endfor %}
     </div>
 
-    <img src='{{ person.avatar }}' class='profile-pic'>
+    <img src='{{ person.avatar }}' alt="member" class='profile-pic'/>
 
-    <br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 
     <h1>&nbsp;{{ person.full_name }}</h1>
 
-    <br/><br/>
+    <br/>
 
     <div id='about' class='title'>
           About
@@ -92,9 +88,12 @@
       </div>
 
       <div class='other-links'> <!--TODO implement option to add other links in profile creation-->
-          {% for link in links %}
+
           <ul>
-            <li><a class='link-decor' href="{% url '#' %}">{{ link }}</a></li>
+          {% for link in links %}
+            <li>
+              <a class='link-decor' href="{% url '#' %}">{{ link }}</a>
+            </li>
           </ul>
           {% endfor %}
       </div>
