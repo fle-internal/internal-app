@@ -10,22 +10,26 @@
 <link type="test/css" rel="stylesheet" href="{% static 'projects/project.css' %}"/>
 
 {% block content %}
-<body id='pad-top'>
+<body id='pad-top' style="background-color:#e9eaed;">
 <div id="section">
   <!--list user's projects and subtitle it with their position-->
   <!--also make clickthrough links to the github or other relevant page-->
 </div>
 
 <!--check if projects are active or not-->
+    <div id='about' class='title' style="background-color:#2e9f7d;width:98.6%">
+          FLE Project List
+      </div>
       <div id='feedback'>
-        <p class='title'>Fle Projects:</p>
         <br/>
-        <div class='feedback' align=center>
+        <div class='feedback' align=center style="background-color:white;">
+        <br/>
         <em>Active Projects:</em><br/>
   		{% for project in projects %}
     	<h4 id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a>{{ done }}</a></h4>
 	 	<li>{{ project.description }}</li>
   		{% endfor %}
+  		<br/><br/>
         </div>
           <p align=right>
         <a  class='link-decor' href="{% url 'feedback_create' user.id %}"></a>
