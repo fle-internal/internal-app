@@ -174,7 +174,7 @@ LOGGING = {
     }
 }
 
-LOGIN_URL = 'django.contrib.auth.views.login'
+LOGIN_URL = '/login/github/'
 LOGIN_REDIRECT_URL = '/'
 
 # social auth settings
