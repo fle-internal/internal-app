@@ -4,7 +4,7 @@
 {% block title %}| Project Index{% endblock %}
 
 {% block head %}
-<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>    
+<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>
 <script src="http://code.jquery.com/jquery.js"></script>
 {% endblock %}
 <link type="test/css" rel="stylesheet" href="{% static 'projects/project.css' %}"/>
@@ -36,7 +36,9 @@
   		<br/><br/>
         </div>
           <p align=right>
+	{% if user.is_authenticated %}
         <a  class='link-decor' href="{% url 'feedback_create' user.id %}"></a>
+	{% endif %}
         </p>
 </body>
 {% endblock %}
