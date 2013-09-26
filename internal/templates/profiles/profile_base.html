@@ -35,11 +35,10 @@
                     </div>
                 </div>
 </div>
+{% endif %}
 
 {% if not person.badge.all %}
   <br/><br/><br/></br/>
-{% endif %}
-
 {% endif %}
 
 <div class="tabbable tabs-left">
@@ -52,6 +51,9 @@
   <div class="tab-content">
   <div class="tab-pane active" id="lB">
 
+    {% if not person.badge.all %}
+    <br/><br/><br/><br/><br/><br/>
+    {% else %}
     <div class='profile-banner' align=center>
       {% for badge in person.badge.all %}
         {% if forloop.revcounter == 1 or forloop.revcounter == 2 or forloop.revcounter == 3 %}
@@ -59,6 +61,7 @@
         {% endif %}
       {% endfor %}
     </div>
+    {% endif %}
 
     <img src='{{ person.avatar }}' alt="member" class='profile-pic'/>
 

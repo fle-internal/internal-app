@@ -10,9 +10,15 @@
 {% block content %}
 <body class='background'>
 
-    <h1>WELCOME TO THE FLE DASHBOARD!</h1>
+    <div id="top_bar" align=center>
+      <img src="{% static 'profiles/img/FLE_banner.png' %}" alt="none"/>
+    </div>
+
     <br/>
-    <br/><br/><br/>
+
+    <h1 align=center>WELCOME TO THE FLE DASHBOARD</h1>
+    <br/>
+    
     <div id='about' class='title'>
           Fle MetaNews
     </div>
@@ -45,15 +51,39 @@
         </ol>
       </div>
         <p align=right>
-        <a class='link-decor' href="https://github.com/learningequality"><button class="btn btn-1 btn-1a">Link to the Fle github!</button></a>
+        <a class='link-decor' href="https://github.com/learningequality"><button class="btn btn-1 btn-1a">Link to the Fle github</button></a>
         </p>
       </div>
 
+
+<!--<div class="accordion" id="accordion2 task-drop">
+                <div class="accordion-group task-drop">
+                  <div class="accordion-heading cl-effect-12 cl">
+                    <a class="accordion-toggle link-decor" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" align=center>
+                      <div class=''><h2 class='task-head'>
+                        Announcements:
+                      </h2></div>
+                    </a>
+                  </div>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse in task-drop task-space">
+                    <div class="accordion-inner">
+                      {% for morenews in something %}
+                        <li>-{{ morenews }}</li>
+                      {% endfor %}
+                      SCHOOLS ABOUT TO START!!
+                    </div>
+                </div>
+</div>-->
+
+{% if not something %}
  <div class='feedbackk' class="accordion" id="accordion2">
   <div class="accordion-group">
-    <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" style="color:black;"id="yo">
-        ANNOUNCEMENTS!
+    <div class="accordion-heading" style='background-color:#f8ab97;'>
+      <a class="accordion-toggle link-decor" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" style="color:black; text-decoration:none;">
+        
+          Announcements
+
       </a>
     </div>
     <div id="collapseOne" class="accordion-body collapse in">
@@ -66,6 +96,8 @@
     </div>
   </div>
 </div>
+{% endif %}
+
 </body>
       </div>
     </div>
