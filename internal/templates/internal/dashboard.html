@@ -3,7 +3,7 @@
 
 {% block title %}| FLE DASHBOARD{% endblock %}
 
-{% block head %}<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>    
+{% block head %}<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>
                 <script src="http://code.jquery.com/jquery.js"></script>
 {% endblock %}
 
@@ -24,7 +24,7 @@
           </div>
 
       <div id='other-links'>
-          Status: 
+          Status:
           {% if not user.is_authenticated %}
           Not logged in, please sign in above!
           {% else %}
@@ -36,9 +36,11 @@
         <br/>
         <div>
         <ol class='projects list'>
-        <li>-THIS IS WHERE THE GIT UPDATES WOULD GO ONCE IMPLEMENTED WITH GITHUB</li>
-        {% for updates in something %}
-        <li>-{{ update }}</li>
+        {% for news in news_list %}
+        <li>
+	  {{ news.title }} -- {{ news.date }}
+	  <p>-- {{ news.description }}</p>
+	</li>
         {% endfor %}
         </ol>
       </div>
@@ -70,5 +72,3 @@
   </div>
 </div>
 {% endblock %}
-
-
