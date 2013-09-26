@@ -5,13 +5,13 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
-    <title> KALite Internal {% block title %} Home page {% endblock %}</title>
+    <title>FLE {% block title %} Home page {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type="text/css" media="screen" />
     {% block head %}
+    <script src="http://code.jquery.com/jquery.js"></script>
     {% endblock %}
   </head>
   <body>
-    <script src="http://code.jquery.com/jquery.js"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -22,12 +22,12 @@
 	    <span class="icon-bar"></span>
 	  </a>
 	  <a class="brand" href="/">
-	    KA Lite
+	    FLE
 	  </a>
 	  <div class="nav-collapse">
 	    <ul class="nav">
 	      <li class="active" id="home-nav">
-		<a href="{% url 'profile_index' %}">
+		<a href="{% url 'home' %}">
 		  Home
 		</a>
 	      </li>
@@ -51,16 +51,6 @@
 		</a>
 	      </li>
 	      <li class="dropdown">
-	      <a class="dropdown-toggle" id="settings" role="button" data-toggle="dropdown" href="#"> Options 
-	      	<b class="caret"></b>
-	      </a>
-  			<ul class="dropdown-menu" role="menu" aria-labelledby="settings">
-  				<li> 
-  					<a href="{%url 'change_pw' %}">
-  					Change Password </a>
-  				</li>
-  			</ul>
-  		</li>
 	      <li class="item">
 		<a href="{% url 'logout' %}">
 		  (logout)
@@ -68,11 +58,11 @@
 	      </li>
 	      {% else %}
 	      <li class="login">
-		<a href="{% url 'django.contrib.auth.views.login' %}">
+		<a href="{% url 'socialauth_begin' 'github' %}">
 		  Login
 		</a>
 	      </li>
-	      {% endif %}	
+	      {% endif %}
 	    </ul>
 
 	  </div>
@@ -93,49 +83,9 @@
   </div>
     </div>
       <div id = "contact_footer">
-    <!--<h3>communication CHANNELS:</h3>
-    <p>Email: info@learningequality.org</p>
-    <a href = "http://chat.learningequality.org:3000/">Chat with the team!</a>
-    <a href = "http://kalite.learningequality.org/">Come to the offical site!</a>
-    <a href = "https://drive.google.com/?tab=mo&amp;authuser=0#folders/0B1eobeaicL7IcnMzMktXM3RzajQ">Our Google Drive Shared Folder!</a>-->
-    <a href='/contact/'><h4>Contact</h4></a>
-
+    <a href='/contact/' style='text-decoration:none;'><h4>Contact</h4></a>
   </div>
     </div>
-  <a href="#top_bar" id="top-link">Top of Page</a>
-  <script>
-
-    $(document).ready(function(){
-	    $(window).scroll(function(){
-		    if ($(this).scrollTop() > 100) {
-		    $('#top-link').fadeIn();
-	    	}
-	    	else {
-			    $('#top-link').fadeOut();
-			}
-			});
-	    // scroll-to-top animate
-	    $('#top-link').click(function(){
-		    $("html, body").animate({ scrollTop: 0 }, 600);
-		    return false;
-	    });
-
-	    var cur_path = window.location.pathname;
-	    switch(cur_path){
-	    	case "/projects/":
-	    		$('#project-nav').addClass('active').siblings().removeClass('active');
-	    		break;
-	    	case "/profiles/":
-	    		$('#profiles-nav').addClass('active').siblings().removeClass('active');
-	    		break;
-	    	default:
-	    		$('#home-nav').addClass('active').siblings().removeClass('active');
-	    		break;
-	    }
-
-    });
-
-  </script>
-
+  
   </body>
 </html>
