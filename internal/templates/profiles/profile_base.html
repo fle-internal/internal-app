@@ -35,6 +35,11 @@
                     </div>
                 </div>
 </div>
+
+{% if not person.badge.all %}
+  <br/><br/><br/></br/>
+{% endif %}
+
 {% endif %}
 
 <div class="tabbable tabs-left">
@@ -220,8 +225,7 @@
 
         {% if not person.badge.all %}
         No badges yet.
-        {% endif %}
-
+        {% else %}
         <div>
           <div id="myCarousel" class="carousel slide">
                 <ol class="carousel-indicators">
@@ -248,6 +252,7 @@
                 <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
               </div>
             </div>
+            {% endif %}
 
           {% if user.is_authenticated and user.id == person.id %}
           {% else %}
