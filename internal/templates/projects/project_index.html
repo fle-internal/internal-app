@@ -10,26 +10,25 @@
 <link type="test/css" rel="stylesheet" href="{% static 'projects/project.css' %}"/>
 
 {% block content %}
-<body id='pad-top'>
+<body id='pad-top' class='background'>
 <div id="section">
   <!--list user's projects and subtitle it with their position-->
   <!--also make clickthrough links to the github or other relevant page-->
 </div>
 
 <!--check if projects are active or not-->
-      <div id='feedback'>
+      <div id='projects' style="margin-bottom:-1em;">
         <p class='title'>Fle Projects:</p>
-        <br/>
-        <div class='feedback' align=center>
+        </div>
+        <div class='content' align=center style="background-color:#fff; padding-top:1em">
         <em>Active Projects:</em><br/>
   		{% for project in projects %}
-    	<h4 id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a>{{ done }}</a></h4>
+    	<h4 class='cl-effect-12 cl' style="color:#36669d;"><a class='link-decor' href ='{% url 'project_detail' project.id %}'>{{ project }}</a>{{ done }}</a></h4>
 	 	<li>{{ project.description }}</li>
   		{% endfor %}
         </div>
           <p align=right>
         <a  class='link-decor' href="{% url 'feedback_create' user.id %}"></a>
         </p>
-      </div>
 </body>
 {% endblock %}
