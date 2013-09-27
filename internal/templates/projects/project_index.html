@@ -4,32 +4,41 @@
 {% block title %}| Project Index{% endblock %}
 
 {% block head %}
-<link type="test/css" rel="stylesheet" href="{% static 'projects/project.css' %}"/>
+<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>
+<script src="http://code.jquery.com/jquery.js"></script>
 {% endblock %}
+<link type="test/css" rel="stylesheet" href="{% static 'projects/project.css' %}"/>
 
 {% block content %}
-<body id='pad-top'>
+
+<body id='pad-top' class='background'>
+
 <div id="section">
-  <h2>{{ index.owner }}'s Active Projects:</h2>
-  {% if not projects %}
-    <p id='list'><i id='description'>{{ index.owner }} currently has no active projects.</i></p>
-  {% endif %}
-  {% for project in index.name %}
-    <p id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a></p>
-  {% endfor %}
   <!--list user's projects and subtitle it with their position-->
   <!--also make clickthrough links to the github or other relevant page-->
 </div>
 
 <!--check if projects are active or not-->
-<div id='section'>
-  <h2>Past projects:</h2>
-  {% for done in past_projects %}
-    <p id='list'><a href ='{% url 'project_detail' project.id %}'>{{ project }}</a>{{ done }}</a></p>
-  {% endfor %}
-  <!--list user's past inactive/complete projects by month including position-->
-  <!--make project titles click throughs to github? final result?-->
-</div>
-</body>
 
+    <div id='about' class='title' style="background-color:#2e9f7d;width:98.6%">
+          FLE Project List
+      </div>
+      <div id='feedback'>
+        <br/>
+        <div class='feedback' align=center style="background-color:white;">
+        <br/>
+
+        <em>Active Projects:</em><br/>
+  		{% for project in projects %}
+    	<h4 class='cl-effect-12 cl' style="color:#36669d;"><a class='link-decor' href ='{% url 'project_detail' project.id %}'>{{ project }}</a>{{ done }}</a></h4>
+	 	<li>{{ project.description }}</li>
+  		{% endfor %}
+  		<br/><br/>
+        </div>
+          <p align=right>
+	{% if user.is_authenticated %}
+        <a  class='link-decor' href="{% url 'feedback_create' user.id %}"></a>
+	{% endif %}
+        </p>
+</body>
 {% endblock %}

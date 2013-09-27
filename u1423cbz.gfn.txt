@@ -1,0 +1,60 @@
+﻿Merge remote-tracking branch 'upstream/master'
+
+Conflicts:
+	internal/profiles/static/profiles/profile.css
+	internal/templates/profiles/profile_index.html
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# All conflicts fixed but you are still merging.
+#   (use "git commit" to conclude merge)
+#
+# Changes to be committed:
+#
+#	new file:   dashboard/__init__.py
+#	new file:   dashboard/github.py
+#	new file:   dashboard/migrations/0001_initial.py
+#	new file:   dashboard/migrations/0002_auto__add_field_news_link.py
+#	new file:   dashboard/migrations/0003_auto__add_field_news_date.py
+#	new file:   dashboard/migrations/__init__.py
+#	new file:   dashboard/models.py
+#	new file:   dashboard/tests.py
+#	new file:   dashboard/urls.py
+#	new file:   dashboard/views.py
+#	modified:   internal/settings.py
+#	deleted:    internal/static/css/new.css
+#	new file:   internal/static/images/quizzy.png
+#	new file:   internal/static/images/travel_badge_1.png
+#	modified:   internal/urls.py
+#	modified:   internal/views.py
+#	modified:   profiles/static/profiles/profile.css
+#	modified:   profiles/urls.py
+#	modified:   profiles/views.py
+#	modified:   projects/forms.py
+#	deleted:    projects/static/date/jquery-1.9.1.js
+#	deleted:    projects/static/date/jquery-ui.css
+#	deleted:    projects/static/date/jquery-ui.js
+#	modified:   projects/urls.py
+#	modified:   projects/views.py
+#	modified:   templates/base.html
+#	modified:   templates/profiles/profile.html
+#	modified:   templates/profiles/profile_base.html
+#	modified:   templates/profiles/profile_index.html
+#	modified:   templates/projects/create_project.html
+#	modified:   templates/projects/edit_project.html
+#	modified:   templates/projects/join_project.html
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	internal/static/images/walllpaper6.jpg
+#	internal/static/images/wallpaper4.jpg
+#	internal/static/images/wallpaper8.png
+

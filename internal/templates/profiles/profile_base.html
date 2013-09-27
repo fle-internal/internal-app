@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}| {{ person.full_name }}{% endblock %}
+
+{% block head %}<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>
+                <script src="http://code.jquery.com/jquery.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<body class='background'>
+
+{% if user.is_authenticated and user.id == person.id %}
+<div class="accordion" id="accordion2 task-drop">
+                <div class="accordion-group task-drop">
+                  <div class="accordion-heading cl-effect-12 cl">
+                    <a class="accordion-toggle link-decor" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" align=center>
+                      <div class=''><h2 class='task-head'>Tasks</h2></div>
+                    </a>
+                  </div>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse in task-drop task-space">
+                    <div class="accordion-inner">
+                      {% if not tasks %}
+                      No tasks have been assigned.
+                      {% endif %}
+
+                      {% for task in tasks %}
+                      <ul>
+                        <li>
+                          {{ task.description }}
+                        </li>
+                      {% endfor %}
+                    </div>
+                </div>
+</div>
+{% endif %}
+
+{% if not person.badge.all %}
+  <br/><br/><br/></br/>
+{% endif %}
+
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+      <li class="active"><a href="#lB" data-toggle="tab" class='link-decor nav-link'>Profile</a></li>
+      <li><a href="#lC" data-toggle="tab" class='link-decor nav-link'>Projects</a></li>
+      <li><a href="#lD" data-toggle="tab" class='link-decor nav-link'>Feeedback</a></li>
+      <li><a href="#lE" data-toggle="tab" class='link-decor nav-link'>Badges</a></li>
+  </ul>
+  <div class="tab-content">
+  <div class="tab-pane active" id="lB">
+
+    {% if not person.badge.all %}
+    <br/><br/><br/><br/><br/><br/>
+    {% else %}
+    <div class='profile-banner' align=center>
+      {% for badge in person.badge.all %}
+        {% if forloop.revcounter == 1 or forloop.revcounter == 2 or forloop.revcounter == 3 %}
+          <img src="{% static badge.badge_image  %}" alt="My image" height="250" width="250" /> &nbsp;
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <img src='{{ person.avatar }}' alt="member" class='profile-pic'/>
+
+    <br/><br/><br/><br/><br/><br/>
+
+    <h1>&nbsp;{{ person.full_name }}</h1>
+
+    <br/>
+
+    <div id='about' class='title'>
+          About
+      </div>
+      <div class='info'>
+          <p>{{ person.bio }}</p>
+
+          <p><b>Contact:</b></p><br/>
+          {{ person.contact }}
+
+          <p><b>{{ person.github }}</b></p>
+
+          <p><b>Skills:</b></p>
+          {{ person.skills }}
+      </div>
+
+      <div class='badges'>
+          {% for badge in person.badge.all %}
+          <img src="{% static badge.badge_image  %}" alt="My image" height="50" width="50" />
+          {% endfor %}
+      </div>
+      <div id='badges'>
+          Badges
+      </div>
+
+      <div class='other-links'> <!--TODO implement option to add other links in profile creation-->
+
+          <ul>
+          {% for link in links %}
+            <li>
+              <a class='link-decor' href="{% url '#' %}">{{ link }}</a>
+            </li>
+          </ul>
+          {% endfor %}
+      </div>
+      <div id='other-links'>
+          Other Links
+      </div>
+
+      <div id='projects'>
+        <p class='title'>Projects</p>
+        <br/>
+
+        <div>
+          <ul class='content' align=center>
+          {% if not person.roles.all %}
+          {{ person.first_name }} is not involved in any projects yet. <br/>
+          {% endif %}
+
+          {% for role in person.roles.all %}
+          {% if forloop.revcounter == 1 or forloop.revcounter == 2 or forloop.revcounter == 3 %}
+          <li class='cl-effect-12 cl list'><a class='link-decor' href="{% url 'project_detail' role.project.id %}">
+            {{ role.project.name }}
+          </a>
+          <span style='font-weight:200;'>as </span>
+          {{ role.role_name }}
+          {% if role.project.owner.id == person.id %}<span style='font-weight:200;'> and</span> project owner
+          </li>
+          <br/><br/>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+      </div>
+
+        <p align=right>
+        <a class='link-decor' href="{% url 'project_create' %}"><button class="btn btn-1 btn-1a">Create Project</button></a>
+        </p>
+      </div>
+
+      <div id='feedback'>
+        <p class='title'>Feedback Summary</p>
+        <br/>
+        <div class='content' align=center>
+        {% if avg %}
+        <em>Average stars</em><br/>
+      Overall: {{ avg.overall_rating__avg }} <br/>
+      Participation: {{ avg.participation_rating__avg }}<br/>
+      Contribution: {{ avg.contribution_rating__avg }}<br/>
+      Communication: {{ avg.communication_rating__avg }} <br/>
+      Ease of working together: {{ avg.ease_of_working_together_rating__avg }} <br/>
+
+      {% else %}
+      {{person.first_name}} has not been evaluated yet.<br/>
+      Help them out by submitting feedback!<br/>
+      {% endif %}
+        </div>
+          <p align=right>
+        <a  class='link-decor' href="{% url 'feedback_create' user.id %}"><button class="btn btn-1 btn-1a btn-submit" >Submit Feedback</button></a>
+        </p>
+      </div>
+
+      <br/><br/>
+</body>
+  </div>
+
+
+      <div class="tab-pane" id="lC">
+          {% if not person.roles.all %}
+          {{ person.first_name }} is not involved in any projects yet.<br/>
+          {% endif %}
+
+          <ul class='content' align=center>
+          {% for role in person.roles.all %}
+          <li class='cl-effect-12 cl list'><a class='link-decor' href="{% url 'project_detail' role.project.id %}">
+            {{ role.project.name }}
+          </a>
+          <span style='font-weight:200;'>as </span>
+          {{ role.role_name }}
+          {% if role.project.owner.id == person.id %}<span style='font-weight:200;'> and</span> project owner
+          </li>
+          <br/><br/>
+        {% endif %}
+        {% endfor %}
+        </ul>
+
+
+        <p align=center>
+        <a class='link-decor' href="{% url 'project_create' %}">
+          <button class="btn btn-1 btn-1a">
+            Create Project
+          </button>
+        </a>
+        </p>
+
+        </ul>
+      </div>
+
+
+      <div class="tab-pane feedback" id="lD">
+        {% if not avg%}
+        No evaluations made yet.<br/>
+        {% endif %}
+
+        {% if avg %}
+        Participation<br/>
+        {{ avg.participation__rationale }}<br/>
+        Contribution<br/>
+        {{ avg.contribution__rationale }}<br/>
+        Communication<br/>
+        {{ avg.communication__rationale }} <br/>
+        Ease of working together<br/>
+        {{ avg.ease_of_working_together__rationale }}<br/>
+        {% endif %}
+
+        <p align=center>
+          <a  class='link-decor' href="{% url 'feedback_create' user.id %}">
+            <button class="btn btn-1 btn-1a btn-submit" >
+              Submit Feedback
+            </button>
+          </a>
+        </p>
+      </div>
+
+
+      <div class="tab-pane" id="lE">
+
+        {% if not person.badge.all %}
+        No badges yet.
+        {% else %}
+        <div>
+          <div id="myCarousel" class="carousel slide">
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" align=center>
+                  {% for badge in person.badge.all %}
+                  {% if forloop.counter == 1 %}
+                  <div class="active item">
+                  {% else %}
+                  <div class="item">
+                  {% endif %}
+                    <img src="{% static badge.badge_image  %}" alt="My image" height='50%' width='50%'/>
+                    <div class="carousel-caption">
+                      <h4>{{ badge }}</h4>
+                      <p>{{ badge.description }}</p>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+              </div>
+            </div>
+            {% endif %}
+
+          {% if user.is_authenticated and user.id == person.id %}
+          {% else %}
+          <div align=center>
+          Upload a badge for {{ person.first_name }} here!<br/>
+          <form action="" method="post" enctype="multipart/form-data">
+            {{ form.as_table }}
+          {% csrf_token %}
+          <input type="submit" value="Submit">
+          </form>
+        </div>
+        {% endif %}
+
+      </div>
+
+      </div>
+    </div> <!-- /tabbable -->
+  </div>
+</div>
+
+{% endblock %}
