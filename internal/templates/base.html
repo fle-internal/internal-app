@@ -86,39 +86,5 @@
     <a href='/contact/' style='text-decoration:none;'><h4>Contact</h4></a>
   </div>
     </div>
-  <script>
-
-    $(document).ready(function(){
-	    $(window).scroll(function(){
-		    if ($(this).scrollTop() > 100) {
-		    $('#top-link').fadeIn();
-	    	}
-	    	else {
-			    $('#top-link').fadeOut();
-			}
-			});
-	    // scroll-to-top animate
-	    $('#top-link').click(function(){
-		    $("html, body").animate({ scrollTop: 0 }, 600);
-		    return false;
-	    });
-
-	    var cur_path = window.location.pathname;
-	    switch(cur_path){
-	    	case "/projects/":
-	    		$('#project-nav').addClass('active').siblings().removeClass('active');
-	    		break;
-	    	case "/profiles/":
-	    		$('#profiles-nav').addClass('active').siblings().removeClass('active');
-	    		break;
-	    	default:
-	    		$('#home-nav').addClass('active').siblings().removeClass('active');
-	    		break;
-	    }
-
-    });
-
-  </script>
-
   </body>
 </html>
