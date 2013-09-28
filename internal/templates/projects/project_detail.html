@@ -5,7 +5,7 @@
 
 {% block head %}
 <link style='text/css' rel='stylesheet' href='{% static 'projects/project.css' %}'/>
-<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>    
+<link type='text/css' rel='stylesheet' href="{% static 'profiles/profile.css' %}" media='screen'/>
 <script src="http://code.jquery.com/jquery.js"></script>
 {% endblock %}
 
@@ -22,10 +22,10 @@
             <DL>
             <br/><a href="{% url 'project_edit' project.id%}" style="font-size: 15px; text-decoration: none">[Edit Project]</a><br/><br/>
             <DT>Description: </p>
-            <dd style="font-size:0.8em">Project Name: {{ project.description }}</dd>
+            <dd style="font-size:0.8em">{{ project.description }}</dd>
             </dl>
             <a href='{{ project.github_repo_link }}'>Link to Github</a> <br/><br/>
-            {% if not is_active %}Deadline: {{ details.deadline }}<br/><br/>
+            {% if not is_active %}Deadline: {{ project.deadline }}<br/><br/>
             {% else %}<em><b>Project completed</b></em><br/>
             {% endif %}
         </ul>
@@ -45,7 +45,7 @@
           <h3 id="list">{{ role.profile}} - <i id="description">{{ role.role_name }}</i><h3>
           {% endfor %}
           </DL>
-        </div>  
+        </div>
       </div>
       <br/>
 
@@ -54,7 +54,7 @@
       </div>
       <div id='feedbackk' style="background-color: white;">
         <ul class='projects list' align=center>
-            <br/>Tasks: 
+            <br/>Tasks:
               <ul id="list">
               {% for task in todo %}
                 <li style="margin-left:1em">{{ task.description }}</li>
@@ -71,6 +71,3 @@
     </div>
 </body>
 {% endblock %}
-
-
-
