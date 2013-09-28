@@ -15,7 +15,7 @@ def create_project(request):
         project_form = ProjectForm(request.POST)
         if project_form.is_valid():
             project = project_form.save()
-            return HttpResponseRedirect(reverse('project_join', args=[project.id]))
+            return HttpResponseRedirect(reverse('project_detail', args=[project.id]))
         else:
             return render(request, 'projects/create_project.html',
                           {'project_form': project_form})
